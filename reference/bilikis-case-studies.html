@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Bilikis Sabitu</title>
+<meta name="description" content="Long-form case studies by Bilikis Sabitu — Recall, an AI telehealth platform, Climapt, and a crisis-response fundraising site. Product decisions, trade-offs, and the states most teams skip.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F3EF; --card:#FBFBF8; --ink:#17171A; --ink-soft:#57575E; --ink-faint:#8A8A90;
+  --line:#E2E2DB; --line-strong:#CFCFC7;
+  --accent:#2B2AE8; --accent-tint:rgba(43,42,232,.07);
+  --st-empty:#9A9AA0; --st-load:#B07C22; --st-error:#C0453B; --st-ai:#2B2AE8; --st-ok:#3B7A57;
+  --fd:'Space Grotesk',system-ui,sans-serif; --fb:'Instrument Sans',system-ui,sans-serif; --fm:'Space Mono',ui-monospace,monospace;
+  --maxw:860px; --railw:210px; --gutter:clamp(20px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.mono{font-family:var(--fm);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+
+/* ---- top nav ---- */
+.nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1200px;margin:0 auto;padding-inline:var(--gutter);display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)}
+.brand span{color:var(--accent)}
+.proj-nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.proj-nav::-webkit-scrollbar{display:none}
+.proj-nav a{font-family:var(--fm);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);padding:7px 12px;border-radius:100px;border:1px solid transparent;white-space:nowrap;transition:all .18s}
+.proj-nav a:hover{color:var(--ink)}
+.proj-nav a.on{color:var(--accent);border-color:var(--accent);background:var(--accent-tint)}
+.back{font-family:var(--fm);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+.back:hover{color:var(--accent)}
+@media(max-width:720px){.back{display:none}}
+
+/* ---- layout: rail + article ---- */
+.shell{max-width:1200px;margin:0 auto;padding-inline:var(--gutter);display:grid;grid-template-columns:var(--railw) minmax(0,1fr);gap:clamp(28px,4vw,64px)}
+@media(max-width:900px){.shell{grid-template-columns:1fr}}
+.rail{position:sticky;top:82px;align-self:start;padding-top:56px;height:fit-content}
+@media(max-width:900px){.rail{position:static;padding-top:28px}}
+.rail .mono{display:block;margin-bottom:14px}
+.toc{display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--line)}
+@media(max-width:900px){.toc{flex-direction:row;flex-wrap:wrap;border-left:none;gap:6px}}
+.toc a{font-size:.86rem;color:var(--ink-faint);padding:6px 0 6px 16px;border-left:2px solid transparent;margin-left:-1px;transition:all .15s}
+.toc a:hover{color:var(--ink)}
+.toc a.on{color:var(--accent);border-left-color:var(--accent)}
+@media(max-width:900px){.toc a{border:1px solid var(--line-strong);border-radius:100px;padding:5px 12px;font-family:var(--fm);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;margin:0}.toc a.on{border-color:var(--accent)}}
+
+article{padding-top:56px;padding-bottom:120px;max-width:var(--maxw)}
+@media(max-width:900px){article{padding-top:12px}}
+
+/* ---- header block ---- */
+.cs-kicker{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tag{font-family:var(--fm);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:100px;border:1px solid var(--line-strong);color:var(--ink-soft)}
+.tag.live{color:var(--st-ok);border-color:var(--st-ok)}
+.tag.nda{color:var(--ink-soft)}
+.tag.concept{color:var(--st-load);border-color:var(--st-load)}
+.tag.shipped{color:var(--accent);border-color:var(--accent)}
+h1{font-family:var(--fd);font-weight:600;font-size:clamp(2.4rem,6vw,3.8rem);letter-spacing:-.03em;line-height:1.02}
+.cs-sub{margin-top:16px;font-size:clamp(1.1rem,2vw,1.3rem);color:var(--ink-soft);max-width:46ch}
+.meta{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(max-width:640px){.meta{grid-template-columns:1fr}}
+.meta div{background:var(--card);padding:16px 18px}
+.meta .mono{display:block;margin-bottom:6px;font-size:10px}
+.meta p{font-size:.92rem;line-height:1.45}
+
+/* ---- sections ---- */
+section.cs{margin-top:clamp(56px,8vw,88px);scroll-margin-top:90px}
+.sec-label{display:block;color:var(--accent);margin-bottom:14px}
+h2{font-family:var(--fd);font-weight:600;font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1.12;max-width:24ch}
+.prose{margin-top:18px;color:var(--ink-soft)}
+.prose p{margin-bottom:14px;max-width:62ch}
+.prose b{color:var(--ink);font-weight:600}
+
+/* ---- figures / placeholders ---- */
+figure{margin:28px 0}
+.ph{border:1.5px dashed var(--line-strong);background:var(--card);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--ink-faint);position:relative}
+.ph.r169{aspect-ratio:16/9}.ph.r219{aspect-ratio:21/9}.ph.r43{aspect-ratio:4/3}
+.ph .ph-icon{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-size:15px}
+.ph .ph-label{font-family:var(--fm);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.ph.vid .ph-icon{border-color:var(--accent);color:var(--accent)}
+figcaption{margin-top:10px;font-family:var(--fm);font-size:11px;letter-spacing:.04em;color:var(--ink-faint)}
+figcaption b{color:var(--ink-soft);font-weight:700}
+.figrow{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.figrow{grid-template-columns:1fr}}
+
+/* ---- constraint cards ---- */
+.cards{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.ccard{background:var(--card);padding:22px}
+.ccard .mono{display:block;margin-bottom:8px;color:var(--ink-faint);font-size:10px}
+.ccard h4{font-family:var(--fd);font-weight:600;font-size:1.02rem;margin-bottom:6px}
+.ccard p{font-size:.92rem;color:var(--ink-soft)}
+
+/* ---- challenge + principles ---- */
+.thesis{margin-top:30px;border-left:3px solid var(--accent);padding:6px 0 6px 22px}
+.thesis .mono{display:block;color:var(--accent);margin-bottom:8px}
+.thesis p{font-family:var(--fd);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.3;letter-spacing:-.01em;max-width:36ch}
+.principles{margin-top:30px;display:grid;gap:12px}
+.pr{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);padding:16px 18px}
+.pr .num{font-family:var(--fm);font-size:12px;font-weight:700;color:var(--accent);padding-top:2px}
+.pr h4{font-family:var(--fd);font-weight:600;font-size:1rem}
+.pr p{font-size:.9rem;color:var(--ink-soft);margin-top:3px}
+
+/* ---- decisions + badges ---- */
+.decision{margin-top:30px;border:1px solid var(--line);background:var(--card);padding:24px}
+.decision.key{border-color:var(--accent);background:var(--accent-tint)}
+.d-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.d-kicker{font-family:var(--fm);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.badge{font-family:var(--fm);font-size:9.5px;letter-spacing:.04em;padding:3px 8px;border-radius:100px;border:1px solid var(--accent);color:var(--accent)}
+.decision h4{font-family:var(--fd);font-weight:600;font-size:1.1rem;margin-bottom:8px}
+.decision p{font-size:.95rem;color:var(--ink-soft)}
+.decision p em{font-style:normal;color:var(--ink);font-weight:600}
+
+/* ---- alternatives ---- */
+.alt{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(max-width:640px){.alt{grid-template-columns:1fr}}
+.alt-col{background:var(--card);padding:22px}
+.alt-col h4{font-family:var(--fd);font-weight:600;font-size:1rem;margin-bottom:14px}
+.alt-col ul{list-style:none;display:grid;gap:9px}
+.alt-col li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:.9rem;color:var(--ink-soft)}
+.alt-col li i{font-style:normal;font-family:var(--fm);font-weight:700;font-size:12px}
+li.pro i{color:var(--st-ok)} li.con i{color:var(--st-error)}
+.verdict{grid-column:1/-1;background:var(--ink);color:var(--paper);padding:18px 22px}
+.verdict .mono{color:#8a89ff;display:block;margin-bottom:6px}
+.verdict p{font-size:.95rem;color:#D9D9DE}
+.verdict p em{font-style:normal;color:#fff;font-weight:600}
+
+/* ---- states ---- */
+.staterow{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line);align-items:start}
+.staterow:first-of-type{border-top:1px solid var(--line);margin-top:26px}
+.s-label{font-family:var(--fm);font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:5px 10px;border-radius:100px;border:1px solid currentColor;white-space:nowrap;margin-top:2px}
+.s-empty{color:var(--st-empty)}.s-load{color:var(--st-load)}.s-error{color:var(--st-error)}.s-ai{color:var(--st-ai)}.s-ok{color:var(--st-ok)}
+.staterow p{font-size:.95rem;color:var(--ink-soft)}
+.staterow p b{color:var(--ink)}
+
+/* ---- retrospective ---- */
+.banner{margin-top:26px;background:var(--ink);color:var(--paper);padding:28px}
+.banner .mono{color:#8a89ff;display:block;margin-bottom:10px}
+.banner p{font-family:var(--fd);font-weight:500;font-size:clamp(1.1rem,2.2vw,1.35rem);line-height:1.35;max-width:40ch}
+.takes{margin-top:22px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.take{background:var(--card);padding:20px 22px;display:grid;grid-template-columns:auto 1fr;gap:16px}
+.take .num{font-family:var(--fm);font-size:12px;font-weight:700;color:var(--accent)}
+.take h4{font-family:var(--fd);font-weight:600;font-size:1rem}
+.take p{font-size:.92rem;color:var(--ink-soft);margin-top:3px}
+
+/* ---- nda note ---- */
+.nda-note{margin-top:26px;border:1px solid var(--line-strong);background:var(--card);padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.nda-note .ic{font-family:var(--fm);font-weight:700;color:var(--ink-soft)}
+.nda-note p{font-size:.92rem;color:var(--ink-soft)}
+
+/* ---- next project footer ---- */
+.next{margin-top:clamp(64px,9vw,100px);border-top:1px solid var(--line);padding-top:36px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.next a{display:block}
+.next .mono{display:block;margin-bottom:8px}
+.next h3{font-family:var(--fd);font-weight:600;font-size:clamp(1.3rem,3vw,1.9rem);letter-spacing:-.02em;transition:color .18s}
+.next a:hover h3{color:var(--accent)}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#/recall">BILIKIS<span>.</span>SABITU <span style="color:var(--ink-faint)">/ case studies</span></a>
+    <div class="proj-nav" id="projNav"></div>
+    <a class="back" href="bilikis-portfolio.html">← Portfolio</a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="rail">
+    <span class="mono">Contents</span>
+    <nav class="toc" id="toc"></nav>
+  </aside>
+  <article id="article"></article>
+</div>
+
+<script>
+/* ============ CONTENT ============ */
+const PH = (kind,ratio,fig,cap)=>({t:'fig',kind,ratio,fig,cap});
+const CS = {
+
+/* ---------------- RECALL ---------------- */
+recall:{
+  title:"Recall", nav:"Recall",
+  tags:[["Built in 7 weeks","shipped"],["Play Store — launch pending","concept"],["Solo build","nda"]],
+  sub:"Capture in a tap. Find it before you remember where you put it.",
+  meta:[["My Role","Founder & Product Designer — strategy, UX/UI, production build (React Native)"],
+        ["Team","Solo — designed in Figma, built with Claude Code"],
+        ["Timeline & Status","7 weeks · 2026 · Production-ready — Play Store launch pending"]],
+  next:"telehealth",
+  sections:[
+   {id:"overview",label:"Overview",h:"Everyone has a second brain — it's just shattered across four apps.",body:[
+     {t:'p',x:"Important things live in a WhatsApp self-chat, three notes apps, browser bookmarks, and a camera roll with 4,000 screenshots. <b>Recall</b> pulls those fragments into one place: capture anything in a tap, find it the moment you need it."},
+     {t:'p',x:"I designed it end-to-end and then built it to production myself in <b>seven weeks</b> — Figma to React Native, no development team, using an AI-native workflow. It's now heading to the Play Store. This case study covers the product decisions, the trade-offs, and the states that carried the trust."},
+     PH('vid','r219',"0.1","Fig 0.1 · <b>Demo loop</b> — capture → search → found."),
+     {t:'figrow',items:[PH('img','r43',"0.2","Fig 0.2 · Core screens lineup."),PH('img','r43',"0.3","Fig 0.3 · Capture sheet — all four formats.")]}
+   ]},
+   {id:"context",label:"Context",h:"Saving was never the problem.",body:[
+     {t:'p',x:"Ask anyone where their important stuff lives and they'll list four apps and a prayer. The tools for <b>saving</b> are everywhere — that's exactly why retrieval fails. Nobody remembers the filename or the folder; they remember \"that thing about how Linear does onboarding.\""},
+     {t:'p',x:"The graveyard of personal-knowledge apps proves the pattern: products that add another place to save, without solving the moment of <b>finding</b>, become one more place to lose things."},
+     PH('img','r169',"1.0","Fig 1.0 · The scattered workflow — self-chat, bookmarks, gallery.")
+   ]},
+   {id:"problem",label:"The Problem",h:"Designing for a memory you don't have.",body:[
+     {t:'p',x:"Users search with vague, associative memory — not metadata. Around that core problem, the constraints stacked up:"},
+     {t:'cards',items:[
+       ["01","Four formats, one surface","Screenshots, links, notes, and files behave differently but must feel like one system."],
+       ["02","The organizing tax","Any manual filing step gets abandoned within a week. Structure can't depend on user discipline."],
+       ["03","Capture is a reflex","The save moment happens mid-scroll, mid-task. Anything over one tap loses the item."],
+       ["04","A team of one","Every design decision was also a build decision — scope had to survive a solo production budget."]]},
+     {t:'thesis',x:"Make capture instant, make retrieval feel like memory, and ship it alone — without pretending the app has intelligence it doesn't have yet."},
+     {t:'principles',items:[
+       ["01","Zero-friction capture","One tap, any format, mid-task."],
+       ["02","Search does the organizing","The user never files; the system surfaces."],
+       ["03","Never lose a save","A dropped item in a save-everything app is a broken promise."]]}
+   ]},
+   {id:"capture",label:"Capture Flow",h:"The one-tap rule.",body:[
+     {t:'p',x:"The rule the whole flow is built on: <b>the moment of capture earns nothing extra.</b> No title field, no tag prompt, no folder picker. The app absorbs the item and gets out of the way — depth happens later, at retrieval, where the user actually has attention to spend. The capture flow shipped as designed — the iteration budget went into scope instead (see the AI cut, below)."},
+     PH('img','r169',"2.0","Fig 2.0 · The capture flow — tap, saved, gone."),
+     {t:'decision',key:true,kicker:"Key decision",badges:["01","03"],h:"Optimistic capture",x:"Saving shows instant confirmation while processing continues in the background. The trade-off: <em>the UI claims success before the system fully finishes</em> — which makes the failure path a first-class design problem instead of an afterthought. That's covered in States, where it belongs."}
+   ]},
+   {id:"retrieval",label:"Retrieval",h:"Search-first, not folder-first.",body:[
+     {t:'p',x:"The structural fork in the whole product: does the user organize, or does the system? I designed both directions far enough to compare them honestly."},
+     PH('vid','r169',"3.0","Fig 3.0 · Retrieval interaction — query → results → found."),
+     {t:'alt',a:{h:"Option A — Folder taxonomy",items:[["pro","Familiar mental model"],["pro","Browsable without a query"],["con","A maintenance tax users stop paying — the library decays with use"],["con","Filing decisions at capture time break the one-tap rule"]]},
+            b:{h:"Option B — Search-first + lightweight surfacing",items:[["pro","Zero organizing burden — stays healthy no matter how messy the input"],["pro","Matches how memory works: associative, not hierarchical"],["con","Heavier lift on search quality and zero-result design"]]},
+            v:"Option B — because Option A's failure mode (a decayed, half-filed library) is <em>the exact problem Recall exists to solve.</em> Choosing the folder model would have rebuilt the disease inside the cure."},
+     {t:'decision',key:true,kicker:"The hardest cut",badges:["02"],h:"The AI feature was designed for v1 — and cut",x:"An AI retrieval feature was on the v1 board. Cutting it was the hardest scope call of the build — and the difference between <em>a shipped product and a demo.</em> The AI in Recall v1 is in how it was built, not a claim baked into the product: v1 stands on fast capture and instant search, with smarter retrieval as the trajectory, not a promise the app can't keep yet. In a market where \"AI-powered\" is wallpaper, restraint is a trust move."}
+   ]},
+   {id:"states",label:"States",h:"The system is honest when it isn't fine.",body:[
+     {t:'p',x:"Optimistic capture makes the unhappy paths the real design work. These four states carry the product's core promise:"},
+     {t:'states',items:[
+       ["empty","Empty","First-run with nothing saved — designed as an <b>invitation</b>: one visible action, not a blank void."],
+       ["load","Loading","Capture processing. Optimistic confirmation up front; background state visible only when it matters."],
+       ["error","Error","Failed save or sync. The item is <b>never silently lost</b> — the UI holds it and offers retry. One dropped save destroys the core promise, so this state got disproportionate design attention."],
+       ["ok","Success","Found. The retrieval moment the whole product exists for — fast, unceremonious, done."]]},
+     PH('img','r169',"4.0","Fig 4.0 · The four states, side by side, annotated.")
+   ]},
+   {id:"final",label:"Final Designs",h:"From Figma to production — no handoff.",body:[
+     {t:'p',x:"The build itself was the workflow proof: designed in Figma, vibe-coded to production with Claude Code in seven weeks — data-safety compliance, privacy policy, and release assets prepared for Play Store submission. <b>One person, production-grade output.</b>"},
+     PH('vid','r219',"5.0","Fig 5.0 · Full flow walkthrough — capture all four formats → search → find."),
+     {t:'figrow',items:[PH('img','r43',"5.1","Fig 5.1 · Store listing assets."),PH('img','r43',"5.2","Fig 5.2 · Release pipeline / compliance artifacts.")]}
+   ]},
+   {id:"retro",label:"Retrospective",h:"What shipped, and what it taught me.",body:[
+     {t:'banner',x:"Built to production in seven weeks — a native app designed and built end-to-end by one person, now heading to the Play Store."},
+     {t:'takes',items:[
+       ["01","Capture friction compounds","Every field removed at save time multiplied what actually got saved."],
+       ["02","Cut the feature, keep the promise","The AI feature was the hardest cut of the build — shipping a smaller, honest product beat demoing a bigger, speculative one."],
+       ["03","Solo doesn't mean small","An AI-native workflow moved the ceiling on what one designer can ship in seven weeks — the constraint shaped the process, not the ambition."]]}
+   ]}
+  ]
+},
+
+/* ---------------- TELEHEALTH ---------------- */
+telehealth:{
+  title:"AI Telehealth Platform", nav:"Telehealth",
+  tags:[["Under NDA","nda"],["0→1","shipped"]],
+  sub:"Multi-role, agentic, compliance-aware — and honest about what the AI doesn't know.",
+  meta:[["My Role","Lead Product Designer (contract, under NDA) — end-to-end"],
+        ["Team","Confidential"],
+        ["Timeline & Status","2025–26 · Pre-launch, confidential"]],
+  next:"climapt",
+  sections:[
+   {id:"overview",label:"Overview",h:"Four users, one platform, zero room for confident guessing.",body:[
+     {t:'p',x:"A 0→1 AI-native telehealth platform connecting patients, physicians, donors, and administrators around subsidized care. I led end-to-end design: multi-role product architecture across web and mobile, agentic AI experiences, payment and payout flows, and multilingual, WCAG-compliant UX across four languages."},
+     {t:'nda',x:"This work is confidential. This case study shows process and decisions — no raw screens, no client identifiers. A product demo video exists under the terms of the NDA; everything else here is abstracted."},
+     PH('vid','r219',"0.1","Fig 0.1 · Product demo — pending NDA clearance for public embed."),
+     PH('img','r169',"0.2","Fig 0.2 · Anonymized system map — four roles, abstracted.")
+   ]},
+   {id:"problem",label:"The Problem",h:"In a clinical context, a confidently-wrong answer isn't bad UX — it's a safety risk.",body:[
+     {t:'cards',items:[
+       ["01","Four roles, four risk profiles","Patients, physicians, donors, and admins hold genuinely different mental models — and different consequences when the interface fails them."],
+       ["02","Agentic AI with real stakes","The system has to know the boundary of its own competence and hand off cleanly when it reaches it."],
+       ["03","Money inside a compliance frame","Provider payouts in a regulated healthcare context — the money flow must stay legible and auditable."],
+       ["04","Four languages, one standard","Multilingual and WCAG-compliant from the architecture up, not retrofitted."]]},
+     {t:'thesis',x:"Design a system that knows the boundary of its own competence — and hands off to a human cleanly when it reaches it."},
+     {t:'principles',items:[
+       ["01","Trust before capability","Every AI surface earns belief before it shows off."],
+       ["02","The AI says \"I don't know\"","Low confidence is surfaced, never smoothed over."],
+       ["03","Every role sees only its world","Isolation as clarity — and as security posture."]]}
+   ]},
+   {id:"architecture",label:"Architecture",h:"Role isolation as an IA decision — and a security one.",body:[
+     {t:'p',x:"The structural fork: one application with permission-gated views, or role-isolated entry points. I designed the comparison as an architecture decision, not a preference:"},
+     {t:'alt',a:{h:"Option A — Single app, permission gates",items:[["pro","Shared components, lower build overhead"],["pro","One codebase, one deploy"],["con","IA compromises for every role — nobody's mental model wins"],["con","Permission complexity grows with every feature; error surface widens"]]},
+            b:{h:"Option B — Subdomain-based role separation",items:[["pro","Clean IA per role — each experience shaped to its user's world"],["pro","Security posture suited to a health context: isolation by default"],["con","Shared-component overhead across surfaces"]]},
+            v:"Option B — role-isolated entry points. In a health-plus-money product, <em>clarity per role and isolation by default beat build convenience.</em> The overhead was a price, and it was paid knowingly."},
+     PH('img','r169',"2.0","Fig 2.0 · Redacted IA map — role separation, abstracted.")
+   ]},
+   {id:"aistates",label:"AI States",h:"Most AI UX designs the happy answer. This product is the other states.",body:[
+     {t:'p',x:"The core of the design system isn't the AI's best response — it's what happens at the edges: low confidence, no answer, wrong context, a user who needs a human. I designed those as <b>the product</b>, not the exception path."},
+     {t:'states',items:[
+       ["ai","AI uncertainty","When confidence is low, the interface says so — and offers escalation. <b>Never a confident guess in a clinical setting.</b>"],
+       ["load","Agent working","Bounded, explained waiting. A clinical user never stares at an ambiguous spinner."],
+       ["error","Escalation to human","The designed exit when the AI or the system can't safely proceed — a first-class flow, not a failure screen."],
+       ["ok","Resolved","Clear confirmation across a multilingual, WCAG-compliant surface."]]},
+     PH('img','r169',"3.0","Fig 3.0 · Anonymized state matrix — uncertainty → escalation logic."),
+     {t:'decision',key:true,kicker:"Key decision",badges:["01","02"],h:"Trust-critical states as first-class design",x:"The uncertainty, fallback, and escalation-to-human states were designed <em>before</em> the happy path was polished — because in this context, how the system behaves when it doesn't know is the product's actual trust surface."}
+   ]},
+   {id:"payments",label:"Payments",h:"The money flow is a trust flow.",body:[
+     {t:'p',x:"Provider payouts via Stripe Connect within a zero-commission model, designed so the flow stays legible and auditable end-to-end. In a product that combines health and money, <b>the conversion story is trust</b> — every payment state, receipt, and ledger view was designed to be explainable."},
+     PH('img','r169',"4.0","Fig 4.0 · Abstracted payout flow — states and audit points.")
+   ]},
+   {id:"retro",label:"Retrospective",h:"A complete system, currently under wraps.",body:[
+     {t:'banner',x:"A complete 0→1 design system for a four-role, multi-agent, multilingual platform — confidential until launch. Anonymized walkthrough available on request."},
+     {t:'takes',items:[
+       ["01","Design the exits first","In high-stakes AI, the escalation path is the feature. Everything else is polish."],
+       ["02","Isolation can be kindness","Role separation wasn't just security — it let each user's world stay simple."],
+       ["03","Compliance is a design material","HIPAA-aware and WCAG constraints shaped better decisions than free rein would have."]]}
+   ]}
+  ]
+},
+
+/* ---------------- CLIMAPT ---------------- */
+climapt:{
+  title:"Climapt", nav:"Climapt",
+  tags:[["Concept · Figma","concept"],["Behance case study","nda"]],
+  sub:"Turning a probabilistic forecast into an action a farmer can take on Monday.",
+  meta:[["My Role","Solo — concept, 0→1: problem framing, IA, hi-fi screens"],
+        ["Team","Independent"],
+        ["Timeline & Status","Concept — presented on Behance"]],
+  next:"earthquake",
+  sections:[
+   {id:"overview",label:"Overview",h:"The forecast exists. The interface between it and a farmer's Monday doesn't.",body:[
+     {t:'p',x:"In August–September 2024, rainfall across Nigeria's farm belt stopped — abruptly, mid-season. Farmers were left grappling with crop failure and water scarcity they never saw coming. <b>The data that could have warned them exists; the interface for the person who needs it doesn't.</b>"},
+     {t:'p',x:"<b>Climapt</b> is a concept exploration grounded in that event: an AI climate-resilience platform that translates predictive risk into decisions a farmer can act on — proactive instead of reactive."},
+     {t:'p',x:"This is a concept, and it's presented as one — <b>design decisions and a validation plan, not invented impact metrics.</b>"},
+     PH('img','r219',"0.1","Fig 0.1 · Hero screens — risk view.")
+   ]},
+   {id:"problem",label:"The Problem",h:"Probabilistic data, binary decisions, low bandwidth.",body:[
+     {t:'cards',items:[
+       ["01","Probability vs. certainty","A forecast is a likelihood. A farmer acting on it as fact is a design failure with real consequences."],
+       ["02","Low digital literacy","The interface must be legible at a glance — hierarchy over density, always."],
+       ["03","Low bandwidth","Rural connectivity is a first-order constraint, not an optimization pass."],
+       ["04","Trusting a machine's forecast","Why should a farmer believe this screen over their own experience? Trust must be designed, not assumed."]]},
+     {t:'thesis',x:"Turn a probability into an action a farmer takes this week — without pretending the forecast is certain."},
+     {t:'principles',items:[
+       ["01","Likelihood, never false certainty","Confidence is always visible."],
+       ["02","Every forecast resolves to an action","Awareness without a next step changes nothing."],
+       ["03","The constraint is the brief","Bandwidth and literacy shape the design, not the disclaimer."]]}
+   ]},
+   {id:"risk",label:"Risk UX",h:"Showing confidence without showing a statistics lecture.",body:[
+     {t:'p',x:"The central interaction problem: how does a farmer read risk at a glance, across literacy levels, on a low-end device? The design lands on a <b>severity-first color language — red for danger, yellow for warning, green for ok</b> — paired with visual cues and plain-language guidance, with the forecast's confidence kept visible so likelihood never masquerades as certainty."},
+     {t:'alt',a:{h:"Rejected — numeric scores & probability bands",items:[["pro","Precise — carries the model's actual output"],["pro","Familiar to data-literate users"],["con","Demands statistical literacy the constraint explicitly forbids"],["con","A number invites false precision — \"73% risk\" reads as certainty to a non-technical user"]]},
+            b:{h:"Chosen — traffic-light severity language",items:[["pro","Legible in one glance — red/yellow/green is a signal system users already know"],["pro","Works across literacy levels and languages; survives a cheap screen in sunlight"],["con","Coarser than the model — three levels compress a probability distribution"]]},
+            v:"Traffic-light severity — because in this context <em>a coarse signal that's understood beats a precise one that's misread.</em> The compression cost is real and accepted; confidence stays visible alongside it so the coarseness never becomes a lie."},
+     {t:'figrow',items:[PH('img','r43',"2.0","Fig 2.0 · Risk visualization — confidence made legible."),PH('img','r43',"2.1","Fig 2.1 · Forecast → recommendation → action.")]},
+     {t:'decision',key:true,kicker:"Key decision",badges:["02"],h:"Forecast → recommendation → action",x:"A risk score alone changes nothing. Every prediction resolves into <em>a concrete recommended action — what to do this week</em> — so the product drives behavior, not just awareness."}
+   ]},
+   {id:"states",label:"States",h:"In agriculture, stale data is dangerous data.",body:[
+     {t:'states',items:[
+       ["ai","Forecast confidence","The model's certainty is visible, so the user weights the recommendation appropriately."],
+       ["load","Fetching prediction","Predictions aren't instant — the wait is bounded and explained."],
+       ["empty","New region, no data","A designed cold-start, not a broken screen."],
+       ["error","Stale or unavailable data","Flagged loudly. Acting on outdated climate data is dangerous — this state interrupts, deliberately."]]},
+     PH('img','r169',"3.0","Fig 3.0 · State set, annotated.")
+   ]},
+   {id:"retro",label:"Retrospective",h:"What the concept demonstrates — and what it would need next.",body:[
+     {t:'banner',x:"A complete concept for predictive, trust-aware UX in a high-stakes, low-resource context — presented as decisions and a validation plan."},
+     {t:'takes',items:[
+       ["01","Uncertainty is a UI element","Hiding the model's confidence would have been the easy, dishonest choice."],
+       ["02","Action is the unit of value","The design succeeds only if a forecast becomes a Monday decision."],
+       ["03","Next: real farmers","The validation plan starts with field research — the concept's assumptions deserve contact with reality."]]}
+   ]}
+  ]
+},
+
+/* ---------------- EARTHQUAKE ---------------- */
+earthquake:{
+  title:"Earthquake Crisis Response", nav:"Earthquake",
+  tags:[["Shipped · $20K raised","shipped"],["Medixbot","nda"]],
+  sub:"In a crisis, every second of friction is lost funding — and trust is the conversion lever.",
+  meta:[["My Role","Designer — donor experience end-to-end, at Medixbot"],
+        ["Team","Medixbot"],
+        ["Timeline & Status","Designed and shipped in one week, during the active crisis · $20,000 raised"]],
+  next:"recall",
+  sections:[
+   {id:"overview",label:"Overview",h:"Not a charity page. A trust-and-conversion problem on a clock.",body:[
+     {t:'p',x:"During the active Turkish–Syrian earthquake, a fundraising site had to convert donor intent into completed donations — fast. I designed the donor experience end-to-end at Medixbot: trust architecture, donation flow, and the responsive build — <b>designed and shipped in one week</b>, while the crisis was unfolding."},
+     {t:'p',x:"The outcome is the one number in my portfolio I didn't have to soften: <b>the site helped raise $20,000 in humanitarian funding.</b>"},
+     PH('img','r219',"0.1","Fig 0.1 · Site hero — trust signals above the ask.")
+   ]},
+   {id:"problem",label:"The Problem",h:"Two problems that compound each other.",body:[
+     {t:'p',x:"Donors won't give to a site that looks unverified — and every field of friction during a crisis is money that doesn't arrive. Solving either alone fails; the design had to solve both at once, under extreme time pressure."},
+     {t:'cards',items:[
+       ["01","Trust deficit by default","An unfamiliar fundraising site starts at zero credibility — legitimacy is the conversion lever."],
+       ["02","Friction measured in funds","Every extra step on the donor path has a cost denominated in lost donations."],
+       ["03","Payment anxiety at the peak","The processing moment is the highest-anxiety point of the entire flow."],
+       ["04","Shipped during, not after","Built and launched while the crisis was active — the deadline was the news cycle."]]},
+     {t:'thesis',x:"Build donor trust in seconds — then get out of the way of the payment."},
+     {t:'principles',items:[
+       ["01","Trust before the ask","Credibility signals front-loaded, before any donation prompt."],
+       ["02","Friction is lost funds","The donor path is stripped to land → donate → confirm."],
+       ["03","Cut deliberately","Protect the trust and money path above everything cosmetic."]]}
+   ]},
+   {id:"trust",label:"Trust & Flow",h:"Legitimacy first — because a donor who doesn't trust the site never reaches the payment step.",body:[
+     {t:'p',x:"The page architecture front-loads <b>three designed trust signals</b> before the ask: <b>fund transparency</b> (where every donation goes), a <b>donor leaderboard</b>, and <b>contribution badges</b>. Transparency answers \"can I trust this?\" — the leaderboard and badges answer \"are others giving?\" Social proof doing conversion work that copy can't. Only then does the flow narrow to the payment path — stripped to the minimum, <b>trading richer data capture for completion rate</b> when speed mattered most."},
+     {t:'figrow',items:[PH('img','r43',"2.0","Fig 2.0 · Trust stack — transparency, leaderboard, badges."),PH('img','r43',"2.1","Fig 2.1 · Donation flow — land → donate → confirm.")]},
+     {t:'decision',key:false,kicker:"Key decision",badges:["01"],h:"Recognition as a conversion system",x:"The leaderboard and badges gamify generosity — a deliberate call with a thin ethical line. In crisis fundraising, social proof must amplify participation without sliding into social pressure: the design keeps recognition <em>celebratory</em> (visible momentum, what others gave) rather than coercive. Each completed gift recruits the next."},
+     {t:'decision',key:true,kicker:"Key decision",badges:["03"],h:"Deliberate speed-vs-polish cuts",x:"Shipping during an active crisis meant choosing what <em>not</em> to build. Those cuts were made explicitly — protecting the trust signals and the payment path, and letting everything cosmetic wait. Owning that trade-off is the difference between shipping fast and shipping carelessly."}
+   ]},
+   {id:"states",label:"States",h:"A dropped donation in a crisis is lost funds — so no state is a dead end.",body:[
+     {t:'states',items:[
+       ["load","Payment processing","The highest-anxiety moment in the flow — designed to reassure, because ambiguity here kills the donation."],
+       ["error","Failed / declined donation","A clear recovery path, never a dead end. The gift is one retry away, not abandoned."],
+       ["ok","Confirmation","Receipt, impact framing, and a share loop — each completed gift recruits the next."],
+       ["empty","Goal at zero","The early state builds momentum instead of looking abandoned."]]},
+     PH('img','r169',"3.0","Fig 3.0 · Donation states, annotated.")
+   ]},
+   {id:"retro",label:"Retrospective",h:"The number that needed no softening.",body:[
+     {t:'banner',x:"The site helped raise $20,000 in humanitarian funding — a real, external outcome validating the trust and friction decisions. Stated once, flat, because restraint is what makes it believable."},
+     {t:'takes',items:[
+       ["01","Trust is the funnel","Every conversion problem upstream of payment was actually a credibility problem."],
+       ["02","Constraints clarify","The crisis deadline forced the prioritization that calm projects avoid."],
+       ["03","Real numbers only","One defensible outcome beats five decorated percentages — here and everywhere."]]}
+   ]}
+  ]
+}
+};
+
+/* ============ RENDERER ============ */
+const order=["recall","telehealth","climapt","earthquake"];
+const art=document.getElementById('article'), toc=document.getElementById('toc'), projNav=document.getElementById('projNav');
+
+function fig(f){
+  const icon=f.kind==='vid'?'▶':'■';
+  const cls=f.kind==='vid'?'ph vid':'ph';
+  return `<figure><div class="${cls} ${f.ratio}"><div class="ph-icon">${icon}</div><div class="ph-label">${f.kind==='vid'?'Video placeholder':'Image placeholder'}</div></div><figcaption>${f.cap}</figcaption></figure>`;
+}
+function block(b){
+  switch(b.t){
+    case 'p': return `<p>${b.x}</p>`;
+    case 'fig': return fig(b);
+    case 'figrow': return `<div class="figrow">${b.items.map(fig).join('')}</div>`;
+    case 'cards': return `<div class="cards">${b.items.map(c=>`<div class="ccard"><span class="mono">${c[0]}</span><h4>${c[1]}</h4><p>${c[2]}</p></div>`).join('')}</div>`;
+    case 'thesis': return `<div class="thesis"><span class="mono">The challenge</span><p>${b.x}</p></div>`;
+    case 'principles': return `<div class="principles">${b.items.map(p=>`<div class="pr"><span class="num">${p[0]}</span><div><h4>${p[1]}</h4><p>${p[2]}</p></div></div>`).join('')}</div>`;
+    case 'decision': return `<div class="decision${b.key?' key':''}"><div class="d-top"><span class="d-kicker">${b.kicker}</span>${(b.badges||[]).map(x=>`<span class="badge">P·${x}</span>`).join('')}</div><h4>${b.h}</h4><p>${b.x}</p></div>`;
+    case 'alt': return `<div class="alt"><div class="alt-col"><h4>${b.a.h}</h4><ul>${b.a.items.map(i=>`<li class="${i[0]}"><i>${i[0]==='pro'?'✓':'✗'}</i>${i[1]}</li>`).join('')}</ul></div><div class="alt-col"><h4>${b.b.h}</h4><ul>${b.b.items.map(i=>`<li class="${i[0]}"><i>${i[0]==='pro'?'✓':'✗'}</i>${i[1]}</li>`).join('')}</ul></div><div class="verdict"><span class="mono">Verdict</span><p>${b.v}</p></div></div>`;
+    case 'states': return b.items.map(s=>`<div class="staterow"><span class="s-label s-${s[0]}">${s[1]}</span><p>${s[2]}</p></div>`).join('');
+    case 'banner': return `<div class="banner"><span class="mono">Outcome</span><p>${b.x}</p></div>`;
+    case 'takes': return `<div class="takes">${b.items.map(t=>`<div class="take"><span class="num">${t[0]}</span><div><h4>${t[1]}</h4><p>${t[2]}</p></div></div>`).join('')}</div>`;
+    case 'nda': return `<div class="nda-note"><span class="ic">NDA</span><p>${b.x}</p></div>`;
+    default: return '';
+  }
+}
+function render(key){
+  const p=CS[key]; if(!p) return render('recall');
+  document.title=`${p.title} — Bilikis Sabitu`;
+  const nxt=CS[p.next];
+  art.innerHTML=`
+    <div class="cs-kicker">${p.tags.map(t=>`<span class="tag ${t[1]}">${t[0]}</span>`).join('')}</div>
+    <h1>${p.title}</h1>
+    <p class="cs-sub">${p.sub}</p>
+    <div class="meta">${p.meta.map(m=>`<div><span class="mono">${m[0]}</span><p>${m[1]}</p></div>`).join('')}</div>
+    ${p.sections.map(s=>`<section class="cs reveal" id="${s.id}"><span class="mono sec-label">${s.label}</span><h2>${s.h}</h2><div class="prose">${s.body.map(block).join('')}</div></section>`).join('')}
+    <div class="next"><a href="#/${p.next}"><span class="mono">Next case study</span><h3>${nxt.title} →</h3></a></div>`;
+  toc.innerHTML=p.sections.map(s=>`<a href="#/${key}/${s.id}" data-sec="${s.id}">${s.label}</a>`).join('');
+  projNav.innerHTML=order.map(k=>`<a href="#/${k}" class="${k===key?'on':''}">${CS[k].nav}</a>`).join('');
+  window.scrollTo({top:0,behavior:'instant'});
+  observeSections();
+}
+/* scroll-spy + reveal */
+let spy;
+function observeSections(){
+  if(spy)spy.disconnect();
+  const links=[...toc.querySelectorAll('a')];
+  spy=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.toggle('on',l.dataset.sec===e.target.id));
+      }
+      if(e.isIntersecting)e.target.classList.add('in');
+    });
+  },{rootMargin:'-15% 0px -70% 0px',threshold:0});
+  document.querySelectorAll('section.cs').forEach(s=>spy.observe(s));
+  const rev=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}})},{threshold:.05});
+  document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+}
+/* routing: #/project or #/project/section */
+function route(){
+  const h=location.hash.replace(/^#\/?/,'');
+  const [proj,sec]=h.split('/');
+  const key=CS[proj]?proj:'recall';
+  if(!art.dataset.cur||art.dataset.cur!==key){render(key);art.dataset.cur=key;}
+  if(sec){const el=document.getElementById(sec);if(el)el.scrollIntoView({behavior:'smooth'});}
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>

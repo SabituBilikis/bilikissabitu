@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilikis Sabitu — Product Designer & AI-Native Builder</title>
+<meta name="description" content="Bilikis Sabitu — product designer and AI-native builder in Lagos. I design and ship production apps end-to-end, from Figma to React Native to live. Selected work: Recall, a shipped knowledge app; a 0→1 AI telehealth platform; and more.">
+<meta property="og:title" content="Bilikis Sabitu — Product Designer & AI-Native Builder">
+<meta property="og:description" content="I design and ship production apps end-to-end. I care about the states most teams skip: the empty screen, the failed payment, the moment the AI isn't sure.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Fragment+Mono&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Bilikis Sabitu",
+  "jobTitle": "Product Designer & AI-Native Builder",
+  "email": "sabitubilikis96@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
+  "sameAs": ["https://www.linkedin.com/in/bilikis-sabitu"],
+  "knowsAbout": ["Product Design","UI/UX Design","Design Systems","Accessibility","React Native","Next.js","AI-Native Design"]
+}
+</script>
+<style>
+  :root{
+    /* tokens lifted from hanzo.framer.website published CSS */
+    --paper:#FFFFFF;
+    --panel:#F5F5F5;
+    --card:#FFFFFF;
+    --ink:#0A0A0A;
+    --ink-soft:#555558;
+    --ink-faint:#8A8A8E;
+    --line:#E8E8E8;
+    --line-strong:#D9D9D9;
+    --accent:#FF5E00;
+    --accent-tint:rgba(255,94,0,.08);
+    --st-empty:#9A9AA0;
+    --st-load:#B07C22;
+    --st-error:#C0453B;
+    --st-ai:#FF5E00;
+    --st-ok:#0CB300;
+    --font-display:'Inter Tight','Inter',system-ui,sans-serif;
+    --font-serif:'Instrument Serif',Georgia,serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --font-mono:'Fragment Mono',ui-monospace,monospace;
+    --maxw:1200px;
+    --gutter:clamp(20px,5vw,64px);
+    --r-sm:16px;
+    --r-md:24px;
+    --r-lg:36px;
+    --r-pill:509px;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.05);
+    --shadow-md:0 2px 6px rgba(0,0,0,.05),0 14px 40px rgba(0,0,0,.1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:18px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#fff}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+  .mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* ---------- NAV ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a:not(.nav-cta){font-family:var(--font-body);font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .18s;position:relative}
+  .nav-links a:not(.nav-cta):hover{color:var(--ink)}
+  .nav-links a:not(.status):not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .22s cubic-bezier(.2,.6,.2,1)}
+  .nav-links a:not(.status):not(.nav-cta):hover::after{transform:scaleX(1)}
+  @media (prefers-reduced-motion:reduce){.nav-links a::after{transition:none}}
+  .nav-cta{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:10px 18px;border-radius:var(--r-pill);transition:background .18s,transform .18s}
+  .nav-cta:hover{background:var(--accent);transform:translateY(-1px)}
+  @media (prefers-reduced-motion:reduce){.nav-cta:hover{transform:none}}
+  @media (max-width:640px){.nav-cta{padding:9px 15px}}
+  .status{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--st-ok);box-shadow:0 0 0 0 rgba(12,179,0,.5);animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(12,179,0,.45)}70%{box-shadow:0 0 0 7px rgba(12,179,0,0)}100%{box-shadow:0 0 0 0 rgba(12,179,0,0)}}
+  @media (prefers-reduced-motion:reduce){.dot{animation:none}}
+  @media (max-width:640px){.nav-links a:not(.status):not(.nav-cta){display:none}}
+
+  /* ---------- HERO (hanzo hero, exact) ---------- */
+  .hero{padding-top:clamp(48px,7vw,88px);padding-bottom:clamp(56px,9vw,104px);text-align:center;position:relative;overflow:hidden;background:var(--paper)}
+  .hero .wrap{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink);background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:var(--r-pill);padding:9px 18px 9px 15px;box-shadow:0 2px 10px rgba(0,0,0,.06);margin-bottom:clamp(30px,4vw,48px)}
+  .hero-badge .dot{width:8px;height:8px}
+  .eyebrow{display:none}
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(2.3rem,6vw,4.6rem);
+    line-height:1.14;
+    letter-spacing:-.045em;
+    max-width:none;
+    color:var(--ink);
+  }
+  .hero h1 .g{color:#BBBBBB}
+  .hero h1 em{font-style:normal;color:inherit}
+  /* inline headline image tiles */
+  .htile{display:inline-block;vertical-align:-.18em;width:1.35em;height:.82em;margin:0 .12em;border-radius:.22em;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+  .htile-img{background:linear-gradient(135deg,#FFCF5C 0%,#FF7A3C 45%,#232323 100%)}
+  .htile-dark{background:radial-gradient(120% 120% at 0% 0%,#3a3a3a 0%,#0a0a0a 100%);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.62em;line-height:1}
+  .hero-sub{margin-top:clamp(26px,3vw,34px);max-width:44ch;font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--ink-soft);line-height:1.5}
+  .hero-sub b{color:var(--ink);font-weight:600}
+  .cta-row{margin-top:clamp(32px,4vw,44px);display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
+  .btn{font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:15px 26px;border:1px solid var(--ink);border-radius:var(--r-pill);transition:background .18s,color .18s,border-color .18s,transform .18s,box-shadow .18s;display:inline-flex;align-items:center;gap:9px}
+  .btn-primary{background:var(--ink);color:var(--paper);box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .btn-ghost{background:var(--panel)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+  .btn .arw{transition:transform .18s}
+  .btn:hover .arw{transform:translateX(3px)}
+  @media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+  /* ---------- HERO TICKER (vertical auto-scroll, on hero gradient) ---------- */
+  .hero-ticker{height:2.2em;overflow:hidden;margin-top:clamp(30px,4vw,44px);width:100%;
+    -webkit-mask:linear-gradient(180deg,transparent 0,#000 38%,#000 62%,transparent 100%);
+    mask:linear-gradient(180deg,transparent 0,#000 38%,#000 62%,transparent 100%)}
+  .ticker-track{display:flex;flex-direction:column;animation:tickerY 14s linear infinite}
+  .ticker-track>span{height:2.2em;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+  .ticker-track>span b{color:var(--ink);font-weight:700}
+  @keyframes tickerY{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+  .hero-ticker:hover .ticker-track{animation-play-state:paused}
+  @media (prefers-reduced-motion:reduce){
+    .hero-ticker{height:auto;-webkit-mask:none;mask:none}
+    .ticker-track{animation:none}
+    .ticker-track>span[aria-hidden="true"]{display:none}
+    .ticker-track>span{height:auto;padding:3px 0}
+  }
+
+  /* ---------- SHOWCASE (hanzo: vertical columns in a contained box) ---------- */
+  .showcase{background:var(--paper);padding-block:clamp(24px,4vw,56px)}
+  .showcase-box{position:relative;max-width:var(--maxw);margin:0 auto;height:clamp(460px,64vh,660px);
+    border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#2B2B2B;box-shadow:var(--shadow-md)}
+  .mcols{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.8vw,24px);height:100%;padding:clamp(14px,1.8vw,24px);
+    -webkit-mask:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);
+    mask:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+  .mcol{overflow:hidden}
+  .mcoltrack{display:flex;flex-direction:column;gap:clamp(14px,1.8vw,24px);will-change:transform;animation:colUp 34s linear infinite}
+  .mcol:nth-child(even) .mcoltrack{animation-name:colDown;animation-duration:40s}
+  .showcase-box:hover .mcoltrack{animation-play-state:paused}
+  @keyframes colUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+  @keyframes colDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+  .mtile{flex:0 0 auto;width:100%;aspect-ratio:4/3;border-radius:var(--r-md);overflow:hidden;position:relative;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
+  .mtile span{position:relative;z-index:1;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.92);background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:5px 11px;backdrop-filter:blur(3px)}
+  .g-dash{background:linear-gradient(135deg,#EDEFEA 0%,#D6E0CE 55%,#E7D9CE 100%)}
+  .g-app{background:linear-gradient(150deg,#5B4BD6 0%,#3A2FA0 100%)}
+  .g-onb{background:linear-gradient(135deg,#F4C430 0%,#F08A24 100%)}
+  .g-sys{background:linear-gradient(135deg,#2F7D55 0%,#1F5A3C 100%)}
+  .g-pay{background:linear-gradient(135deg,#1F6FEB 0%,#123E86 100%)}
+  .g-cri{background:linear-gradient(135deg,#C0453B 0%,#7A241D 100%)}
+  /* floating, animated center CTA */
+  .sc-cta{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none;animation:ctaFloat 4.5s ease-in-out infinite}
+  @keyframes ctaFloat{0%,100%{transform:translate(-50%,-52%)}50%{transform:translate(-50%,-48%)}}
+  .sc-bubble{pointer-events:auto;font-family:var(--font-display);font-weight:600;font-size:clamp(1.1rem,2vw,1.5rem);letter-spacing:-.02em;color:#fff;background:#0A0A0A;border:1px solid rgba(255,255,255,.12);padding:14px 24px;border-radius:var(--r-pill);box-shadow:0 14px 40px rgba(0,0,0,.35);position:relative}
+  .sc-bubble::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%) rotate(45deg);width:14px;height:14px;background:#0A0A0A;border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+  .sc-orb{pointer-events:auto;width:clamp(66px,7vw,92px);height:clamp(66px,7vw,92px);border-radius:50%;background:radial-gradient(120% 120% at 30% 25%,#fff 0%,#EDEDED 100%);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(0,0,0,.28);transition:transform .25s cubic-bezier(.2,.6,.2,1)}
+  .sc-orb::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(10,10,10,.35);animation:orbPulse 2.6s ease-out infinite}
+  @keyframes orbPulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.5);opacity:0}}
+  .sc-orb:hover{transform:scale(1.07)}
+  .sc-orb svg{width:34%;height:34%;color:#0A0A0A}
+  @media (max-width:560px){.mcols{grid-template-columns:1fr}.mcol:nth-child(2){display:none}}
+  @media (prefers-reduced-motion:reduce){
+    .mcoltrack{animation:none}
+    .sc-cta{animation:none;transform:translate(-50%,-50%)}
+    .sc-orb::before{animation:none;display:none}
+    .sc-orb:hover{transform:none}
+  }
+
+  /* ---------- INTRO (hanzo "Hello") ---------- */
+  .intro{padding-block:clamp(56px,9vw,110px)}
+  .intro-lead{font-family:var(--font-display);font-weight:400;font-size:clamp(1.5rem,3.6vw,2.5rem);line-height:1.28;letter-spacing:-.02em;max-width:24ch;margin:0 auto;text-align:center}
+  .intro-lead b{font-weight:600}
+  .intro-hi{font-family:var(--font-serif);font-style:italic;color:var(--accent)}
+  .intro-list{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:clamp(32px,4vw,48px);max-width:760px;margin-inline:auto}
+  .intro-list li{font-family:var(--font-mono);font-size:12px;letter-spacing:.03em;color:var(--ink-soft);background:var(--panel);border:1px solid var(--line);border-radius:var(--r-pill);padding:9px 16px;box-shadow:var(--shadow-sm)}
+
+  /* ---------- PROCESS ---------- */
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+  @media (max-width:760px){.process-grid{grid-template-columns:1fr}}
+  .step{background:var(--card);padding:clamp(26px,3vw,38px);display:flex;flex-direction:column;min-height:240px;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);transition:transform .28s cubic-bezier(.2,.6,.2,1),box-shadow .28s}
+  .step:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  @media (prefers-reduced-motion:reduce){.step,.step:hover{transform:none}}
+  .step-ico{width:42px;height:42px;border-radius:var(--r-sm);background:var(--accent-tint);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:700;font-size:15px;color:var(--accent);margin-bottom:auto}
+  .step-num{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:24px}
+  .step h3{font-family:var(--font-display);font-weight:700;font-size:clamp(1.35rem,2.4vw,1.7rem);letter-spacing:-.02em;margin-top:8px}
+  .step p{margin-top:12px;color:var(--ink-soft);font-size:1rem;max-width:34ch}
+
+  /* generic scroll-reveal (init class applied by JS only → crawlers/no-JS see all) */
+  .reveal-init{opacity:0;transform:translateY(12px)}
+  .reveal-in{opacity:1;transform:translateY(0);transition:opacity .5s cubic-bezier(.2,.6,.2,1),transform .5s cubic-bezier(.2,.6,.2,1)}
+  @media (prefers-reduced-motion:reduce){.reveal-init,.reveal-in{opacity:1;transform:none;transition:none}}
+
+  /* ---------- SECTION HEAD ---------- */
+  section{padding-block:clamp(68px,11vw,128px)}
+  .sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;margin-bottom:clamp(40px,5vw,60px)}
+  .sec-eyebrow{font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:clamp(1.25rem,2.4vw,1.75rem);letter-spacing:-.01em;color:var(--ink);display:block;margin-bottom:14px}
+  .sec-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.045em;line-height:1.02;max-width:20ch}
+  .sec-idx{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--ink-faint);margin-top:16px}
+
+  /* ---------- WORK GRID ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,24px)}
+  @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);padding:clamp(16px,1.8vw,20px);cursor:pointer;position:relative;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);transition:transform .28s cubic-bezier(.2,.6,.2,1),box-shadow .28s cubic-bezier(.2,.6,.2,1);display:flex;flex-direction:column;text-align:left;width:100%;font:inherit;color:inherit;overflow:hidden}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  /* scroll-reveal: init class applied by JS only, so no-JS/crawlers see everything */
+  .card.rv-init{opacity:0;transform:translateY(14px)}
+  .card.rv-in{opacity:1;transform:translateY(0);transition:opacity .5s cubic-bezier(.2,.6,.2,1),transform .5s cubic-bezier(.2,.6,.2,1),box-shadow .28s}
+  .card.rv-in:hover{transform:translateY(-4px)}
+  @media (prefers-reduced-motion:reduce){.card,.card.rv-in{transition:box-shadow .2s;transform:none}.card:hover{transform:none}}
+  .card:hover .card-title{color:var(--accent)}
+  /* placeholder thumb — CSS-only, no network req; swap for real image later */
+  .card-thumb{position:relative;aspect-ratio:16/10;width:100%;margin-bottom:22px;border-radius:var(--r-md);overflow:hidden;background:
+    linear-gradient(135deg,color-mix(in srgb,var(--accent) 14%,var(--panel)),var(--panel) 62%),
+    repeating-linear-gradient(45deg,transparent 0 13px,color-mix(in srgb,var(--ink) 3%,transparent) 13px 14px);
+    display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.2,.6,.2,1)}
+  .card:hover .card-thumb{transform:scale(1.03)}
+  .card-thumb span{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line-strong);border-radius:100px;padding:6px 13px;background:color-mix(in srgb,var(--panel) 80%,transparent);backdrop-filter:blur(2px)}
+  @media (prefers-reduced-motion:reduce){.card-thumb{transition:none}.card:hover .card-thumb{transform:none}}
+  .card-body{padding:0 clamp(8px,1vw,14px) clamp(10px,1.4vw,16px)}
+  .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .card-idx{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint)}
+  .tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:100px;border:1px solid var(--line-strong);color:var(--ink-soft)}
+  .tag.live{color:var(--st-ok);border-color:var(--st-ok)}
+  .tag.nda{color:var(--ink-soft)}
+  .tag.concept{color:var(--st-load)}
+  .tag.shipped{color:var(--accent);border-color:var(--accent)}
+  .card-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:-.025em;transition:color .18s}
+  .card-line{margin-top:10px;color:var(--ink-soft);max-width:38ch;font-size:1rem}
+  .card-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+  .card-domain{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint)}
+  .ministates{display:flex;gap:5px;margin-top:16px;flex-wrap:wrap}
+  .ministates i{font-family:var(--font-mono);font-style:normal;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:100px;padding:3px 8px}
+  .card-open{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:6px;opacity:.65;transition:opacity .2s,gap .2s}
+  .card:hover .card-open{opacity:1;gap:9px}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(40px,6vw,88px)}
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr;gap:48px}}
+  .about-lede{font-family:var(--font-display);font-weight:400;font-size:clamp(1.25rem,2.5vw,1.7rem);line-height:1.35;letter-spacing:-.01em}
+  .about-lede b{font-weight:600;color:var(--accent)}
+  .about-body{margin-top:24px;color:var(--ink-soft);max-width:50ch}
+  .about-body p+p{margin-top:16px}
+  .timeline{border-top:1px solid var(--line)}
+  .tl-row{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .tl-date{font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;color:var(--ink-faint);white-space:nowrap;padding-top:3px}
+  .tl-role{font-family:var(--font-display);font-weight:600;font-size:1.02rem}
+  .tl-co{color:var(--ink-soft);font-size:.92rem;margin-top:2px}
+  .toolbar{margin-top:34px}
+  .toolbar .mono{display:block;margin-bottom:12px}
+  .tools{display:flex;flex-wrap:wrap;gap:8px}
+  .tools span{font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;padding:6px 11px;border:1px solid var(--line-strong);border-radius:100px;color:var(--ink-soft)}
+
+  /* ---------- CONTACT ---------- */
+  .contact{padding-block:clamp(40px,7vw,90px)}
+  .contact-panel{background:var(--ink);color:var(--paper);border-radius:var(--r-lg);padding:clamp(48px,8vw,104px) clamp(28px,5vw,80px);position:relative;overflow:hidden;box-shadow:var(--shadow-md);display:flex;flex-direction:column;align-items:center;text-align:center}
+  .contact-panel::before{content:"";position:absolute;top:-60%;left:50%;transform:translateX(-50%);width:80%;height:200%;background:radial-gradient(closest-side,rgba(255,94,0,.16),transparent);pointer-events:none}
+  .contact-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#B9B9C2;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-pill);padding:7px 14px;margin-bottom:26px;position:relative}
+  .contact-badge .dot{width:7px;height:7px}
+  .contact h2{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,6vw,4rem);letter-spacing:-.035em;line-height:1.02;max-width:18ch;position:relative}
+  .contact h2{letter-spacing:-.05em}
+  .contact h2 em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--accent)}
+  .contact-sub{margin-top:22px;color:#B9B9C2;max-width:48ch;font-size:1.1rem;position:relative}
+  .contact-actions{margin-top:40px;display:flex;flex-wrap:wrap;gap:14px;position:relative;justify-content:center}
+  .btn-light{border-color:rgba(243,243,239,.35);color:var(--paper);background:transparent}
+  .btn-light:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .btn-fill{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .btn-fill:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+  .contact-meta{margin-top:48px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;font-family:var(--font-mono);font-size:12px;letter-spacing:.03em;color:#8A8A96;position:relative}
+  .contact-meta a{color:#B9B9C2}
+  .contact-meta a:hover{color:#fff}
+
+  footer{border-top:1px solid var(--line)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-block:26px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--ink-faint)}
+
+  /* ---------- CASE STUDY OVERLAY ---------- */
+  .overlay{position:fixed;inset:0;z-index:100;background:rgba(20,20,24,.5);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .panel{position:absolute;top:0;right:0;height:100%;width:min(680px,100%);background:var(--paper);overflow-y:auto;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.15,1);box-shadow:-20px 0 60px rgba(0,0,0,.12)}
+  .overlay.open .panel{transform:translateX(0)}
+  @media (prefers-reduced-motion:reduce){.panel{transition:none}.overlay{transition:none}}
+  .panel-in{padding:clamp(28px,5vw,56px)}
+  .panel-close{position:sticky;top:0;float:right;margin:-8px -8px 0 0;background:var(--paper);border:1px solid var(--line-strong);width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:all .18s;z-index:2}
+  .panel-close:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .cs-title{font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,5vw,2.9rem);letter-spacing:-.03em;line-height:1.02}
+  .cs-line{margin-top:14px;color:var(--ink-soft);font-size:1.15rem;max-width:42ch}
+  .cs-block{margin-top:38px}
+  .cs-block>.mono{display:block;margin-bottom:12px;color:var(--accent)}
+  .cs-block h3{font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;margin-bottom:8px}
+  .cs-block p{color:var(--ink-soft);margin-bottom:12px}
+  .cs-block p b{color:var(--ink);font-weight:600}
+  .decision{border-left:2px solid var(--accent);padding:2px 0 2px 18px;margin-bottom:20px}
+  .decision .d-h{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:5px}
+  .decision .d-t{color:var(--ink-soft);font-size:.96rem}
+  .decision .d-t em{font-style:normal;color:var(--ink);font-weight:600}
+  .staterow{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:start}
+  .staterow:first-of-type{border-top:1px solid var(--line)}
+  .s-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:5px 9px;border-radius:100px;border:1px solid currentColor;white-space:nowrap;margin-top:2px}
+  .s-empty{color:var(--st-empty)}.s-load{color:var(--st-load)}.s-error{color:var(--st-error)}.s-ai{color:var(--st-ai)}.s-ok{color:var(--st-ok)}
+  .s-desc{color:var(--ink-soft);font-size:.95rem}
+  .outcome{margin-top:12px;background:var(--accent-tint);border:1px solid var(--accent);padding:18px 20px}
+  .outcome .mono{color:var(--accent);display:block;margin-bottom:8px}
+  .outcome p{color:var(--ink);font-weight:500;margin:0}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">Bilikis Sabitu<span>.</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <span class="status"><span class="dot"></span>Open to work</span>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="hero-badge"><span class="dot"></span>Open to work — Lagos / Remote</span>
+    <span class="eyebrow">Product Designer · AI-Native Builder</span>
+    <h1>I design <span class="htile htile-img" role="img" aria-label="Product design preview"></span> <span class="g">and ship</span><br><span class="g">production apps</span> <span class="htile htile-dark" aria-hidden="true">&#8734;</span> end&#8209;to&#8209;end.</h1>
+    <p class="hero-sub">From Figma to React Native to live — solo, with an AI-native workflow. I design <b>the states most teams skip.</b></p>
+    <div class="cta-row">
+      <a href="#work" class="btn btn-primary">See the work <span class="arw">→</span></a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="hero-ticker" aria-label="Selected proof points">
+      <div class="ticker-track">
+        <span><b>Shipped to Play Store</b> · solo, native</span>
+        <span><b>$20K raised</b> · crisis fundraising</span>
+        <span><b>4-language</b> · WCAG platform</span>
+        <span><b>Figma → code</b> · no dev handoff</span>
+        <span aria-hidden="true"><b>Shipped to Play Store</b> · solo, native</span>
+        <span aria-hidden="true"><b>$20K raised</b> · crisis fundraising</span>
+        <span aria-hidden="true"><b>4-language</b> · WCAG platform</span>
+        <span aria-hidden="true"><b>Figma → code</b> · no dev handoff</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="showcase" aria-label="Work preview">
+  <div class="wrap" style="padding-inline:0">
+    <div class="showcase-box">
+      <div class="mcols">
+        <div class="mcol">
+          <div class="mcoltrack">
+            <div class="mtile g-onb"><span>Recall</span></div>
+            <div class="mtile g-app"><span>Telehealth</span></div>
+            <div class="mtile g-sys"><span>Climapt</span></div>
+            <div class="mtile g-cri"><span>Earthquake</span></div>
+            <div class="mtile g-onb" aria-hidden="true"><span>Recall</span></div>
+            <div class="mtile g-app" aria-hidden="true"><span>Telehealth</span></div>
+            <div class="mtile g-sys" aria-hidden="true"><span>Climapt</span></div>
+            <div class="mtile g-cri" aria-hidden="true"><span>Earthquake</span></div>
+          </div>
+        </div>
+        <div class="mcol">
+          <div class="mcoltrack">
+            <div class="mtile g-pay"><span>Checkout</span></div>
+            <div class="mtile g-dash"><span>Dashboard</span></div>
+            <div class="mtile g-onb"><span>Onboarding</span></div>
+            <div class="mtile g-sys"><span>Design system</span></div>
+            <div class="mtile g-pay" aria-hidden="true"><span>Checkout</span></div>
+            <div class="mtile g-dash" aria-hidden="true"><span>Dashboard</span></div>
+            <div class="mtile g-onb" aria-hidden="true"><span>Onboarding</span></div>
+            <div class="mtile g-sys" aria-hidden="true"><span>Design system</span></div>
+          </div>
+        </div>
+        <div class="mcol">
+          <div class="mcoltrack">
+            <div class="mtile g-cri"><span>AI states</span></div>
+            <div class="mtile g-app"><span>Mobile app</span></div>
+            <div class="mtile g-pay"><span>Payments</span></div>
+            <div class="mtile g-onb"><span>Empty state</span></div>
+            <div class="mtile g-cri" aria-hidden="true"><span>AI states</span></div>
+            <div class="mtile g-app" aria-hidden="true"><span>Mobile app</span></div>
+            <div class="mtile g-pay" aria-hidden="true"><span>Payments</span></div>
+            <div class="mtile g-onb" aria-hidden="true"><span>Empty state</span></div>
+          </div>
+        </div>
+        <div class="mcol">
+          <div class="mcoltrack">
+            <div class="mtile g-sys"><span>Tokens</span></div>
+            <div class="mtile g-onb"><span>Capture</span></div>
+            <div class="mtile g-dash"><span>Search</span></div>
+            <div class="mtile g-app"><span>Roles</span></div>
+            <div class="mtile g-sys" aria-hidden="true"><span>Tokens</span></div>
+            <div class="mtile g-onb" aria-hidden="true"><span>Capture</span></div>
+            <div class="mtile g-dash" aria-hidden="true"><span>Search</span></div>
+            <div class="mtile g-app" aria-hidden="true"><span>Roles</span></div>
+          </div>
+        </div>
+      </div>
+      <a class="sc-cta" href="#work" aria-label="See recent work">
+        <span class="sc-bubble">See recent work</span>
+        <span class="sc-orb" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="intro" id="intro">
+  <div class="wrap">
+    <p class="intro-lead"><span class="intro-hi">Hello —</span> I design and ship products where the design decisions carry real business weight: <b>health, fintech, marketplaces, AI tools.</b> Conversion, trust, adoption. Not decoration.</p>
+    <ul class="intro-list">
+      <li>Product strategy</li>
+      <li>UX architecture</li>
+      <li>UI &amp; visual systems</li>
+      <li>Design systems</li>
+      <li>React Native</li>
+      <li>Next.js</li>
+      <li>WCAG accessibility</li>
+      <li>AI-native workflow</li>
+    </ul>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">My process, explained</span>
+      <h2>One person, the whole path.</h2>
+      <span class="sec-idx">Figma → live · no handoff</span>
+    </div>
+    <div class="process-grid">
+      <div class="step">
+        <span class="step-ico" aria-hidden="true">01</span>
+        <span class="step-num">Design</span>
+        <h3>Design in Figma</h3>
+        <p>Product strategy, IA, UX architecture, and UI — including the states most teams skip.</p>
+      </div>
+      <div class="step">
+        <span class="step-ico" aria-hidden="true">02</span>
+        <span class="step-num">Build</span>
+        <h3>Build AI-native</h3>
+        <p>React Native and Next.js via an AI-native workflow with Claude Code — no dev handoff, no translation loss.</p>
+      </div>
+      <div class="step">
+        <span class="step-ico" aria-hidden="true">03</span>
+        <span class="step-num">Ship</span>
+        <h3>Ship to production</h3>
+        <p>A live app in front of real users, owned end-to-end — from the first frame to the Play Store.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Selected work</span>
+      <h2>Trust under uncertainty, shipped.</h2>
+      <span class="sec-idx">04 recent case studies</span>
+    </div>
+    <div class="grid" id="grid"><!-- cards injected --></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">About</span>
+      <h2>Designer who ships. Builder who designs.</h2>
+      <span class="sec-idx">Bilikis Sabitu · Lagos</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-lede">My throughline across every project is the same: <b>designing for trust when the stakes are real</b> — and the system can't pretend to be certain when it isn't.</p>
+        <div class="about-body">
+          <p>Three years designing patient-facing healthtech, now building 0→1 products where I own the whole path: product strategy, UX architecture, UI, and the production frontend. The AI-native workflow is what makes solo, production-grade output possible — I recently designed and shipped a native app to the Play Store by myself.</p>
+          <p>I work best on complex, multi-role products where design decisions carry business weight — health, fintech, marketplaces, AI tools. Conversion, trust, adoption. Not decoration.</p>
+        </div>
+        <div class="toolbar">
+          <span class="mono">Stack &amp; tools</span>
+          <div class="tools">
+            <span>Figma</span><span>Next.js</span><span>React Native / Expo</span><span>Claude Code</span><span>Design Systems</span><span>WCAG Accessibility</span><span>Prototyping</span><span>AI-Native Workflow</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="mono" style="display:block;margin-bottom:16px">Experience</span>
+        <div class="timeline">
+          <div class="tl-row"><span class="tl-date">2026 —</span><div><div class="tl-role">Founder &amp; Product Designer — Recall</div><div class="tl-co">Independent · shipped to Play Store</div></div></div>
+          <div class="tl-row"><span class="tl-date">2025 —</span><div><div class="tl-role">Product Designer (Contract, NDA)</div><div class="tl-co">0→1 AI telehealth platform</div></div></div>
+          <div class="tl-row"><span class="tl-date">2022–25</span><div><div class="tl-role">UX Designer — Medixbot</div><div class="tl-co">Healthtech · Sakarya, Turkey (remote)</div></div></div>
+          <div class="tl-row"><span class="tl-date">2020–22</span><div><div class="tl-role">Associate Web Designer — Reign Signature</div><div class="tl-co">London, UK (remote)</div></div></div>
+          <div class="tl-row"><span class="tl-date">2021–22</span><div><div class="tl-role">Design Associate — KcySoft</div><div class="tl-co">Lagos, Nigeria</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <span class="contact-badge"><span class="dot"></span>Open to work · 2 sprint spots</span>
+      <h2>Let's build something that <em>ships.</em></h2>
+      <p class="contact-sub">Open to full-time product design roles (Lagos · remote) and 2–8 week design-to-deployed contract sprints.</p>
+      <div class="contact-actions">
+        <a href="mailto:sabitubilikis96@gmail.com" class="btn btn-fill">Email me <span class="arw">→</span></a>
+        <a href="https://www.linkedin.com/in/bilikis-sabitu" target="_blank" rel="noopener" class="btn btn-light">LinkedIn</a>
+      </div>
+      <div class="contact-meta">
+        <span>sabitubilikis96@gmail.com</span>
+        <a href="https://www.linkedin.com/in/bilikis-sabitu" target="_blank" rel="noopener">linkedin.com/in/bilikis-sabitu</a>
+        <span>Lagos, Nigeria</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Bilikis Sabitu</span>
+    <span>Designed &amp; built — Figma → code</span>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="cs-title">
+  <div class="panel">
+    <div class="panel-in">
+      <button class="panel-close" id="closeBtn" aria-label="Close case study">×</button>
+      <div id="csBody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+const projects = [
+  {
+    id:"recall", idx:"01", title:"Recall", status:"Live", statusClass:"live",
+    domain:"Consumer · Knowledge", line:"A personal knowledge app that unifies the screenshots, links, notes, and files people scatter everywhere.",
+    states:["empty","load","error","ok"],
+    tags:[["Live on Play Store","live"],["Solo build","nda"]],
+    hero:"Capture in a tap. Find it before you remember where you put it.",
+    problem:"People save what matters across WhatsApp self-chats, browser bookmarks, screenshot galleries, and three notes apps. Saving was never the hard part — <b>retrieval under vague memory is.</b> You don't remember the filename; you remember it was \"that thing about onboarding.\" The scattered workflow means lost ideas and wasted time hunting.",
+    role:"Solo — product strategy, IA, capture-to-retrieval UX, visual system, and the production build. I designed it in Figma, then vibe-coded it to production with Claude Code: Figma → React Native → Play Store, no dev handoff.",
+    decisions:[
+      ["Near-zero capture friction","Every step between \"I want to save this\" and \"it's saved\" loses items. I traded a feature-rich capture flow for <em>one-tap ingestion</em> across all four formats — the app earns depth later, not at the moment of capture."],
+      ["Search-first over folder taxonomy","Manual organizing is a tax users stop paying within a week. I designed retrieval around <em>search and lightweight surfacing</em> instead of a folder tree the user has to maintain — organizing is the app's job, not the user's."],
+      ["Honest about what's AI, and what isn't","The AI is in how I built it, not a claim baked into v1. I positioned the product on fast capture and instant search — <em>the trajectory toward smarter retrieval, not a promise it can't yet keep.</em>"]
+    ],
+    stateNotes:[
+      ["empty","First-run with nothing saved — an invitation to capture, not a blank void. Shows the one action that matters."],
+      ["load","Capture processing (a screenshot or link being ingested) — immediate optimistic confirmation so the user moves on."],
+      ["error","Failed save or sync — the item is never silently lost; the UI holds it and offers retry, because a dropped save destroys trust in a save-everything app."],
+      ["ok","Found — the retrieval moment the whole product exists for."]
+    ],
+    outcome:"Designed and shipped solo to the Play Store — a working native app built end-to-end without a development team. Proof that an AI-native design workflow can carry one person from Figma to a live production product."
+  },
+  {
+    id:"telehealth", idx:"02", title:"AI Telehealth Platform", status:"NDA", statusClass:"nda",
+    domain:"Healthtech · 0→1 · Confidential", line:"A 0→1 AI-native telehealth platform serving four user roles across web and mobile.",
+    states:["ai","load","error","ok"],
+    tags:[["Under NDA","nda"],["0→1","shipped"]],
+    hero:"Multi-role, agentic, compliance-aware — and honest about what the AI doesn't know.",
+    problem:"A pre-launch telehealth platform connecting patients, physicians, donors, and administrators around subsidized care. The hard design problem: agentic AI in a clinical context, where a confidently-wrong answer isn't a bad UX — it's a safety risk. <b>The system has to know the boundary of its own competence and hand off cleanly.</b> (Confidential — process shown, no screens.)",
+    role:"Led end-to-end design: multi-role product architecture across web and mobile, AI-assisted user experiences, payment and payout flows, and multilingual, WCAG-compliant UX across four languages.",
+    decisions:[
+      ["Subdomain-based role separation","Four roles with genuinely different mental models and risk profiles. I chose <em>role-isolated entry points over one app with permission-gated views</em> — cleaner IA per role, and a security posture that suits a health context, at the cost of some shared-component overhead."],
+      ["Trust-critical AI states as first-class design","Most AI UX designs the happy answer. I designed the <em>uncertainty, fallback, and escalation-to-human states</em> as the core, not the exception — the AI surfaces low confidence and routes to a human rather than guessing in a clinical setting."],
+      ["Payments inside a compliance frame","Provider payouts via Stripe Connect within a zero-commission model, designed so the money flow stays legible and auditable — <em>trust in a health-plus-money product is the whole conversion story.</em>"]
+    ],
+    stateNotes:[
+      ["ai","AI uncertainty — when confidence is low, the interface says so and offers escalation to a human, never a confident guess."],
+      ["load","Agent working — bounded, explained waiting so a clinical user is never staring at an ambiguous spinner."],
+      ["error","Escalation-to-human path — the designed exit when the AI or the system can't safely proceed."],
+      ["ok","Resolved — clear confirmation across a multilingual, WCAG-compliant surface."]
+    ],
+    outcome:"A complete 0→1 design system for a four-role, multi-agent, multilingual platform — currently confidential. Walkthroughs available on an anonymized flow on request."
+  },
+  {
+    id:"climapt", idx:"03", title:"Climapt", status:"Concept", statusClass:"concept",
+    domain:"Climate · Agritech", line:"An AI climate-resilience platform that helps farmers see climate risk before it happens.",
+    states:["ai","load","empty","error"],
+    tags:[["Concept · Figma","concept"],["Full case study","nda"]],
+    hero:"Turning a probabilistic forecast into an action a farmer can take on Monday.",
+    problem:"Smallholder farmers react to climate damage after it hits. The design challenge is surfacing <b>probabilistic future risk</b> to a possibly low-digital-literacy, low-bandwidth user in a way they trust and can act on — without drowning them in data or false certainty. A 0→1 concept explored end-to-end in Figma.",
+    role:"Solo concept — problem framing, IA, and high-fidelity screens for a predictive, pre-emptive risk experience. Presented as a design case study on Behance.",
+    decisions:[
+      ["Probability without false certainty","A forecast is a likelihood, not a fact. I designed risk around <em>confidence and likelihood, not a single hard number</em> — because a farmer acting on a forecast presented as certainty is a design failure with real consequences."],
+      ["Forecast → recommendation → action","A risk score alone changes nothing. Every prediction resolves into <em>a concrete recommended action</em> — what to do this week — so the product drives behavior, not just awareness."],
+      ["Designed for the constraint, not the demo","Low bandwidth and low digital literacy as first-order constraints: high-contrast hierarchy, minimal text, legible at a glance — <em>the constraint is the brief, not an afterthought.</em>"]
+    ],
+    stateNotes:[
+      ["ai","Forecast confidence — the model's certainty is visible, so the user weights the recommendation appropriately."],
+      ["load","Fetching prediction — predictions aren't instant, and the wait is bounded and explained."],
+      ["empty","New region with no data yet — a designed cold-start, not a broken screen."],
+      ["error","Stale or unavailable data — flagged loudly, because acting on outdated climate data is dangerous in agriculture."]
+    ],
+    outcome:"A complete concept demonstrating predictive, trust-aware UX for a high-stakes, low-resource context. Presented as design decisions and a validation plan — not invented impact metrics."
+  },
+  {
+    id:"earthquake", idx:"04", title:"Earthquake Crisis Response", status:"Shipped", statusClass:"shipped",
+    domain:"Crisis · Fundraising · Real client", line:"A crisis-response fundraising site built during the Turkish–Syrian earthquake.",
+    states:["load","error","ok","empty"],
+    tags:[["Shipped · $20K raised","shipped"],["Medixbot","nda"]],
+    hero:"In a crisis, every second of friction is lost funding — and trust is the conversion lever.",
+    problem:"During the active Turkish–Syrian earthquake, a fundraising site had to convert donor intent into completed donations — fast. Two problems compound each other: donors won't give to a site that looks unverified, and every field of friction during a crisis is money that doesn't arrive. <b>This was a trust-and-conversion problem under extreme time pressure, not a charity page.</b>",
+    role:"Designed the donor experience end-to-end at Medixbot: trust architecture, donation flow, and the responsive build — shipped live during an active crisis.",
+    decisions:[
+      ["Trust before the ask","In disaster giving, legitimacy is the conversion lever. I front-loaded <em>transparency and credibility signals</em> before the donation ask — because a donor who doesn't trust the site never reaches the payment step."],
+      ["Friction reduction to the payment moment","Every removed field is a decision. I stripped the donor path to the minimum from land → donate → confirm, <em>trading richer data capture for completion rate</em> when speed mattered most."],
+      ["Deliberate speed-vs-polish cuts","Shipping during an active crisis meant choosing what not to build. I made those cuts <em>explicitly, protecting the trust and payment path above everything cosmetic.</em>"]
+    ],
+    stateNotes:[
+      ["load","Payment processing — the highest-anxiety moment in the whole flow; designed to reassure, because ambiguity here kills the donation."],
+      ["error","Failed or declined donation with a clear recovery path — a dropped donation in a crisis is lost funds, so it's never a dead end."],
+      ["ok","Confirmation — receipt, impact framing, and a share loop to amplify each gift."],
+      ["empty","Pre-launch / goal-at-zero — designed so early state still builds momentum rather than looking abandoned."]
+    ],
+    outcome:"The site helped raise $20,000 in humanitarian funding — a real, external outcome validating the trust and friction-reduction decisions, not a design vanity metric."
+  }
+];
+
+// ---- Render work grid ----
+const grid = document.getElementById('grid');
+grid.innerHTML = projects.map(p=>`
+  <button class="card" data-id="${p.id}" aria-haspopup="dialog">
+    <div class="card-thumb" role="img" aria-label="${p.title} — project preview (placeholder)"><span>IMG · ${p.title}</span></div>
+    <div class="card-body">
+      <div class="card-top">
+        <span class="card-idx">${p.idx}</span>
+        <span class="tag ${p.statusClass}">${p.status}</span>
+      </div>
+      <h3 class="card-title">${p.title}</h3>
+      <p class="card-line">${p.line}</p>
+      <div class="ministates">${p.states.map(s=>`<i>${({empty:'empty',load:'loading',error:'error',ai:'AI',ok:'success'})[s]}</i>`).join('')}</div>
+      <div class="card-meta">
+        <span class="card-domain">${p.domain}</span>
+        <span class="card-open">Read case study <span class="arw">→</span></span>
+      </div>
+    </div>
+  </button>`).join('');
+
+// ---- Overlay ----
+const overlay=document.getElementById('overlay');
+const csBody=document.getElementById('csBody');
+const closeBtn=document.getElementById('closeBtn');
+let lastFocus=null;
+
+function labelFor(s){return {empty:'Empty',load:'Loading',error:'Error',ai:'AI',ok:'Success'}[s];}
+
+function openCase(id){
+  const p=projects.find(x=>x.id===id); if(!p)return;
+  csBody.innerHTML=`
+    <div class="cs-tags">${p.tags.map(t=>`<span class="tag ${t[1]}">${t[0]}</span>`).join('')}</div>
+    <h2 class="cs-title" id="cs-title">${p.title}</h2>
+    <p class="cs-line">${p.hero}</p>
+    <div class="cs-block"><span class="mono">The problem</span><p>${p.problem}</p></div>
+    <div class="cs-block"><span class="mono">My role</span><p>${p.role}</p></div>
+    <div class="cs-block"><span class="mono">Key decisions &amp; trade-offs</span>
+      ${p.decisions.map(d=>`<div class="decision"><div class="d-h">${d[0]}</div><div class="d-t">${d[1]}</div></div>`).join('')}
+    </div>
+    <div class="cs-block"><span class="mono">States I designed</span>
+      ${p.stateNotes.map(s=>`<div class="staterow"><span class="s-label s-${s[0]}">${labelFor(s[0])}</span><span class="s-desc">${s[1]}</span></div>`).join('')}
+    </div>
+    <div class="cs-block"><span class="mono">Outcome</span>
+      <div class="outcome"><span class="mono">Result</span><p>${p.outcome}</p></div>
+    </div>`;
+  lastFocus=document.activeElement;
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  closeBtn.focus();
+}
+function closeCase(){
+  overlay.classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocus)lastFocus.focus();
+}
+grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openCase(c.dataset.id);});
+closeBtn.addEventListener('click',closeCase);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeCase();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeCase();});
+
+const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+// ---- GSAP hero timeline (signature moment; skipped entirely for reduced motion / failed CDN) ----
+(function(){
+  const hasGsap=typeof window.gsap!=='undefined';
+  if(reduce||!hasGsap)return;
+  const badge=document.querySelector('.hero-badge');
+  const h1=document.querySelector('.hero h1');
+  const sub=document.querySelector('.hero-sub');
+  const cta=document.querySelector('.cta-row');
+  // transform/opacity only — elements keep their layout box, zero CLS
+  gsap.set([badge,h1,sub,cta],{autoAlpha:0});
+  gsap.set(badge,{y:12});
+  gsap.set(h1,{y:26});
+  gsap.set([sub,cta],{y:14});
+  const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.to(badge,{autoAlpha:1,y:0,duration:.45},0)
+    .to(h1,{autoAlpha:1,y:0,duration:.7},.12)
+    .to([sub,cta],{autoAlpha:1,y:0,duration:.5,ease:'power2.out',stagger:.08},.34);
+})();
+
+// ---- Work-card scroll reveal (native IntersectionObserver, no GSAP) ----
+(function(){
+  const cards=[...grid.querySelectorAll('.card')];
+  if(reduce||!('IntersectionObserver' in window)||!cards.length)return;
+  cards.forEach(c=>c.classList.add('rv-init'));
+  let order=0;
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      const card=entry.target;
+      io.unobserve(card);
+      card.style.transitionDelay=(order++ *60)+'ms';
+      requestAnimationFrame(()=>card.classList.add('rv-in'));
+      card.addEventListener('transitionend',function done(e){
+        if(e.propertyName!=='transform')return;
+        card.removeEventListener('transitionend',done);
+        // drop reveal classes so hover-lift uses the snappier base transition
+        card.style.transitionDelay='';
+        card.classList.remove('rv-init','rv-in');
+        order=Math.max(0,order-1);
+      });
+    });
+  },{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+  cards.forEach(c=>io.observe(c));
+})();
+
+// ---- Generic reveal for Trust strip + Process steps (native IO, no GSAP) ----
+(function(){
+  const els=[...document.querySelectorAll('.step')];
+  if(reduce||!('IntersectionObserver' in window)||!els.length)return;
+  els.forEach(el=>el.classList.add('reveal-init'));
+  const io=new IntersectionObserver((entries,obs)=>{
+    // stagger within each observed group by DOM order among visible siblings
+    const hits=entries.filter(e=>e.isIntersecting);
+    hits.forEach((entry,k)=>{
+      const el=entry.target;
+      obs.unobserve(el);
+      el.style.transitionDelay=(k*60)+'ms';
+      requestAnimationFrame(()=>el.classList.add('reveal-in'));
+      el.addEventListener('transitionend',function done(ev){
+        if(ev.propertyName!=='transform')return;
+        el.removeEventListener('transitionend',done);
+        el.style.transitionDelay='';
+        el.classList.remove('reveal-init','reveal-in');
+      });
+    });
+  },{threshold:.15,rootMargin:'0px 0px -5% 0px'});
+  els.forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

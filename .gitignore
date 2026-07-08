@@ -1,0 +1,12 @@
+/node_modules
+/.next
+/out
+/build
+*.tsbuildinfo
+next-env.d.ts
+.env*
+.DS_Store
+
+# raw source dumps kept outside public/ for reference, not part of the site
+/*.mp4
+/Bilikis Sabitu Profile pc.png
