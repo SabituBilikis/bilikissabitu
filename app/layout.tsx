@@ -60,6 +60,8 @@ const personJsonLd = {
   ],
 };
 
+import CustomCursor from "@/components/CustomCursor";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -71,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <CustomCursor />
         {children}
       </body>
     </html>

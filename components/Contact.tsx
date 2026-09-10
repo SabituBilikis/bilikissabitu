@@ -5,13 +5,13 @@ export default function Contact() {
         <div className="contact-panel">
           <span className="contact-badge">
             <span className="dot" />
-            Open to work · 2 sprint spots
+            Open to work 
           </span>
           <h2>
             Let&apos;s build something that <em>ships.</em>
           </h2>
           <p className="contact-sub">
-            Open to full-time product design roles (Lagos · remote) and 2–8 week
+            Open to full-time product design roles and 2–8 week
             design-to-deployed contract sprints.
           </p>
           <div className="contact-actions">
