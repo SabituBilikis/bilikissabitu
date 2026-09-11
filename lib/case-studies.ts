@@ -12,6 +12,8 @@ export type FigBlock = {
   device?: "web" | "tablet" | "mobile" | "chrome";
   /** Real video src — when present (kind:"vid"), renders an inline <video> instead of a placeholder. */
   video?: string;
+  /** Multiple video options for interactive device mockup switcher */
+  videos?: { label: string; video: string; poster?: string }[];
   /** Original CSS/SVG illustration key — for concept figures with no matching real asset. */
   illustration?: "scattered";
 };
@@ -381,7 +383,27 @@ export const caseStudies: Record<string, CaseStudy> = {
             t: "p",
             html: "Although Learn Fun is available through the web and can be installed for offline use, I treated the <b>tablet as the primary learning environment</b>. A larger touch surface creates dedicated room for generous touch targets, clear visual separation between choices, and spontaneous child exploration.",
           },
-          { t: "tablet-canvas" },
+          {
+            t: "fig",
+            kind: "vid",
+            ratio: "r45",
+            device: "tablet",
+            video: "/images/learn-fun/learn-fun-tablet-1.mp4",
+            screen: { src: "/images/learn-fun/tablet-frame-1.jpg", alt: "Phonics interaction on tablet mockup" },
+            videos: [
+              {
+                label: "Phonics & Letter Sound (A)",
+                video: "/images/learn-fun/learn-fun-tablet-1.mp4",
+                poster: "/images/learn-fun/tablet-frame-1.jpg",
+              },
+              {
+                label: "Numbers & Counting (2)",
+                video: "/images/learn-fun/learn-fun-tablet-2.mp4",
+                poster: "/images/learn-fun/tablet-frame-2.jpg",
+              },
+            ],
+            captionHtml: "Fig 1.1 · <b>Tablet learning experience</b> — Interactive lessons running inside the portrait iPad mockup with tactile audio feedback.",
+          },
         ],
       },
       {

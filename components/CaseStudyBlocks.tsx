@@ -3,6 +3,7 @@ import PhoneFrame from "@/components/PhoneFrame";
 import BrowserFrame from "@/components/BrowserFrame";
 import TabletFrame from "@/components/TabletFrame";
 import ChromeBrowserMockup from "@/components/ChromeBrowserMockup";
+import TabletVideoMockup from "@/components/TabletVideoMockup";
 import { PhonicsDemo, FeedbackDecisionComparison, TabletInteractiveCanvas } from "@/components/LearnFunMicroInteractions";
 import type { CSBlock, FigBlock } from "@/lib/case-studies";
 import type { StateKey } from "@/lib/projects";
@@ -47,6 +48,19 @@ function Figure({ block }: { block: FigBlock }) {
         <ChromeBrowserMockup
           video={block.video}
           poster={block.screen?.src}
+        />
+        {block.captionHtml && <figcaption dangerouslySetInnerHTML={{ __html: block.captionHtml }} />}
+      </figure>
+    );
+  }
+
+  if (block.device === "tablet" && (block.video || block.videos)) {
+    return (
+      <figure className="fig fig-tablet-wrap">
+        <TabletVideoMockup
+          video={block.video}
+          poster={block.screen?.src}
+          videos={block.videos}
         />
         {block.captionHtml && <figcaption dangerouslySetInnerHTML={{ __html: block.captionHtml }} />}
       </figure>
