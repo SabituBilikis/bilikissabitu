@@ -390,8 +390,20 @@ export const caseStudies: Record<string, CaseStudy> = {
             ratio: "r45",
             device: "tablet",
             video: "/images/learn-fun/learn-fun-tablet-1.mp4",
-            screen: { src: "/images/learn-fun/tablet-frame-1.jpg", alt: "Learn Fun tablet interface video: Interactive learning walkthrough" },
-            captionHtml: "Fig 1.1 · <b>Learn Fun tablet interface</b> — Interactive learning experience demonstrated inside the tablet canvas with audio feedback.",
+            screen: { src: "/images/learn-fun/tablet-frame-1.jpg", alt: "Phonics & Letter Sound interaction" },
+            videos: [
+              {
+                label: "Phonics & Letter Sound (A)",
+                video: "/images/learn-fun/learn-fun-tablet-1.mp4",
+                poster: "/images/learn-fun/tablet-frame-1.jpg",
+              },
+              {
+                label: "Numbers & Counting (2)",
+                video: "/images/learn-fun/learn-fun-tablet-2.mp4",
+                poster: "/images/learn-fun/tablet-frame-2.jpg",
+              },
+            ],
+            captionHtml: "Fig 1.1 · <b>Learn Fun tablet interface</b> — Interactive learning experience demonstrated across Phonics and Numbers with tactile audio cues.",
           },
         ],
       },
