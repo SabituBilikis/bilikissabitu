@@ -373,37 +373,6 @@ export const caseStudies: Record<string, CaseStudy> = {
         ],
       },
       {
-        id: "role",
-        label: "My Role",
-        heading: "Owned from concept through implementation.",
-        blocks: [
-          {
-            t: "p",
-            html: "I owned product design end to end, moving from initial concept through interactive prototypes to production implementation using an <b>AI-assisted workflow</b>.",
-          },
-          {
-            t: "cards",
-            items: [
-              [
-                "Strategy",
-                "Product Direction & Architecture",
-                "Defined core early learning scope, offline requirements, and developmental milestone targeting for ages 1–5.",
-              ],
-              [
-                "Design",
-                "UX, Interaction & Design System",
-                "Crafted child-safe visual language, tablet-first layouts, color systems, and tactile audio-visual cues.",
-              ],
-              [
-                "Build",
-                "Frontend & Offline Implementation",
-                "Shipped responsive web application, offline service worker caching, and Google Play release packaging.",
-              ],
-            ],
-          },
-        ],
-      },
-      {
         id: "tablet",
         label: "02 · Tablet Context",
         heading: "What does a five-year-old need to understand without being told what to do?",
