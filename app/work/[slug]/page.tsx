@@ -72,6 +72,12 @@ export default async function CaseStudyPage({
             ))}
           </div>
 
+          {cs.heroBlock && (
+            <div className="cs-hero-block">
+              <Block block={cs.heroBlock} />
+            </div>
+          )}
+
           {cs.sections.map((section) => (
             <section className="cs-section" id={section.id} key={section.id}>
               <span className="mono sec-label">{section.label}</span>

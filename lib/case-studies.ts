@@ -60,6 +60,8 @@ export interface CaseStudy {
   meta: [label: string, value: string][];
   /** Optional CTA link rendered at the end of the tags row (e.g. a public repo). */
   githubUrl?: string;
+  /** Optional hero block rendered immediately after cs-meta before sections */
+  heroBlock?: CSBlock;
   sections: CaseStudySection[];
   next: string;
 }
@@ -315,6 +317,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       ["Target Users", "Toddlers & Preschoolers (Ages 1–5) and Parents / Educators"],
       ["Platform & Tech", "React 18 · TypeScript · Vite · Tailwind CSS · Web Speech API · Offline PWA & Android TWA"],
     ],
+    heroBlock: {
+      t: "fig",
+      kind: "vid",
+      ratio: "r169",
+      device: "chrome",
+      video: "/images/learn-fun/learn-fun-case-study.mp4",
+      screen: { src: "/images/learn-fun/video-frame.jpg", alt: "Learn Fun app walkthrough inside desktop Chrome browser mockup" },
+      captionHtml: "<b>Learn Fun</b> — Desktop Chrome browser experience showing interactive lesson modules, phonics, and touch-first interactions.",
+    },
     next: "telehealth",
     sections: [
       {
@@ -325,15 +336,6 @@ export const caseStudies: Record<string, CaseStudy> = {
           {
             t: "thesis",
             html: "Young children don't need more things competing for their attention. They need learning experiences that are simple enough to understand, engaging enough to explore, and flexible enough to work wherever learning happens. Designing for early learners completely inverts traditional digital product assumptions.",
-          },
-          {
-            t: "fig",
-            kind: "vid",
-            ratio: "r169",
-            device: "chrome",
-            video: "/images/learn-fun/learn-fun-case-study.mp4",
-            screen: { src: "/images/learn-fun/video-frame.jpg", alt: "Learn Fun app walkthrough inside desktop Chrome browser mockup" },
-            captionHtml: "Fig 0.1 · <b>Learn Fun application walkthrough</b> — Desktop browser experience showing lesson modules, phonics, and touch-first interactions.",
           },
           {
             t: "cards",

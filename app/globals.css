@@ -1589,6 +1589,19 @@
   }
 
   /* ── Chrome Desktop Browser Mockup (Pixel-perfect to reference) ── */
+  .cs-hero-block {
+    margin-top: 36px;
+    margin-bottom: 32px;
+  }
+
+  .fig-chrome-wrap {
+    margin: 0 !important;
+  }
+
+  .fig-chrome-wrap .chrome-mockup-wrapper {
+    margin: 0;
+  }
+
   .chrome-mockup-wrapper {
     width: 100%;
     margin: 28px 0;
