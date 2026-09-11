@@ -733,168 +733,658 @@
     background: var(--bg-card);
   }
 
-  /* Phonics Demo Interactive Prototype */
-  .phonics-widget {
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    background: var(--bg-card);
-    padding: 24px;
+  /* -------------------------------------------------------------------------- */
+  /* Authentic Learn Fun Design System & Micro-Interactions                     */
+  /* -------------------------------------------------------------------------- */
+
+  /* Tablet Container inside device */
+  .lf-tablet-container {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    margin: 16px 0;
+    overflow-y: auto;
+    font-family: var(--font-display), system-ui, -apple-system, sans-serif;
+    color: #1A0050;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .phonics-header {
+  /* Top Navigation Bar */
+  .lf-topnav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 11px;
-    color: var(--muted);
+    padding: 8px 16px;
+    background: #FFFFFF;
+    border-bottom: 2.5px solid #1A0050;
+    box-shadow: 0 2px 10px rgba(26, 0, 80, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 
-  .phonics-badge {
-    background: rgba(255, 255, 255, 0.06);
-    padding: 3px 10px;
-    border-radius: 100px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .phonics-main {
-    border-radius: 16px;
-    border: 2px solid;
-    padding: 32px 20px;
+  .lf-brand {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 18px;
-    transition: background 0.3s ease, border-color 0.3s ease;
-  }
-
-  .phonics-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  .phonics-display.bounce-pop {
-    animation: phonicsPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  @keyframes phonicsPop {
-    0% { transform: scale(0.92); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-  }
-
-  .p-emoji {
-    font-size: 52px;
-    line-height: 1;
-  }
-
-  .p-letter {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 72px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-
-  .p-meta {
-    display: flex;
     gap: 10px;
-    align-items: baseline;
-    margin-top: 4px;
   }
 
-  .p-word {
+  .lf-logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 38px;
+  }
+
+  .lf-tagline-badge {
+    font-size: 11px;
     font-weight: 700;
-    font-size: 18px;
-    color: #111111;
+    color: #6B4FA0;
+    background: #F3EEFF;
+    border: 1.5px solid #1A0050;
+    border-radius: 100px;
+    padding: 2px 8px;
+    letter-spacing: 0.02em;
   }
 
-  .p-sound {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: #444444;
-  }
-
-  .phonics-sound-btn {
-    cursor: pointer;
-    border: none;
-    color: #FFFFFF;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    display: inline-flex;
+  .lf-top-actions {
+    display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-    transition: transform 0.15s ease, opacity 0.15s ease;
   }
 
-  .phonics-sound-btn:hover {
-    transform: scale(1.03);
-    opacity: 0.95;
+  .lf-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 14px;
+    border: 2px solid #1A0050;
+    box-shadow: 2px 3px 0 #1A0050;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #F3EEFF;
+    color: #1A0050;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
 
-  .phonics-sound-btn:active {
-    transform: scale(0.97);
+  .lf-pill-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 2px 4px 0 #1A0050;
   }
 
-  .phonics-selector {
+  /* Greeting Banner */
+  .lf-greeting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #FAFAFC;
+    border-bottom: 1.5px solid rgba(26, 0, 80, 0.08);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .lf-mascot-greeting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .lf-fox-avatar {
+    font-size: 34px;
+    line-height: 1;
+    display: inline-block;
+    animation: lfWiggle 3s ease-in-out infinite;
+  }
+
+  @keyframes lfWiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .lf-greeting-sub {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6B4FA0;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .lf-greeting-main {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1A0050;
+    margin: 2px 0 0 0;
+    line-height: 1.2;
+  }
+
+  .lf-stats-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lf-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #FFFFFF;
+    border: 2px solid #1A0050;
+    box-shadow: 2px 3px 0 #1A0050;
+    border-radius: 12px;
+    padding: 4px 10px;
+  }
+
+  .lf-stat-icon {
+    font-size: 14px;
+  }
+
+  .lf-stat-val {
+    font-size: 13px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .lf-stat-lbl {
+    font-size: 10px;
+    color: #6B4FA0;
+    margin: 0;
+    line-height: 1;
+  }
+
+  /* Main Carousel Area */
+  .lf-main-content {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #F8F6FF;
+    flex: 1;
+  }
+
+  .lf-carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .lf-carousel-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lf-carousel-title h5 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1A0050;
+    margin: 0;
+  }
+
+  .lf-sparkle {
+    color: #FFD700;
+    font-size: 16px;
+  }
+
+  .lf-counter-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #6B4FA0;
+  }
+
+  /* Cards Scroller Grid */
+  .lf-cards-scroller {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
 
-  .phonics-tab {
-    border: 2px solid var(--border);
-    background: rgba(255, 255, 255, 0.03);
+  .lf-card {
+    background: #FFFFFF;
+    border: 2.5px solid;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.16s ease;
+  }
+
+  .lf-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .lf-card.selected {
+    transform: translateY(-3px);
+  }
+
+  .lf-card.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+  }
+
+  .lf-card-art {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 86px;
+    padding: 14px 8px;
+  }
+
+  .lf-card-emoji {
+    font-size: 38px;
+    line-height: 1;
+    filter: drop-shadow(2px 3px 0 rgba(26, 0, 80, 0.3));
+  }
+
+  .lf-badge-check {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFD700;
+    border: 2px solid #1A0050;
+    color: #1A0050;
+    font-size: 11px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lf-badge-new {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: #FFD700;
+    border: 1.5px solid #1A0050;
+    color: #1A0050;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 6px;
+  }
+
+  .lf-badge-lock {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 14px;
+  }
+
+  .lf-lessons-pill {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(26, 0, 80, 0.15);
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #1A0050;
+    padding: 1px 5px;
+  }
+
+  .lf-card-info {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lf-card-meta h6 {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1A0050;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .lf-card-meta p {
+    font-size: 10px;
+    color: #6B4FA0;
+    margin: 2px 0 0 0;
+    line-height: 1;
+  }
+
+  .lf-card-progress {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lf-progress-bar {
+    flex: 1;
+    height: 5px;
+    background: #E8DFFF;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .lf-progress-fill {
+    height: 100%;
+    border-radius: 100px;
+  }
+
+  .lf-progress-text {
+    font-size: 10px;
+    font-weight: 800;
+    color: #1A0050;
+  }
+
+  /* Active Module Live Preview Panel */
+  .lf-active-panel {
+    border: 2.5px solid;
+    border-radius: 16px;
+    background: #FFFFFF;
+    overflow: hidden;
+    box-shadow: 2px 3px 0 #1A0050;
+  }
+
+  .lf-active-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1.5px solid rgba(26, 0, 80, 0.1);
+  }
+
+  .lf-active-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lf-panel-emoji {
+    font-size: 20px;
+  }
+
+  .lf-active-title strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1A0050;
+    line-height: 1.2;
+  }
+
+  .lf-active-title span {
+    font-size: 11px;
+    color: #6B4FA0;
+  }
+
+  .lf-active-badge {
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+
+  .lf-active-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .lf-lesson-chip {
+    border: 1.5px solid;
+    border-radius: 10px;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FAFAFC;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+
+  .lf-lesson-chip:hover {
+    transform: scale(1.02);
+  }
+
+  .lf-chip-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1A0050;
+  }
+
+  .lf-tap-cue {
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  /* Bottom Navigation inside tablet */
+  .lf-bottomnav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 6px 12px;
+    border-top: 2.5px solid #1A0050;
+    background: #FFFFFF;
+  }
+
+  .lf-nav-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 4px 10px;
     border-radius: 12px;
-    padding: 12px 8px;
+  }
+
+  .lf-tab-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 2px solid transparent;
+  }
+
+  .lf-nav-tab.active .lf-tab-icon {
+    box-shadow: 2px 3px 0 #1A0050;
+  }
+
+  .lf-nav-tab span {
+    font-size: 11px;
+  }
+
+  /* Phonics Lesson Demo */
+  .lf-phonics-shell {
+    border: 2.5px solid #1A0050;
+    border-radius: 20px;
+    box-shadow: 4px 6px 0 #1A0050;
+    background: #FFFFFF;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin: 18px 0;
+    font-family: var(--font-display), system-ui, sans-serif;
+  }
+
+  .lf-phonics-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .lf-phonics-badge {
+    background: #F3EEFF;
+    border: 2px solid #1A0050;
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #1A0050;
+  }
+
+  .lf-phonics-sub {
+    font-size: 11px;
+    color: #6B4FA0;
+  }
+
+  .lf-flashcard {
+    border: 3px solid;
+    border-radius: 20px;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    position: relative;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .lf-card-mascot-cue {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 2px solid #1A0050;
+    border-radius: 100px;
+    padding: 4px 12px;
+    box-shadow: 2px 2px 0 #1A0050;
+  }
+
+  .lf-mini-fox {
+    font-size: 18px;
+  }
+
+  .lf-speech-bubble {
+    font-size: 12px;
+    font-weight: 800;
+    color: #1A0050;
+  }
+
+  .lf-giant-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .lf-giant-display.bounce-pop {
+    animation: phonicsPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .lf-emoji-badge {
+    font-size: 56px;
+    line-height: 1;
+    filter: drop-shadow(2px 4px 0 rgba(26, 0, 80, 0.25));
+  }
+
+  .lf-giant-letters {
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1;
+    display: flex;
+    gap: 6px;
+    letter-spacing: -0.04em;
+    filter: drop-shadow(2px 3px 0 rgba(26, 0, 80, 0.25));
+  }
+
+  .lf-word-phoneme {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-word {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1A0050;
+  }
+
+  .lf-phoneme {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6B4FA0;
+    font-family: var(--font-mono);
+  }
+
+  .lf-hear-btn {
+    cursor: pointer;
+    border: 2.5px solid;
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .lf-hear-btn:hover {
+    transform: scale(1.03);
+  }
+
+  .lf-hear-btn:active {
+    transform: scale(0.97);
+  }
+
+  .lf-phonics-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .lf-phonics-tab {
+    border: 2px solid;
+    border-radius: 14px;
+    padding: 10px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
     cursor: pointer;
-    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    transition: transform 0.15s ease, background 0.15s ease;
   }
 
-  .phonics-tab:hover {
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .phonics-tab.active {
+  .lf-phonics-tab:hover {
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.08);
   }
 
-  .tab-letter {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 20px;
+  .lf-phonics-tab.active {
+    transform: translateY(-2px);
+  }
+
+  .lf-tab-char {
+    font-size: 18px;
+    font-weight: 900;
     line-height: 1;
   }
 
-  .tab-emoji {
+  .lf-tab-icon {
     font-size: 18px;
   }
 
-  .phonics-footnote {
+  .lf-phonics-caption {
     font-size: 12px;
-    color: var(--muted);
+    color: #6B4FA0;
     text-align: center;
     margin: 0;
-    font-style: italic;
+    font-weight: 600;
   }
 
   /* Perry Wang Style Feedback-Decision-Chain */
@@ -1080,220 +1570,20 @@
     color: var(--ink);
   }
 
-  /* Tablet Interactive Canvas Prototype */
-  .tablet-canvas-wrapper {
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    background: var(--bg-card);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 20px 0;
-  }
-
-  .tablet-canvas-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 18px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .t-brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .t-logo-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  .t-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-
-  .t-tag {
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .tablet-app-ui {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    min-height: 300px;
-  }
-
-  .tablet-sidebar {
-    border-right: 1px solid var(--border);
-    padding: 12px 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    background: rgba(0, 0, 0, 0.12);
-  }
-
-  .tablet-cat-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: none;
-    border-left: 3px solid transparent;
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.15s ease;
-  }
-
-  .tablet-cat-btn:hover {
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--ink);
-  }
-
-  .tablet-cat-btn.active {
-    background: rgba(255, 255, 255, 0.07);
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  .cat-icon {
-    font-size: 16px;
-  }
-
-  .cat-name {
-    font-size: 13px;
-  }
-
-  .tablet-main {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .tablet-main-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid;
-    padding-bottom: 12px;
-  }
-
-  .tablet-main-bar h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--ink);
-    margin: 0 0 2px 0;
-  }
-
-  .tablet-main-bar p {
-    font-size: 12px;
-    color: var(--muted);
-    margin: 0;
-  }
-
-  .tablet-badge {
-    font-size: 11px;
-    color: #FFFFFF;
-    padding: 4px 10px;
-    border-radius: 100px;
-    font-weight: 600;
-  }
-
-  .tablet-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .tablet-learning-card {
-    border: 1.5px solid;
-    border-radius: 12px;
-    padding: 16px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.02);
-    cursor: pointer;
-    transition: transform 0.15s ease, background-color 0.15s ease;
-  }
-
-  .tablet-learning-card:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .tl-card-text {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-
-  .tl-touch-cue {
-    font-size: 14px;
-    opacity: 0.6;
-  }
-
-  .tablet-annotations {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    padding: 16px 20px;
-    border-top: 1px solid var(--border);
-    background: rgba(0, 0, 0, 0.08);
-  }
-
-  .t-anno .mono {
-    font-size: 11px;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .t-anno p {
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--muted);
-    margin: 0;
-  }
-
   @media (max-width: 640px) {
-    .tablet-landscape {
-      aspect-ratio: auto;
-      min-height: auto;
-    }
-
-    .tablet-bezel {
-      border-radius: 16px;
-      padding: 8px;
-    }
-
-    .tablet-app-ui {
-      grid-template-columns: 1fr;
-    }
-
-    .tablet-sidebar {
-      flex-direction: row;
-      overflow-x: auto;
-      border-right: none;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .tablet-annotations {
-      grid-template-columns: 1fr;
-    }
-
-    .phonics-selector {
+    .lf-cards-scroller {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lf-active-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lf-phonics-selector {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lf-btn-text {
+      display: none;
     }
   }

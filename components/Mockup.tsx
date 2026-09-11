@@ -1,6 +1,7 @@
 import PhoneFrame from "@/components/PhoneFrame";
 import BrowserFrame from "@/components/BrowserFrame";
 import TabletFrame from "@/components/TabletFrame";
+import { TabletInteractiveCanvas } from "@/components/LearnFunMicroInteractions";
 import type { Device, Screen } from "@/lib/projects";
 
 type Props = {
@@ -26,7 +27,9 @@ export default function Mockup({ device, screens, max = 3, sizes, priority }: Pr
   if (device === "tablet") {
     return (
       <div className="tablet-mockup-wrap">
-        <TabletFrame src={list[0]?.src} alt={list[0]?.alt || "Tablet screen"} sizes={sizes} priority={priority} />
+        <TabletFrame>
+          <TabletInteractiveCanvas />
+        </TabletFrame>
       </div>
     );
   }

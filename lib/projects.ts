@@ -30,8 +30,8 @@ export const projects: Project[] = [
   {
     id: "learn-fun",
     title: "Learn Fun",
-    domain: "EdTech · Tablet-First · Ages 1–5",
-    line: "An offline-first early learning app designed for toddlers and preschoolers (ages 1–5), from concept through Google Play release preparation.",
+    domain: "EdTech · Play. Learn. Grow. · Ages 1–5",
+    line: "An offline-first educational PWA and Android app for children aged 1–5, teaching letters, phonics, numbers, and shapes with touch-first interactions.",
     thumb: {
       device: "tablet",
       screens: [
