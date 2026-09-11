@@ -4,6 +4,7 @@ import BrowserFrame from "@/components/BrowserFrame";
 import TabletFrame from "@/components/TabletFrame";
 import ChromeBrowserMockup from "@/components/ChromeBrowserMockup";
 import TabletVideoMockup from "@/components/TabletVideoMockup";
+import LearnFunPrinciplesMockup from "@/components/LearnFunPrinciplesMockup";
 import { PhonicsDemo, FeedbackDecisionComparison, TabletInteractiveCanvas } from "@/components/LearnFunMicroInteractions";
 import type { CSBlock, FigBlock } from "@/lib/case-studies";
 import type { StateKey } from "@/lib/projects";
@@ -252,6 +253,9 @@ export default function Block({ block }: { block: CSBlock }) {
 
     case "tablet-canvas":
       return <TabletInteractiveCanvas />;
+
+    case "learn-fun-principles":
+      return <LearnFunPrinciplesMockup />;
 
     case "feedback-chain":
       return (

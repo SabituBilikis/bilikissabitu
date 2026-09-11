@@ -38,6 +38,7 @@ export type CSBlock =
   | { t: "nda"; html: string }
   | { t: "phonics-interactive" }
   | { t: "tablet-canvas" }
+  | { t: "learn-fun-principles" }
   | {
       t: "feedback-chain";
       feedback: { kicker: string; quote: string };
@@ -398,26 +399,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         label: "Design Principles",
         heading: "Three rules that shaped every screen.",
         blocks: [
-          {
-            t: "principles",
-            items: [
-              [
-                "01",
-                "Learning should feel like play",
-                "Activities needed to encourage exploration rather than feel like traditional lessons. Large visual elements, recognizable illustrations, simple interactions, and predictable patterns make the learning action obvious before any text could be read.",
-              ],
-              [
-                "02",
-                "Reduce cognitive load",
-                "Young children have fewer mental models to rely on. Avoiding unnecessary choices and visual competition led to a strict rule: <b>One clear action → one clear response.</b> Navigation, activity selection, and learning interactions follow consistent patterns.",
-              ],
-              [
-                "03",
-                "Every visual element needs a job",
-                "During testing, I discovered that some icons added decoration without improving understanding. If an element doesn't help a child understand, navigate, or learn, it doesn't belong on the screen. Removing decorative clutter proved far more impactful than adding decoration.",
-              ],
-            ],
-          },
+          { t: "learn-fun-principles" },
         ],
       },
       {
