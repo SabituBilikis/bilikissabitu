@@ -8,8 +8,8 @@ export type FigBlock = {
   screen?: Screen;
   /** When true with `screen` set, renders the image plain (no phone bezel) — for UI crops that aren't full screens. */
   raw?: boolean;
-  /** When "web" with `screen` set, renders inside a browser-window frame instead of a phone bezel. */
-  device?: "web";
+  /** When "web" or "tablet" with `screen` set, renders inside a matching device frame instead of a phone bezel. */
+  device?: "web" | "tablet" | "mobile";
   /** Real video src — when present (kind:"vid"), renders an inline <video> instead of a placeholder. */
   video?: string;
   /** Original CSS/SVG illustration key — for concept figures with no matching real asset. */
@@ -33,7 +33,16 @@ export type CSBlock =
   | { t: "states"; items: [state: StateKey, label: string, bodyHtml: string][] }
   | { t: "banner"; html: string }
   | { t: "takes"; items: [num: string, title: string, bodyHtml: string][] }
-  | { t: "nda"; html: string };
+  | { t: "nda"; html: string }
+  | { t: "phonics-interactive" }
+  | { t: "tablet-canvas" }
+  | {
+      t: "feedback-chain";
+      feedback: { kicker: string; quote: string };
+      decision: { kicker: string; action: string };
+      before: { label: string; title: string; desc: string; items?: string[]; html?: string };
+      after: { label: string; title: string; desc: string; items?: string[]; html?: string };
+    };
 
 export interface CaseStudySection {
   id: string;
@@ -55,7 +64,7 @@ export interface CaseStudy {
   next: string;
 }
 
-export const caseStudyOrder = ["recall", "telehealth", "climapt", "earthquake"];
+export const caseStudyOrder = ["recall", "learn-fun", "telehealth", "climapt", "earthquake"];
 
 const R = (name: string) => `/images/recall/${name}.png`;
 
@@ -77,7 +86,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ["Team", "Solo. Designed in Figma, built with Claude Code"],
       ["Timeline & Status", "7 weeks · 2026 · Production-ready, Play Store launch pending"],
     ],
-    next: "telehealth",
+    next: "learn-fun",
     sections: [
       {
         id: "overview",
@@ -281,6 +290,368 @@ export const caseStudies: Record<string, CaseStudy> = {
             items: [
               ["01", "Capture friction compounds", "Every field I removed at save time multiplied what actually got saved."],
               ["02", "Cut the feature, keep the promise", "Shipping a smaller honest product beat demoing a bigger speculative one. It wasn't close."],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  /* ---------------- LEARN FUN ---------------- */
+  "learn-fun": {
+    slug: "learn-fun",
+    title: "Learn Fun",
+    nav: "Learn Fun",
+    tags: [
+      ["Web · Installable offline app", "shipped"],
+      ["Ages 1–5 · Tablet-First", "live"],
+      ["Google Play Review", "concept"],
+      ["Solo Build", "nda"],
+    ],
+    sub: "Designing an offline-first learning experience for early learners.",
+    githubUrl: "https://learnfunkids.vercel.app/",
+    meta: [
+      ["My Role", "Product Designer & Builder: Strategy, UX/UI, Design System, Prototyping, Frontend Implementation"],
+      ["Target Users", "Toddlers & Preschoolers (Ages 1–5) and Parents"],
+      ["Platform & Status", "Tablet-First Web & Installable PWA · Google Play production-access review"],
+    ],
+    next: "telehealth",
+    sections: [
+      {
+        id: "challenge",
+        label: "01 · Challenge",
+        heading: "Designing for children who may not be able to read yet.",
+        blocks: [
+          {
+            t: "thesis",
+            html: "Young children don't need more things competing for their attention. They need learning experiences that are simple enough to understand, engaging enough to explore, and flexible enough to work wherever learning happens. Designing for early learners completely inverts traditional digital product assumptions.",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "01",
+                "Limited or no reading ability",
+                "Children aged 1–5 cannot rely on text instructions. Every action must be communicated through color, shape, audio, and visual recognition.",
+              ],
+              [
+                "02",
+                "Short attention spans",
+                "Toddlers learn through immediate cause-and-effect. Every tap must deliver instant, predictable feedback with zero lag and zero dead ends.",
+              ],
+              [
+                "03",
+                "Touch-first & developing motor skills",
+                "Fine motor precision is still developing. Hit targets must be large (min 64px) and forgiving to prevent accidental tap frustration.",
+              ],
+              [
+                "04",
+                "Different developmental stages",
+                "A 2-year-old explores sensory colors and animals, while a 5-year-old connects phonemes and letter sounds into early literacy.",
+              ],
+            ],
+          },
+          {
+            t: "decision",
+            key: true,
+            kicker: "The Core Design Question",
+            title: "Independence for child, confidence for parent",
+            bodyHtml:
+              "<b>How might I create a learning experience that feels simple enough for a young child to explore independently, while still giving parents confidence in what the child is learning?</b>",
+          },
+        ],
+      },
+      {
+        id: "role",
+        label: "My Role",
+        heading: "Owned from concept through implementation.",
+        blocks: [
+          {
+            t: "p",
+            html: "I owned product design end to end, moving from initial concept through interactive prototypes to production implementation using an <b>AI-assisted workflow</b>.",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "Strategy",
+                "Product Direction & Architecture",
+                "Defined core early learning scope, offline requirements, and developmental milestone targeting for ages 1–5.",
+              ],
+              [
+                "Design",
+                "UX, Interaction & Design System",
+                "Crafted child-safe visual language, tablet-first layouts, color systems, and tactile audio-visual cues.",
+              ],
+              [
+                "Build",
+                "Frontend & Offline Implementation",
+                "Shipped responsive web application, offline service worker caching, and Google Play release packaging.",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: "tablet",
+        label: "02 · Tablet Context",
+        heading: "What does a five-year-old need to understand without being told what to do?",
+        blocks: [
+          {
+            t: "p",
+            html: "Although Learn Fun is available through the web and can be installed for offline use, I treated the <b>tablet as the primary learning environment</b>. A larger touch surface creates dedicated room for generous touch targets, clear visual separation between choices, and spontaneous child exploration.",
+          },
+          { t: "tablet-canvas" },
+        ],
+      },
+      {
+        id: "principles",
+        label: "Design Principles",
+        heading: "Three rules that shaped every screen.",
+        blocks: [
+          {
+            t: "principles",
+            items: [
+              [
+                "01",
+                "Learning should feel like play",
+                "Activities needed to encourage exploration rather than feel like traditional lessons. Large visual elements, recognizable illustrations, simple interactions, and predictable patterns make the learning action obvious before any text could be read.",
+              ],
+              [
+                "02",
+                "Reduce cognitive load",
+                "Young children have fewer mental models to rely on. Avoiding unnecessary choices and visual competition led to a strict rule: <b>One clear action → one clear response.</b> Navigation, activity selection, and learning interactions follow consistent patterns.",
+              ],
+              [
+                "03",
+                "Every visual element needs a job",
+                "During testing, I discovered that some icons added decoration without improving understanding. If an element doesn't help a child understand, navigate, or learn, it doesn't belong on the screen. Removing decorative clutter proved far more impactful than adding decoration.",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: "structure",
+        label: "Learning Structure",
+        heading: "Foundations organized for gradual discovery.",
+        blocks: [
+          {
+            t: "p",
+            html: "Learn Fun organizes activities around foundational early childhood topics: <b>Letters · Numbers · Shapes · Animals · Home · School</b>. Rather than presenting a large amount of content at once, activities are grouped into recognizable categories so children can gradually discover what interests them.",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "Pillar 1",
+                "Recognition over reading",
+                "Visual silhouettes, cheerful emojis, and auditory prompts introduce each topic without text dependencies.",
+              ],
+              [
+                "Pillar 2",
+                "Interaction over instructions",
+                "Zero multi-step tutorials. Children immediately learn by tapping, hearing, and seeing instant visual reactions.",
+              ],
+              [
+                "Pillar 3",
+                "Repetition over complexity",
+                "Predictable layouts let toddlers independently replay their favorite activities until concepts stick.",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: "phonics",
+        label: "Feedback Loop #1",
+        heading: "From letters to phonics: user feedback changed the product.",
+        blocks: [
+          {
+            t: "p",
+            html: "During early testing, parent and caregiver feedback revealed a crucial insight: <em>Knowing what a letter looks like is fundamentally different from knowing what it sounds like.</em> This feedback directly evolved the product from visual recognition to full phonics, connecting <b>Letter → Sound → Word</b>.",
+          },
+          {
+            t: "feedback-chain",
+            feedback: {
+              kicker: "User Feedback During Testing",
+              quote: "We'd like phonics so our toddlers can hear the sounds the letters make, not just see the letter.",
+            },
+            decision: {
+              kicker: "Product Decision",
+              action: "Add letter-sound audio interactions to teach phonemes alongside alphabet recognition.",
+            },
+            before: {
+              label: "Original Approach",
+              title: "Visual Letter Recognition Only",
+              desc: "Children tapped letters and saw the uppercase/lowercase alphabet, but had no auditory reinforcement.",
+              items: [
+                "Tap letter A",
+                "Letter visual appears on screen",
+                "No audio connection or phoneme sound",
+              ],
+            },
+            after: {
+              label: "Shipped Iteration",
+              title: "Letter + Phonics Audio Association",
+              desc: "Children interact with letters while hearing clear pronunciation, letter sounds, and playful word examples.",
+              items: [
+                "Tap letter A",
+                "Hears /æ/ phonics audio",
+                "Connects A → /æ/ → Apple",
+              ],
+            },
+          },
+          { t: "phonics-interactive" },
+        ],
+      },
+      {
+        id: "simplicity",
+        label: "Feedback Loop #2",
+        heading: "Removing what wasn't helping: eliminating visual noise.",
+        blocks: [
+          {
+            t: "p",
+            html: "Testing with young children surfaced an important observation: extraneous decorative icons did not contribute meaningfully to navigation or learning. For early learners, visual elements aren't neutral—they actively compete for attention.",
+          },
+          {
+            t: "feedback-chain",
+            feedback: {
+              kicker: "Testing Observation",
+              quote: "Children repeatedly tapped small decorative stars and border icons expecting an action, creating confusion.",
+            },
+            decision: {
+              kicker: "Design Decision",
+              action: "Remove all decorative icons. Every visual element on screen must be functional or educational.",
+            },
+            before: {
+              label: "Before Testing",
+              title: "Decorative Icons & Clutter",
+              desc: "Interface included decorative background shapes and small accessory icons that added visual noise.",
+              items: [
+                "Extraneous background stars & icons",
+                "Ambiguous clickable boundaries",
+                "Competing visual focal points",
+              ],
+            },
+            after: {
+              label: "After Simplification",
+              title: "Focused Learning Content",
+              desc: "Removed decorative chrome. Visual hierarchy directs 100% of the child's focus to the primary learning action.",
+              items: [
+                "Zero decorative distractions",
+                "Spacious 64px+ hit areas",
+                "Unambiguous visual intent",
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "screens",
+        label: "Multi-Screen",
+        heading: "Designing across tablet, mobile, and web.",
+        blocks: [
+          {
+            t: "p",
+            html: "Learn Fun isn't locked to a single device. The responsive architecture ensures a consistent, tactile experience whether at home on a tablet or on a parent's phone in a grocery line:",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "Tablet",
+                "Primary learning experience",
+                "Generous touch targets and spacious activity layouts optimized for two-handed toddler exploration.",
+              ],
+              [
+                "Mobile",
+                "Compact on-the-go exploration",
+                "The same interaction patterns tightened for quick distraction-free use on parent phones.",
+              ],
+              [
+                "Web",
+                "Zero-install universal access",
+                "Accessible directly in any browser for immediate play without store barrier requirements.",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: "offline",
+        label: "Offline by Design",
+        heading: "Learning shouldn't stop because the internet does.",
+        blocks: [
+          {
+            t: "p",
+            html: "One of the product's most important constraints was complete offline accessibility. Young children often use apps during car rides, flights, and low-connectivity environments where spotty network connections disrupt traditional web experiences.",
+          },
+          {
+            t: "states",
+            items: [
+              [
+                "ok",
+                "Offline PWA Launch",
+                "App assets, sounds, and graphics are fully cached locally, launching instantly with zero network wait.",
+              ],
+              [
+                "load",
+                "Zero Buffering",
+                "Preloaded audio phonemes ensure instantaneous voice feedback upon tapping, avoiding toddler frustration.",
+              ],
+              [
+                "empty",
+                "No Sign-In Walls",
+                "Zero onboarding friction, zero tracking, and zero account requirements before a child can play.",
+              ],
+              [
+                "ai",
+                "Google Play Packaged",
+                "Wrapped as an Android bundle ready for offline device storage without recurring server dependencies.",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: "googleplay",
+        label: "Google Play",
+        heading: "From design prototype to Google Play production access.",
+        blocks: [
+          {
+            t: "p",
+            html: "Learn Fun moved beyond a design prototype into a distributable product. From concept through UX architecture, UI design system, user testing, phonics iteration, and offline web implementation, the app reached full release readiness.",
+          },
+          {
+            t: "banner",
+            html: "<b>Production Status</b>: Learn Fun is live as an offline-first web experience at <a href='https://learnfunkids.vercel.app/' target='_blank' rel='noopener' style='color:#FF5E00;text-decoration:underline'>learnfunkids.vercel.app</a> and is currently in <b>Google Play production-access review</b>.",
+          },
+        ],
+      },
+      {
+        id: "takeaway",
+        label: "Retrospective",
+        heading: "Designing for children made simplicity harder — and more important.",
+        blocks: [
+          {
+            t: "takes",
+            items: [
+              [
+                "01",
+                "Simplicity determines comprehension",
+                "For adult products, removing complexity often improves usability. For early learners, removing complexity can determine whether the child understands the interaction at all.",
+              ],
+              [
+                "02",
+                "Feedback transforms original assumptions",
+                "Phonics and icon pruning were direct results of testing with real users, proving that listening beats defending design files.",
+              ],
+              [
+                "03",
+                "Every interaction must earn its place",
+                "Good product design isn't about creating more screens. It is about understanding people, making thoughtful decisions, and building experiences that solve real problems.",
+              ],
             ],
           },
         ],

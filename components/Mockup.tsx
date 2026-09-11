@@ -1,5 +1,6 @@
 import PhoneFrame from "@/components/PhoneFrame";
 import BrowserFrame from "@/components/BrowserFrame";
+import TabletFrame from "@/components/TabletFrame";
 import type { Device, Screen } from "@/lib/projects";
 
 type Props = {
@@ -20,6 +21,14 @@ export default function Mockup({ device, screens, max = 3, sizes, priority }: Pr
 
   if (device === "web") {
     return <BrowserFrame src={list[0].src} alt={list[0].alt} sizes={sizes} priority={priority} />;
+  }
+
+  if (device === "tablet") {
+    return (
+      <div className="tablet-mockup-wrap">
+        <TabletFrame src={list[0]?.src} alt={list[0]?.alt || "Tablet screen"} sizes={sizes} priority={priority} />
+      </div>
+    );
   }
 
   // mobile / tablet → one or more phone frames in a contained row

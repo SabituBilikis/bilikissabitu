@@ -9,7 +9,7 @@ export default function Work() {
         <div className="sec-head">
           <span className="sec-eyebrow">Selected work</span>
           <h2>Trust under uncertainty, shipped.</h2>
-          <span className="sec-idx">04 recent case studies</span>
+          <span className="sec-idx">0{projects.length} recent case studies</span>
         </div>
         <div className="grid" id="grid">
           {projects.map((p) => (

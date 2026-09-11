@@ -1,6 +1,8 @@
 import Image from "next/image";
 import PhoneFrame from "@/components/PhoneFrame";
 import BrowserFrame from "@/components/BrowserFrame";
+import TabletFrame from "@/components/TabletFrame";
+import { PhonicsDemo, FeedbackDecisionComparison, TabletInteractiveCanvas } from "@/components/LearnFunMicroInteractions";
 import type { CSBlock, FigBlock } from "@/lib/case-studies";
 import type { StateKey } from "@/lib/projects";
 
@@ -55,6 +57,10 @@ function Figure({ block }: { block: FigBlock }) {
       ) : block.screen && block.device === "web" ? (
         <div className={`fig-shot fig-${block.ratio}`}>
           <BrowserFrame src={block.screen.src} alt={block.screen.alt} sizes="(max-width:700px) 90vw, 780px" />
+        </div>
+      ) : block.screen && block.device === "tablet" ? (
+        <div className={`fig-shot fig-${block.ratio}`}>
+          <TabletFrame src={block.screen.src} alt={block.screen.alt} sizes="(max-width:700px) 95vw, 840px" />
         </div>
       ) : block.screen ? (
         <div className={`fig-shot fig-${block.ratio}`}>
@@ -215,6 +221,22 @@ export default function Block({ block }: { block: CSBlock }) {
           <span className="ic">NDA</span>
           <p dangerouslySetInnerHTML={{ __html: block.html }} />
         </div>
+      );
+
+    case "phonics-interactive":
+      return <PhonicsDemo />;
+
+    case "tablet-canvas":
+      return <TabletInteractiveCanvas />;
+
+    case "feedback-chain":
+      return (
+        <FeedbackDecisionComparison
+          feedback={block.feedback}
+          decision={block.decision}
+          before={block.before}
+          after={block.after}
+        />
       );
 
     default:

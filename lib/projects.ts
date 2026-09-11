@@ -28,6 +28,18 @@ export const projects: Project[] = [
     },
   },
   {
+    id: "learn-fun",
+    title: "Learn Fun",
+    domain: "EdTech · Tablet-First · Ages 1–5",
+    line: "An offline-first early learning app designed for toddlers and preschoolers (ages 1–5), from concept through Google Play release preparation.",
+    thumb: {
+      device: "tablet",
+      screens: [
+        { src: "/images/learn-fun/tablet-home.png", alt: "Learn Fun tablet home screen with foundational learning categories" },
+      ],
+    },
+  },
+  {
     id: "telehealth",
     title: "AI Telehealth Platform",
     domain: "Healthtech · 0→1 · Confidential",
