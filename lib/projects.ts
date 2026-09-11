@@ -1,5 +1,5 @@
 export type StateKey = "empty" | "load" | "error" | "ai" | "ok";
-export type Device = "mobile" | "web" | "tablet";
+export type Device = "mobile" | "web" | "tablet" | "chrome";
 export type Screen = { src: string; alt: string };
 
 /** Card-summary data for the homepage Work grid. Full narrative content lives in lib/case-studies.ts. */
@@ -9,7 +9,7 @@ export interface Project {
   domain: string;
   line: string;
   /** Real screens for the work-card thumbnail, framed in a matching device. */
-  thumb?: { device: Device; screens: Screen[] };
+  thumb?: { device: Device; screens: Screen[]; video?: string };
 }
 
 export const projects: Project[] = [
@@ -33,10 +33,11 @@ export const projects: Project[] = [
     domain: "EdTech · Play. Learn. Grow. · Ages 1–5",
     line: "An offline-first educational PWA and Android app for children aged 1–5, teaching letters, phonics, numbers, and shapes with touch-first interactions.",
     thumb: {
-      device: "tablet",
+      device: "chrome",
       screens: [
-        { src: "/images/learn-fun/tablet-home.png", alt: "Learn Fun tablet home screen with foundational learning categories" },
+        { src: "/images/learn-fun/video-frame.jpg", alt: "Learn Fun Chrome desktop browser app walkthrough" },
       ],
+      video: "/images/learn-fun/learn-fun-case-study.mp4",
     },
   },
   {

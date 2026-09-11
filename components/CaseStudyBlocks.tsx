@@ -2,6 +2,7 @@ import Image from "next/image";
 import PhoneFrame from "@/components/PhoneFrame";
 import BrowserFrame from "@/components/BrowserFrame";
 import TabletFrame from "@/components/TabletFrame";
+import ChromeBrowserMockup from "@/components/ChromeBrowserMockup";
 import { PhonicsDemo, FeedbackDecisionComparison, TabletInteractiveCanvas } from "@/components/LearnFunMicroInteractions";
 import type { CSBlock, FigBlock } from "@/lib/case-studies";
 import type { StateKey } from "@/lib/projects";
@@ -40,6 +41,18 @@ function ScatteredIllustration({ ratio }: { ratio: FigBlock["ratio"] }) {
 }
 
 function Figure({ block }: { block: FigBlock }) {
+  if (block.device === "chrome") {
+    return (
+      <figure className="fig fig-chrome-wrap">
+        <ChromeBrowserMockup
+          video={block.video}
+          poster={block.screen?.src}
+        />
+        {block.captionHtml && <figcaption dangerouslySetInnerHTML={{ __html: block.captionHtml }} />}
+      </figure>
+    );
+  }
+
   return (
     <figure className="fig">
       {block.video ? (

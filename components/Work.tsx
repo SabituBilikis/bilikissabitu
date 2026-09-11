@@ -19,7 +19,8 @@ export default function Work() {
                   <Mockup
                     device={p.thumb.device}
                     screens={p.thumb.screens}
-                    sizes={p.thumb.device === "web" ? "(max-width:760px) 90vw, 600px" : "(max-width:760px) 40vw, 200px"}
+                    video={p.thumb.video}
+                    sizes={p.thumb.device === "web" || p.thumb.device === "chrome" ? "(max-width:760px) 90vw, 600px" : "(max-width:760px) 40vw, 200px"}
                   />
                 </div>
               ) : (

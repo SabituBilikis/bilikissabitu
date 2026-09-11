@@ -1587,3 +1587,369 @@
       display: none;
     }
   }
+
+  /* ── Chrome Desktop Browser Mockup (Pixel-perfect to reference) ── */
+  .chrome-mockup-wrapper {
+    width: 100%;
+    margin: 28px 0;
+  }
+
+  .chrome-window {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.14), 0 0 0 1px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .chrome-window:hover {
+    box-shadow: 0 24px 56px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.1);
+  }
+
+  /* 1. Tab Bar */
+  .chrome-tabbar {
+    background: #dee1e6;
+    height: 42px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 10px 0 14px;
+    user-select: none;
+    gap: 12px;
+  }
+
+  .chrome-traffic-lights {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 12px;
+  }
+
+  .chrome-traffic-lights .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .chrome-traffic-lights .dot-close {
+    background: #ff5f56;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  }
+
+  .chrome-traffic-lights .dot-min {
+    background: #ffbd2e;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  }
+
+  .chrome-traffic-lights .dot-max {
+    background: #27c93f;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  }
+
+  .chrome-tabs-list {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .chrome-tabs-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chrome-tab {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 33px;
+    padding: 0 12px;
+    border-radius: 8px 8px 0 0;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #4a5568;
+    max-width: 170px;
+    min-width: 110px;
+    cursor: default;
+    position: relative;
+    transition: background 0.15s ease;
+  }
+
+  .chrome-tab.inactive {
+    background: transparent;
+  }
+
+  .chrome-tab.inactive:hover {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .chrome-tab.active {
+    background: #ffffff;
+    color: #1f2937;
+    font-weight: 600;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .chrome-tab .tab-fav {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+  }
+
+  .tab-fav-pink {
+    background: #ff4081;
+    border-radius: 50% !important;
+  }
+
+  .tab-fav-figma {
+    color: #0acf83;
+    font-weight: bold;
+    font-size: 11px;
+  }
+
+  .chrome-tab .tab-title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chrome-tab .tab-close {
+    font-size: 14px;
+    line-height: 1;
+    color: #8c939d;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chrome-tab .tab-close:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #1f2937;
+  }
+
+  .chrome-tab-add {
+    width: 26px;
+    height: 26px;
+    margin-bottom: 3px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #5f6368;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .chrome-tab-add:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #202124;
+  }
+
+  /* 2. Navigation Toolbar */
+  .chrome-toolbar {
+    background: #ffffff;
+    height: 40px;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .chrome-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .chrome-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #5f6368;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    padding: 0;
+  }
+
+  .chrome-btn:hover:not(.disabled) {
+    background: #f1f3f4;
+    color: #202124;
+  }
+
+  .chrome-btn.disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  /* Omnibox / Search URL Bar */
+  .chrome-omnibox {
+    flex: 1;
+    background: #f1f3f4;
+    height: 28px;
+    border-radius: 14px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .chrome-omnibox:hover {
+    background: #e8eaed;
+  }
+
+  .chrome-google-icon {
+    flex-shrink: 0;
+  }
+
+  .chrome-omnibox-text {
+    flex: 1;
+    font-size: 12px;
+    color: #202124;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .chrome-star-icon {
+    color: #5f6368;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .chrome-star-icon:hover {
+    color: #fbbc05;
+  }
+
+  /* Right Tools */
+  .chrome-tools-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .chrome-profile-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fbcfe8, #f472b6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+
+  /* 3. Viewport & Video Player */
+  .chrome-viewport {
+    position: relative;
+    width: 100%;
+    background: #000000;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .chrome-video-element {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .chrome-play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .chrome-play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding-left: 4px;
+    transition: transform 0.15s ease;
+  }
+
+  .chrome-viewport:hover .chrome-play-btn {
+    transform: scale(1.08);
+  }
+
+  .chrome-sound-toggle {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background: rgba(17, 24, 39, 0.85);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    z-index: 5;
+  }
+
+  .chrome-sound-toggle:hover {
+    background: rgba(17, 24, 39, 0.98);
+    transform: translateY(-1px);
+  }
+
+  .chrome-mockup-caption {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .chrome-mockup-caption b {
+    color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    .chrome-tab.inactive {
+      display: none;
+    }
+    .chrome-tab.active {
+      max-width: 100%;
+    }
+    .chrome-tools-actions .chrome-btn {
+      display: none;
+    }
+  }
+

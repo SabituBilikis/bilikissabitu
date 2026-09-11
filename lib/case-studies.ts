@@ -8,8 +8,8 @@ export type FigBlock = {
   screen?: Screen;
   /** When true with `screen` set, renders the image plain (no phone bezel) — for UI crops that aren't full screens. */
   raw?: boolean;
-  /** When "web" or "tablet" with `screen` set, renders inside a matching device frame instead of a phone bezel. */
-  device?: "web" | "tablet" | "mobile";
+  /** When "web" or "tablet" or "chrome" with `screen` set, renders inside a matching device frame instead of a phone bezel. */
+  device?: "web" | "tablet" | "mobile" | "chrome";
   /** Real video src — when present (kind:"vid"), renders an inline <video> instead of a placeholder. */
   video?: string;
   /** Original CSS/SVG illustration key — for concept figures with no matching real asset. */
@@ -325,6 +325,15 @@ export const caseStudies: Record<string, CaseStudy> = {
           {
             t: "thesis",
             html: "Young children don't need more things competing for their attention. They need learning experiences that are simple enough to understand, engaging enough to explore, and flexible enough to work wherever learning happens. Designing for early learners completely inverts traditional digital product assumptions.",
+          },
+          {
+            t: "fig",
+            kind: "vid",
+            ratio: "r169",
+            device: "chrome",
+            video: "/images/learn-fun/learn-fun-case-study.mp4",
+            screen: { src: "/images/learn-fun/video-frame.jpg", alt: "Learn Fun app walkthrough inside desktop Chrome browser mockup" },
+            captionHtml: "Fig 0.1 · <b>Learn Fun application walkthrough</b> — Desktop browser experience showing lesson modules, phonics, and touch-first interactions.",
           },
           {
             t: "cards",
