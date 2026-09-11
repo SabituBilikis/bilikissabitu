@@ -57,7 +57,7 @@ export default async function CaseStudyPage({
             ))}
             {cs.githubUrl && (
               <a href={cs.githubUrl} target="_blank" rel="noopener" className="cs-cta-tag">
-                View on GitHub <span className="arw">→</span>
+                {cs.githubUrl.includes("github.com") ? "View on GitHub" : "Visit Live App"} <span className="arw">→</span>
               </a>
             )}
           </div>

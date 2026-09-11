@@ -34,6 +34,7 @@ export default function TabletFrame({
               src={src}
               alt={alt}
               fill
+              unoptimized
               sizes={sizes}
               priority={priority}
               style={{ objectFit: "cover", objectPosition: "top" }}
