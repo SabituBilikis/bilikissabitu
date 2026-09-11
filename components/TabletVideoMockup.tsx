@@ -11,6 +11,7 @@ export type VideoOption = {
 type Props = {
   video?: string;
   poster?: string;
+  image?: string;
   videos?: VideoOption[];
   caption?: string;
   className?: string;
@@ -25,6 +26,7 @@ type Props = {
 export default function TabletVideoMockup({
   video,
   poster,
+  image,
   videos,
   caption,
   className = "",
@@ -107,62 +109,73 @@ export default function TabletVideoMockup({
             <span className="sensor-dot sensor-ir" />
           </div>
 
-          {/* Screen Viewport with Video Player */}
+          {/* Screen Viewport with Video Player or Image */}
           <div
             className="tablet-mockup-screen"
-            style={{ aspectRatio }}
-            onClick={togglePlay}
-            role="button"
-            tabIndex={0}
-            aria-label={isPlaying ? "Click to pause video" : "Click to play video"}
+            style={{ aspectRatio: image ? "467 / 355" : aspectRatio }}
+            onClick={image ? undefined : togglePlay}
+            role={image ? undefined : "button"}
+            tabIndex={image ? undefined : 0}
+            aria-label={image ? undefined : isPlaying ? "Click to pause video" : "Click to play video"}
           >
-            <video
-              key={activeVideo}
-              ref={videoRef}
-              src={activeVideo}
-              poster={activePoster}
-              autoPlay
-              loop
-              muted={isMuted}
-              playsInline
-              className="tablet-video-element"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-            />
+            {image ? (
+              <img
+                src={image}
+                alt="Learn Fun tablet learning interface preview"
+                className="tablet-image-element"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            ) : (
+              <>
+                <video
+                  key={activeVideo}
+                  ref={videoRef}
+                  src={activeVideo}
+                  poster={activePoster}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="tablet-video-element"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                />
 
-            {/* Play / Pause overlay */}
-            {!isPlaying && (
-              <div className="tablet-play-overlay">
-                <div className="tablet-play-btn">
-                  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
-                </div>
-              </div>
+                {/* Play / Pause overlay */}
+                {!isPlaying && (
+                  <div className="tablet-play-overlay">
+                    <div className="tablet-play-btn">
+                      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                      </svg>
+                    </div>
+                  </div>
+                )}
+
+                {/* Audio Mute / Unmute Button */}
+                <button
+                  type="button"
+                  className="tablet-sound-toggle"
+                  onClick={toggleMute}
+                  aria-label={isMuted ? "Unmute video audio" : "Mute video audio"}
+                  title={isMuted ? "Click to hear audio" : "Mute"}
+                >
+                  {isMuted ? (
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                      <line x1="23" y1="9" x2="17" y2="15" />
+                      <line x1="17" y1="9" x2="23" y2="15" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                    </svg>
+                  )}
+                  <span className="tablet-sound-label">{isMuted ? "Sound Off" : "Sound On"}</span>
+                </button>
+              </>
             )}
-
-            {/* Audio Mute / Unmute Button */}
-            <button
-              type="button"
-              className="tablet-sound-toggle"
-              onClick={toggleMute}
-              aria-label={isMuted ? "Unmute video audio" : "Mute video audio"}
-              title={isMuted ? "Click to hear audio" : "Mute"}
-            >
-              {isMuted ? (
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <line x1="23" y1="9" x2="17" y2="15" />
-                  <line x1="17" y1="9" x2="23" y2="15" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
-                </svg>
-              )}
-              <span className="tablet-sound-label">{isMuted ? "Sound Off" : "Sound On"}</span>
-            </button>
           </div>
         </div>
       </div>

@@ -54,12 +54,13 @@ function Figure({ block }: { block: FigBlock }) {
     );
   }
 
-  if (block.device === "tablet" && (block.video || block.videos)) {
+  if (block.device === "tablet") {
     return (
       <figure className="fig fig-tablet-wrap">
         <TabletVideoMockup
           video={block.video}
           poster={block.screen?.src}
+          image={block.kind === "img" ? block.screen?.src : undefined}
           videos={block.videos}
         />
         {block.captionHtml && <figcaption dangerouslySetInnerHTML={{ __html: block.captionHtml }} />}
@@ -84,10 +85,6 @@ function Figure({ block }: { block: FigBlock }) {
       ) : block.screen && block.device === "web" ? (
         <div className={`fig-shot fig-${block.ratio}`}>
           <BrowserFrame src={block.screen.src} alt={block.screen.alt} sizes="(max-width:700px) 90vw, 780px" />
-        </div>
-      ) : block.screen && block.device === "tablet" ? (
-        <div className={`fig-shot fig-${block.ratio}`}>
-          <TabletFrame src={block.screen.src} alt={block.screen.alt} sizes="(max-width:700px) 95vw, 840px" />
         </div>
       ) : block.screen ? (
         <div className={`fig-shot fig-${block.ratio}`}>
