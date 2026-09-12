@@ -39,6 +39,7 @@ export type CSBlock =
   | { t: "phonics-interactive" }
   | { t: "tablet-canvas" }
   | { t: "learn-fun-principles" }
+  | { t: "before-after-mockup" }
   | {
       t: "feedback-chain";
       feedback: { kicker: string; quote: string };
@@ -474,6 +475,9 @@ export const caseStudies: Record<string, CaseStudy> = {
           {
             t: "p",
             html: "Testing with young children surfaced an important observation: extraneous decorative icons did not contribute meaningfully to navigation or learning. For early learners, visual elements aren't neutral—they actively compete for attention.",
+          },
+          {
+            t: "before-after-mockup",
           },
         ],
       },
