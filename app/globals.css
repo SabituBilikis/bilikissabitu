@@ -2201,7 +2201,7 @@
   .f-side-by-side-comparison {
     width: 100%;
     margin-top: 24px;
-    padding: 28px 20px 24px 20px;
+    padding: 32px 24px 28px 24px;
     background: #FAFAFC;
     border: 1px solid #E5E7EB;
     border-radius: 24px;
@@ -2210,32 +2210,80 @@
     align-items: center;
   }
 
-  .f-comparison-header-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 80px;
+  .f-comparison-header-wrap {
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
-    position: relative;
+    max-width: 660px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .f-comparison-label {
-    font-size: 18px;
-    font-weight: 700;
+  .f-comparison-top-caption {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted, #64748b);
+    margin: 0 0 10px 0;
+    text-align: center;
+  }
+
+  .f-comparison-flow-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .f-comparison-flow-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .f-comparison-heading {
+    font-size: 24px;
+    font-weight: 800;
     color: var(--ink, #0f172a);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px 0;
+    line-height: 1.1;
   }
 
-  .f-comparison-curved-arrow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 36px;
-    color: #64748B;
+  .f-comparison-pill {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .f-comparison-pill.before {
+    background: #FEE2E2;
+    color: #DC2626;
+  }
+
+  .f-comparison-pill.after {
+    background: #DCFCE7;
+    color: #16A34A;
+  }
+
+  .f-comparison-arrow-bridge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    padding: 0 8px;
+  }
+
+  .f-comparison-arc-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
   }
 
   .f-comparison-columns {
@@ -2243,7 +2291,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 36px;
     width: 100%;
-    max-width: 740px;
+    max-width: 660px;
     margin: 0 auto;
   }
 
@@ -2252,8 +2300,11 @@
       grid-template-columns: 1fr;
       gap: 32px;
     }
-    .f-comparison-header-arrow {
-      gap: 30px;
+    .f-comparison-flow-row {
+      gap: 8px;
+    }
+    .f-comparison-arrow-bridge {
+      width: 90px;
     }
   }
 
@@ -2264,76 +2315,53 @@
     width: 100%;
   }
 
-  .f-comparison-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink, #0f172a);
-    margin-bottom: 14px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .f-comparison-badge {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .f-comparison-badge.before {
-    background: #FEE2E2;
-    color: #DC2626;
-  }
-
-  .f-comparison-badge.after {
-    background: #DCFCE7;
-    color: #16A34A;
-  }
-
+  /* Sleek, minimal wireframe phone mockup outline matching UXBrainy */
   .f-comparison-frame {
     width: 100%;
-    max-width: 270px;
+    max-width: 280px;
     margin: 0 auto;
     position: relative;
-    border-radius: 40px;
-    background: #0f1013;
-    padding: 10px;
-    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 36px;
+    border: 2px solid #1e293b;
+    background: linear-gradient(180deg, #FE3B30 0%, #D82E24 100%);
+    padding: 14px 10px 18px 10px;
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
   }
 
   .f-comparison-frame:hover {
     transform: translateY(-4px);
-    box-shadow: 0 26px 55px -10px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 22px 48px -10px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
   }
 
   .f-comparison-screen {
     position: relative;
     width: 100%;
-    aspect-ratio: 9 / 18.5;
-    border-radius: 32px;
+    background: transparent;
+    border-radius: 18px;
     overflow: hidden;
-    background: #FF3B30;
   }
 
   .f-comparison-screen img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
+    object-fit: contain;
+    border-radius: 16px;
   }
 
   .f-comparison-notes {
     margin-top: 14px;
-    font-size: 12.5px;
+    font-size: 13px;
     color: var(--muted, #64748b);
-    line-height: 1.5;
+    line-height: 1.55;
     text-align: center;
-    max-width: 260px;
+    max-width: 280px;
+  }
+  .f-comparison-notes strong {
+    color: var(--ink, #0f172a);
+    font-weight: 600;
   }
 
   /* ── Learn Fun Design Principles Component Mockups ── */
