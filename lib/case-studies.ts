@@ -455,37 +455,6 @@ export const caseStudies: Record<string, CaseStudy> = {
             t: "p",
             html: "During early testing, parent and caregiver feedback revealed a crucial insight: <em>Knowing what a letter looks like is fundamentally different from knowing what it sounds like.</em> This feedback directly evolved the product from visual recognition to full phonics, connecting <b>Letter → Sound → Word</b>.",
           },
-          {
-            t: "feedback-chain",
-            feedback: {
-              kicker: "User Feedback During Testing",
-              quote: "We'd like phonics so our toddlers can hear the sounds the letters make, not just see the letter.",
-            },
-            decision: {
-              kicker: "Product Decision",
-              action: "Add letter-sound audio interactions to teach phonemes alongside alphabet recognition.",
-            },
-            before: {
-              label: "Original Approach",
-              title: "Visual Letter Recognition Only",
-              desc: "Children tapped letters and saw the uppercase/lowercase alphabet, but had no auditory reinforcement.",
-              items: [
-                "Tap letter A",
-                "Letter visual appears on screen",
-                "No audio connection or phoneme sound",
-              ],
-            },
-            after: {
-              label: "Shipped Iteration",
-              title: "Letter + Phonics Audio Association",
-              desc: "Children interact with letters while hearing clear pronunciation, letter sounds, and playful word examples.",
-              items: [
-                "Tap letter A",
-                "Hears /æ/ phonics audio",
-                "Connects A → /æ/ → Apple",
-              ],
-            },
-          },
           { t: "phonics-interactive" },
         ],
       },
