@@ -599,6 +599,69 @@ export function FeedbackDecisionComparison({ feedback, decision, before, after }
           )}
         </div>
       </div>
+
+      {/* 4. Side-by-Side Phone Mockups (UXBrainy Reference Style) */}
+      <div className="f-side-by-side-comparison">
+        {/* Curving Header Arrow between Before and After */}
+        <div className="f-comparison-header-arrow">
+          <span className="f-comparison-label">Before</span>
+          <svg
+            className="f-comparison-curved-arrow"
+            viewBox="0 0 100 40"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M 10 32 Q 50 4 90 28" />
+            <polyline points="82 22 92 28 88 38" />
+          </svg>
+          <span className="f-comparison-label">After</span>
+        </div>
+
+        {/* Two Phone Mockups Side-by-Side */}
+        <div className="f-comparison-columns">
+          {/* Before Mockup */}
+          <div className="f-comparison-col">
+            <div className="f-comparison-title">
+              <span className="f-comparison-badge before">Before Testing</span>
+              <span>Decorative Clutter</span>
+            </div>
+            <div className="f-comparison-frame">
+              <div className="f-comparison-screen">
+                <img
+                  src="/images/learn-fun/letters-learned-before.png"
+                  alt="Before testing: Extraneous decorative sparkles, border stars, and multiple non-functional buttons"
+                />
+              </div>
+            </div>
+            <p className="f-comparison-notes">
+              Extraneous decorative stars and multi-button chrome created false affordances and divided child attention.
+            </p>
+          </div>
+
+          {/* After Mockup */}
+          <div className="f-comparison-col">
+            <div className="f-comparison-title">
+              <span className="f-comparison-badge after">After Simplification</span>
+              <span>Clean Functional UI</span>
+            </div>
+            <div className="f-comparison-frame">
+              <div className="f-comparison-screen">
+                <img
+                  src="/images/learn-fun/letters-learned-after.png"
+                  alt="After simplification: Removed decorative stars, direct focus to letter and large sound button"
+                />
+              </div>
+            </div>
+            <p className="f-comparison-notes">
+              Removed all non-functional icons. Clean visual hierarchy directs 100% of focus to letter sound & exploration.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
