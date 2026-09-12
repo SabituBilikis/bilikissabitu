@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 
 /* ------------------------------------------------------------------------- */
-/* Authentic Learn Fun Design Tokens & Palette (extracted from live web app)  */
+/* Authentic Learn Fun Design Tokens & Palette (from live learnfunkids web app) */
 /* ------------------------------------------------------------------------- */
 const LF_THEME = {
   navy: "#1A0050",
@@ -18,6 +18,8 @@ const LF_THEME = {
   blueDark: "#0056CC",
   purple: "#AF52DE",
   purpleDark: "#8A3DB5",
+  teal: "#00C7BE",
+  tealDark: "#009B94",
   cream: "#F3EEFF",
   muted: "#E8DFFF",
   mutedFg: "#6B4FA0",
@@ -26,7 +28,7 @@ const LF_THEME = {
 
 /* ------------------------------------------------------------------------- */
 /* 01: "Learning should feel like play"                                      */
-/* Exact replica of the Adventure Carousel Component from learnfunkids.vercel.app */
+/* Exact replica of the Adventure Carousel Component (from live app `/`)     */
 /* ------------------------------------------------------------------------- */
 function AdventureCardsMockup() {
   const [activeId, setActiveId] = useState<string>("alphabet");
@@ -43,7 +45,6 @@ function AdventureCardsMockup() {
       color: LF_THEME.red,
       dark: LF_THEME.redDark,
       state: "active",
-      progress: 100,
       deco: ["A", "B", "C"],
       isNew: false,
     },
@@ -56,7 +57,6 @@ function AdventureCardsMockup() {
       color: LF_THEME.orange,
       dark: LF_THEME.orangeDark,
       state: "new",
-      progress: 0,
       deco: ["M", "🔊", "🐒"],
       isNew: true,
     },
@@ -69,7 +69,6 @@ function AdventureCardsMockup() {
       color: LF_THEME.orange,
       dark: LF_THEME.orangeDark,
       state: "new",
-      progress: 0,
       deco: ["1", "2", "3"],
       isNew: true,
     },
@@ -82,7 +81,6 @@ function AdventureCardsMockup() {
       color: LF_THEME.blue,
       dark: LF_THEME.blueDark,
       state: "new",
-      progress: 0,
       deco: ["○", "△", "□"],
       isNew: true,
     },
@@ -95,7 +93,6 @@ function AdventureCardsMockup() {
       color: LF_THEME.green,
       dark: LF_THEME.greenDark,
       state: "locked",
-      progress: 0,
       deco: ["🔴", "🔵", "🟡"],
       isNew: false,
     },
@@ -108,7 +105,6 @@ function AdventureCardsMockup() {
       color: LF_THEME.purple,
       dark: LF_THEME.purpleDark,
       state: "new",
-      progress: 0,
       deco: ["🐱", "🐮", "🐷"],
       isNew: true,
     },
@@ -116,7 +112,7 @@ function AdventureCardsMockup() {
 
   const handleScroll = (direction: "left" | "right") => {
     if (!carouselRef.current) return;
-    const cardWidth = 236; // card width + gap
+    const cardWidth = 232;
     const currentScroll = carouselRef.current.scrollLeft;
     const targetScroll = direction === "left" ? currentScroll - cardWidth : currentScroll + cardWidth;
     carouselRef.current.scrollTo({ left: targetScroll, behavior: "smooth" });
@@ -129,7 +125,9 @@ function AdventureCardsMockup() {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(
-        cat.state === "locked" ? `${cat.title} is locked. Complete previous adventures to unlock!` : `Let's learn ${cat.title}!`
+        cat.state === "locked"
+          ? `${cat.title} is locked. Complete previous adventures to unlock!`
+          : `Let's learn ${cat.title}!`
       );
       utter.rate = 1.0;
       utter.pitch = 1.25;
@@ -143,15 +141,14 @@ function AdventureCardsMockup() {
       style={{
         background: "#FFFFFF",
         borderRadius: "24px",
-        border: `2px solid ${LF_THEME.navy}`,
+        border: `2.5px solid ${LF_THEME.navy}`,
         boxShadow: `0 8px 24px rgba(26, 0, 80, 0.08), 3px 4px 0 ${LF_THEME.navy}`,
         padding: "20px",
         fontFamily: "'Fredoka', sans-serif",
       }}
     >
-      {/* ── Top Greeting Bar ── */}
+      {/* Top Greeting Bar */}
       <div
-        className="lf-greeting-bar"
         style={{
           display: "flex",
           alignItems: "center",
@@ -170,7 +167,6 @@ function AdventureCardsMockup() {
               lineHeight: 1,
               display: "inline-block",
               transform: "rotate(-4deg)",
-              filter: "drop-shadow(2px 3px 0 rgba(26,0,80,0.15))",
             }}
           >
             🦊
@@ -204,7 +200,6 @@ function AdventureCardsMockup() {
           </div>
         </div>
 
-        {/* Action button / capsule */}
         <div
           style={{
             background: LF_THEME.cream,
@@ -216,16 +211,13 @@ function AdventureCardsMockup() {
             fontFamily: "'Fredoka', sans-serif",
             fontWeight: 700,
             fontSize: "12.5px",
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
           }}
         >
-          <span>Choose Your Adventure!</span>
+          Choose Your Adventure!
         </div>
       </div>
 
-      {/* ── Carousel Header: Title + Navigation ── */}
+      {/* Carousel Header: Title + Navigation */}
       <div
         style={{
           display: "flex",
@@ -234,18 +226,16 @@ function AdventureCardsMockup() {
           marginBottom: "14px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span
-            style={{
-              fontFamily: "'Fredoka', sans-serif",
-              fontWeight: 700,
-              fontSize: "17px",
-              color: LF_THEME.navy,
-            }}
-          >
-            ✨ Choose Your Adventure!
-          </span>
-        </div>
+        <span
+          style={{
+            fontFamily: "'Fredoka', sans-serif",
+            fontWeight: 700,
+            fontSize: "17px",
+            color: LF_THEME.navy,
+          }}
+        >
+          ✨ Choose Your Adventure!
+        </span>
 
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <span
@@ -277,7 +267,6 @@ function AdventureCardsMockup() {
               justifyContent: "center",
               fontSize: "12px",
               fontWeight: "bold",
-              transition: "transform 0.1s ease",
             }}
           >
             ◀
@@ -300,7 +289,6 @@ function AdventureCardsMockup() {
               justifyContent: "center",
               fontSize: "12px",
               fontWeight: "bold",
-              transition: "transform 0.1s ease",
             }}
           >
             ▶
@@ -308,7 +296,7 @@ function AdventureCardsMockup() {
         </div>
       </div>
 
-      {/* ── Scrollable Adventure Cards Track (Exact $C component) ── */}
+      {/* Cards Track */}
       <div
         ref={carouselRef}
         className="lf-carousel"
@@ -323,7 +311,7 @@ function AdventureCardsMockup() {
           msOverflowStyle: "none",
         }}
       >
-        {categories.map((cat, idx) => {
+        {categories.map((cat) => {
           const isSelected = activeId === cat.id;
           const isLocked = cat.state === "locked";
 
@@ -353,7 +341,7 @@ function AdventureCardsMockup() {
                 userSelect: "none",
               }}
             >
-              {/* Top 46% Colored Banner */}
+              {/* Top Colored Banner */}
               <div
                 style={{
                   flex: "0 0 46%",
@@ -367,7 +355,6 @@ function AdventureCardsMockup() {
                     : `linear-gradient(140deg, ${cat.color}F2 0%, ${cat.dark}C8 100%)`,
                 }}
               >
-                {/* Subtle highlight gloss */}
                 <div
                   style={{
                     position: "absolute",
@@ -376,7 +363,6 @@ function AdventureCardsMockup() {
                   }}
                 />
 
-                {/* Floating decorative characters */}
                 {cat.deco.map((char, i) => (
                   <span
                     key={i}
@@ -397,7 +383,6 @@ function AdventureCardsMockup() {
                   </span>
                 ))}
 
-                {/* Large center emoji / symbol */}
                 <span
                   style={{
                     fontSize: "58px",
@@ -409,7 +394,6 @@ function AdventureCardsMockup() {
                   {cat.emoji}
                 </span>
 
-                {/* NEW! yellow pill badge */}
                 {cat.isNew && (
                   <div
                     style={{
@@ -432,7 +416,6 @@ function AdventureCardsMockup() {
                   </div>
                 )}
 
-                {/* Locked overlay badge */}
                 {isLocked && (
                   <div
                     style={{
@@ -463,7 +446,6 @@ function AdventureCardsMockup() {
                   </div>
                 )}
 
-                {/* Lessons count pill on bottom left */}
                 <div
                   style={{
                     position: "absolute",
@@ -489,7 +471,7 @@ function AdventureCardsMockup() {
                 </div>
               </div>
 
-              {/* Bottom 54% White Info Area */}
+              {/* Bottom White Info */}
               <div
                 style={{
                   flex: "1 1 54%",
@@ -525,7 +507,6 @@ function AdventureCardsMockup() {
                   </p>
                 </div>
 
-                {/* Bottom Full-Width Action Button */}
                 {isLocked ? (
                   <div
                     style={{
@@ -573,7 +554,7 @@ function AdventureCardsMockup() {
         })}
       </div>
 
-      {/* ── Dots Pagination (from real app) ── */}
+      {/* Dots */}
       <div
         style={{
           display: "flex",
@@ -601,198 +582,348 @@ function AdventureCardsMockup() {
 }
 
 /* ------------------------------------------------------------------------- */
-/* 02: "Reduce cognitive load"                                               */
-/* Single-focus interactive card: One clear action -> One clear response     */
+/* 02: "Reduce cognitive load — One clear action -> one clear response"       */
+/* Exact replica of the Lesson Screen (`wd` / `Yb` / `Kb` / `Gb` in live app) */
 /* ------------------------------------------------------------------------- */
 function CognitiveLoadMockup() {
   const [stars, setStars] = useState(3);
-  const [justPlayed, setJustPlayed] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [activeLetterIdx, setActiveLetterIdx] = useState(0);
 
-  const handleHearSound = () => {
-    setJustPlayed(true);
-    setStars((prev) => prev + 1);
+  const lessons = [
+    { letter: "A", word: "Apple", emoji: "🍎", phoneme: "/æ/", color: LF_THEME.red, dark: LF_THEME.redDark },
+    { letter: "B", word: "Ball", emoji: "⚽", phoneme: "/b/", color: LF_THEME.blue, dark: LF_THEME.blueDark },
+    { letter: "C", word: "Cat", emoji: "🐱", phoneme: "/k/", color: LF_THEME.green, dark: LF_THEME.greenDark },
+  ];
+
+  const current = lessons[activeLetterIdx];
+
+  const handleSpeak = () => {
+    setIsPlaying(true);
+    setStars((s) => s + 1);
 
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance("Apple! /æ/");
-      utter.rate = 0.9;
+      const utter = new SpeechSynthesisUtterance(`${current.letter}! ${current.letter} for ${current.word}!`);
+      utter.rate = 0.85;
       utter.pitch = 1.3;
       window.speechSynthesis.speak(utter);
     }
 
-    setTimeout(() => setJustPlayed(false), 1200);
+    setTimeout(() => setIsPlaying(false), 1400);
   };
 
   return (
     <div
       style={{
-        background: "#FFFFFF",
+        position: "relative",
+        background: `linear-gradient(150deg, ${current.color} 0%, ${current.dark} 100%)`,
         borderRadius: "24px",
-        border: `2px solid ${LF_THEME.navy}`,
-        boxShadow: `0 8px 24px rgba(26, 0, 80, 0.08), 3px 4px 0 ${LF_THEME.navy}`,
-        padding: "20px",
+        border: `3px solid ${LF_THEME.navy}`,
+        boxShadow: `0 8px 24px rgba(26, 0, 80, 0.12), 4px 6px 0 ${LF_THEME.navy}`,
+        padding: "16px 20px 20px 20px",
+        color: "#FFFFFF",
         fontFamily: "'Fredoka', sans-serif",
+        overflow: "hidden",
+        userSelect: "none",
       }}
     >
-      {/* Top flow indicator */}
+      {/* Floating background decorative characters */}
+      <span
+        style={{
+          position: "absolute",
+          top: "10%",
+          left: "6%",
+          fontSize: "110px",
+          fontWeight: 900,
+          color: "rgba(255, 255, 255, 0.08)",
+          pointerEvents: "none",
+          lineHeight: 1,
+        }}
+      >
+        {current.letter}
+      </span>
+      <span
+        style={{
+          position: "absolute",
+          bottom: "12%",
+          right: "8%",
+          fontSize: "90px",
+          opacity: 0.1,
+          pointerEvents: "none",
+          lineHeight: 1,
+        }}
+      >
+        {current.emoji}
+      </span>
+
+      {/* ── Screen Header Bar (from live `wd`) ── */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: "18px",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        {/* Back Button */}
+        <button
+          type="button"
+          onClick={() => setActiveLetterIdx((i) => Math.max(0, i - 1))}
+          style={{
+            width: "38px",
+            height: "38px",
+            borderRadius: "14px",
+            background: "rgba(255, 255, 255, 0.22)",
+            border: "2px solid rgba(255, 255, 255, 0.6)",
+            color: "#FFFFFF",
+            fontSize: "14px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          ◀
+        </button>
+
+        {/* Lesson Progress Badge */}
+        <div
+          style={{
+            background: "rgba(255, 255, 255, 0.2)",
+            border: "2px solid rgba(255, 255, 255, 0.5)",
+            borderRadius: "100px",
+            padding: "3px 14px",
+            fontSize: "13px",
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+          }}
+        >
+          {activeLetterIdx + 1} / {lessons.length}
+        </div>
+
+        {/* Stars counter & Done button */}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div
+            style={{
+              background: "rgba(255, 255, 255, 0.22)",
+              border: "2px solid rgba(255, 255, 255, 0.5)",
+              borderRadius: "14px",
+              padding: "4px 12px",
+              fontSize: "13px",
+              fontWeight: 700,
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+            }}
+          >
+            <span>⭐</span>
+            <span>{stars}</span>
+          </div>
+
+          <div
+            style={{
+              background: LF_THEME.green,
+              border: `2px solid ${LF_THEME.navy}`,
+              boxShadow: `2px 3px 0 ${LF_THEME.navy}`,
+              borderRadius: "14px",
+              padding: "4px 12px",
+              fontSize: "13px",
+              fontWeight: 700,
+              color: "#FFFFFF",
+            }}
+          >
+            ✓ Done!
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main 3-Column Stage (mascot, letter button, object panel) ── */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1.4fr 1fr",
+          alignItems: "center",
+          justifyItems: "center",
+          gap: "16px",
+          padding: "10px 0 20px 0",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        {/* Mascot Prompt (`Gb`) */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "52px", lineHeight: 1 }}>🦊</span>
+          <div
+            style={{
+              background: "#FFFFFF",
+              border: `2px solid ${LF_THEME.navy}`,
+              boxShadow: `2.5px 3.5px 0 ${LF_THEME.navy}`,
+              borderRadius: "14px",
+              padding: "5px 12px",
+              color: LF_THEME.navy,
+              fontSize: "12px",
+              fontWeight: 700,
+              whiteSpace: "nowrap",
+            }}
+          >
+            What is this?
+          </div>
+        </div>
+
+        {/* Center Giant Letter Button (`Yb`) */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+          <button
+            type="button"
+            onClick={handleSpeak}
+            style={{
+              width: "130px",
+              height: "130px",
+              borderRadius: "9999px",
+              background: "#FFFFFF",
+              border: `5px solid ${LF_THEME.navy}`,
+              boxShadow: `6px 8px 0 ${LF_THEME.navy}`,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transform: isPlaying ? "scale(1.08)" : "scale(1)",
+              transition: "transform 0.15s ease",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Fredoka', sans-serif",
+                fontWeight: 700,
+                fontSize: "76px",
+                color: current.color,
+                lineHeight: 1,
+              }}
+            >
+              {current.letter}
+            </span>
+          </button>
+
+          <div
+            style={{
+              background: "rgba(255, 255, 255, 0.24)",
+              border: "1.5px solid rgba(255, 255, 255, 0.5)",
+              borderRadius: "100px",
+              padding: "3px 14px",
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "0.02em",
+            }}
+          >
+            Tap letter to hear sound
+          </div>
+        </div>
+
+        {/* Word & Emoji Panel (`Kb`) */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+          <span
+            style={{
+              fontSize: "58px",
+              lineHeight: 1,
+              filter: "drop-shadow(3px 5px 0 rgba(26,0,80,0.35))",
+            }}
+          >
+            {current.emoji}
+          </span>
+          <div
+            style={{
+              background: "rgba(255, 255, 255, 0.24)",
+              border: "1.5px solid rgba(255, 255, 255, 0.55)",
+              backdropFilter: "blur(6px)",
+              borderRadius: "14px",
+              padding: "4px 14px",
+              fontSize: "15px",
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+            }}
+          >
+            {current.word}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Bottom Controls: Previous, Giant Sound Button, Next ── */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: "10px",
-          marginBottom: "16px",
-          flexWrap: "wrap",
-        }}
-      >
-        <span
-          style={{
-            background: "#EFF6FF",
-            color: "#1D4ED8",
-            border: "1.5px solid #BFDBFE",
-            borderRadius: "100px",
-            padding: "4px 12px",
-            fontSize: "12px",
-            fontWeight: 700,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
-          <span>1️⃣</span> One clear action
-        </span>
-        <span style={{ color: LF_THEME.mutedFg, fontWeight: 800 }}>➔</span>
-        <span
-          style={{
-            background: "#FEF3C7",
-            color: "#92400E",
-            border: "1.5px solid #FDE68A",
-            borderRadius: "100px",
-            padding: "4px 12px",
-            fontSize: "12px",
-            fontWeight: 700,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-          }}
-        >
-          <span>2️⃣</span> One clear response
-        </span>
-      </div>
-
-      {/* Main Single Action Screen Card */}
-      <div
-        style={{
-          maxWidth: "420px",
-          margin: "0 auto",
-          background: `linear-gradient(135deg, ${LF_THEME.red} 0%, ${LF_THEME.redDark} 100%)`,
-          borderRadius: "24px",
-          border: `3px solid ${LF_THEME.navy}`,
-          boxShadow: `4px 6px 0 ${LF_THEME.navy}`,
-          padding: "22px 18px",
-          color: "#FFFFFF",
-          textAlign: "center",
+          gap: "20px",
           position: "relative",
-          overflow: "hidden",
+          zIndex: 2,
+          paddingTop: "6px",
         }}
       >
-        {/* Top bar with stars */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "14px",
-          }}
-        >
-          <span
-            style={{
-              background: "rgba(255,255,255,0.22)",
-              border: "1.5px solid rgba(255,255,255,0.4)",
-              borderRadius: "100px",
-              padding: "2px 10px",
-              fontSize: "11px",
-              fontWeight: 700,
-            }}
-          >
-            Alphabet · Lesson 1
-          </span>
-          <span
-            style={{
-              background: "rgba(255,255,255,0.92)",
-              color: LF_THEME.navy,
-              border: `2px solid ${LF_THEME.navy}`,
-              boxShadow: `2px 2px 0 ${LF_THEME.navy}`,
-              borderRadius: "100px",
-              padding: "2px 10px",
-              fontSize: "11.5px",
-              fontWeight: 800,
-            }}
-          >
-            ⭐ {stars} Stars
-          </span>
-        </div>
-
-        {/* Big Letter Card */}
-        <div style={{ padding: "8px 0 16px 0" }}>
-          <div
-            style={{
-              fontSize: "76px",
-              lineHeight: 1,
-              fontWeight: 800,
-              filter: "drop-shadow(3px 5px 0 rgba(26,0,80,0.35))",
-            }}
-          >
-            A
-          </div>
-          <div
-            style={{
-              fontSize: "20px",
-              fontWeight: 700,
-              margin: "6px 0 2px 0",
-              letterSpacing: "0.02em",
-            }}
-          >
-            A is for Apple 🍎
-          </div>
-          <div
-            style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "13px",
-              opacity: 0.9,
-              fontWeight: 600,
-            }}
-          >
-            Phoneme: /æ/
-          </div>
-        </div>
-
-        {/* Oversized 64px thumb-friendly action button */}
         <button
           type="button"
-          onClick={handleHearSound}
+          onClick={() => setActiveLetterIdx((i) => Math.max(0, i - 1))}
           style={{
-            width: "100%",
-            height: "58px",
-            background: LF_THEME.yellow,
-            color: LF_THEME.navy,
-            border: `2.5px solid ${LF_THEME.navy}`,
-            boxShadow: justPlayed ? "none" : `3px 4px 0 ${LF_THEME.navy}`,
-            borderRadius: "18px",
-            fontFamily: "'Fredoka', sans-serif",
-            fontSize: "16px",
-            fontWeight: 700,
+            width: "48px",
+            height: "48px",
+            borderRadius: "16px",
+            background: "rgba(255, 255, 255, 0.22)",
+            border: "2.5px solid rgba(255, 255, 255, 0.6)",
+            color: "#FFFFFF",
+            fontSize: "18px",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "10px",
-            transform: justPlayed ? "translate(2px, 3px)" : "none",
-            transition: "all 0.12s ease",
           }}
         >
-          <span style={{ fontSize: "20px" }}>🔊</span>
-          <span>{justPlayed ? "Playing /æ/ ... +1 ⭐!" : "Tap to hear sound"}</span>
+          ◀
+        </button>
+
+        {/* Giant Yellow Tactile Sound Button (from live app) */}
+        <button
+          type="button"
+          onClick={handleSpeak}
+          style={{
+            width: "68px",
+            height: "68px",
+            borderRadius: "9999px",
+            background: LF_THEME.yellow,
+            border: `3.5px solid ${LF_THEME.navy}`,
+            boxShadow: isPlaying ? "none" : `4px 6px 0 ${LF_THEME.navy}`,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "28px",
+            transform: isPlaying ? "translate(2px, 3px) scale(1.05)" : "scale(1)",
+            transition: "all 0.12s ease",
+          }}
+          title="Tap to speak"
+        >
+          🔊
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveLetterIdx((i) => Math.min(lessons.length - 1, i + 1))}
+          style={{
+            width: "48px",
+            height: "48px",
+            borderRadius: "16px",
+            background: "rgba(255, 255, 255, 0.22)",
+            border: "2.5px solid rgba(255, 255, 255, 0.6)",
+            color: "#FFFFFF",
+            fontSize: "18px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          ▶
         </button>
       </div>
     </div>
@@ -801,164 +932,224 @@ function CognitiveLoadMockup() {
 
 /* ------------------------------------------------------------------------- */
 /* 03: "Every visual element needs a job"                                    */
-/* Interactive Before vs After Purpose Audit                                 */
+/* Exact replica of the Phonics Sound Discovery Board (`eE` in live app)     */
 /* ------------------------------------------------------------------------- */
-function VisualElementJobMockup() {
-  const [view, setView] = useState<"after" | "before">("after");
+function SoundDiscoveryBoardMockup() {
+  const [activePhoneme, setActivePhoneme] = useState<string | null>("a");
+
+  const soundTiles = [
+    { id: "a", letter: "A", phoneme: "/æ/", word: "Apple", emoji: "🍎", color: LF_THEME.red, speechText: "ah. Apple!" },
+    { id: "b", letter: "B", phoneme: "/b/", word: "Ball", emoji: "⚽", color: LF_THEME.blue, speechText: "buh. Ball!" },
+    { id: "c", letter: "C", phoneme: "/k/", word: "Cat", emoji: "🐱", color: LF_THEME.green, speechText: "kuh. Cat!" },
+    { id: "d", letter: "D", phoneme: "/d/", word: "Dog", emoji: "🐶", color: LF_THEME.orange, speechText: "duh. Dog!" },
+    { id: "e", letter: "E", phoneme: "/ɛ/", word: "Elephant", emoji: "🐘", color: LF_THEME.purple, speechText: "eh. Elephant!" },
+    { id: "f", letter: "F", phoneme: "/f/", word: "Fish", emoji: "🐟", color: LF_THEME.teal, speechText: "fuh. Fish!" },
+  ];
+
+  const handleTileClick = (tile: typeof soundTiles[0]) => {
+    setActivePhoneme(tile.id);
+
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(tile.speechText);
+      utter.rate = 0.9;
+      utter.pitch = 1.3;
+      window.speechSynthesis.speak(utter);
+    }
+  };
 
   return (
     <div
       style={{
-        background: "#FFFFFF",
+        background: "linear-gradient(180deg, #FFF9F0 0%, #FFFFFF 50%, #F3EEFF 100%)",
         borderRadius: "24px",
-        border: `2px solid ${LF_THEME.navy}`,
+        border: `2.5px solid ${LF_THEME.navy}`,
         boxShadow: `0 8px 24px rgba(26, 0, 80, 0.08), 3px 4px 0 ${LF_THEME.navy}`,
-        padding: "20px",
+        padding: "18px 20px 22px 20px",
         fontFamily: "'Fredoka', sans-serif",
+        userSelect: "none",
       }}
     >
-      {/* Toggle Bar */}
+      {/* ── Top Navigation Bar (from live app `eE`) ── */}
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          gap: "8px",
-          marginBottom: "16px",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingBottom: "12px",
+          borderBottom: `2.5px solid ${LF_THEME.navy}`,
+          marginBottom: "14px",
         }}
       >
-        <button
-          type="button"
-          onClick={() => setView("after")}
-          style={{
-            padding: "6px 16px",
-            borderRadius: "100px",
-            fontFamily: "'Fredoka', sans-serif",
-            fontWeight: 700,
-            fontSize: "13px",
-            cursor: "pointer",
-            border: `2px solid ${LF_THEME.navy}`,
-            background: view === "after" ? LF_THEME.navy : "#FFFFFF",
-            color: view === "after" ? "#FFFFFF" : LF_THEME.navy,
-            boxShadow: view === "after" ? `2px 3px 0 ${LF_THEME.navy}` : "none",
-            transition: "all 0.15s ease",
-          }}
-        >
-          ✓ Shipped Design (Intentional & Focused)
-        </button>
-        <button
-          type="button"
-          onClick={() => setView("before")}
-          style={{
-            padding: "6px 16px",
-            borderRadius: "100px",
-            fontFamily: "'Fredoka', sans-serif",
-            fontWeight: 700,
-            fontSize: "13px",
-            cursor: "pointer",
-            border: `2px solid ${LF_THEME.navy}`,
-            background: view === "before" ? LF_THEME.navy : "#FFFFFF",
-            color: view === "before" ? "#FFFFFF" : LF_THEME.navy,
-            boxShadow: view === "before" ? `2px 3px 0 ${LF_THEME.navy}` : "none",
-            transition: "all 0.15s ease",
-          }}
-        >
-          ✕ Before Testing (Decorative Clutter)
-        </button>
-      </div>
-
-      {/* Purpose Audit Comparison Card */}
-      <div
-        style={{
-          maxWidth: "440px",
-          margin: "0 auto",
-          background: view === "after" ? "#F0FDF4" : "#FEF2F2",
-          border: `2.5px solid ${view === "after" ? "#16A34A" : "#DC2626"}`,
-          borderRadius: "20px",
-          padding: "16px",
-          boxShadow: `3px 4px 0 ${view === "after" ? "#16A34A" : "#DC2626"}`,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: "10px",
-          }}
-        >
-          <span
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div
             style={{
-              fontFamily: "'Fredoka', sans-serif",
+              background: "#FFFFFF",
+              border: `2px solid ${LF_THEME.navy}`,
+              boxShadow: `2px 2.5px 0 ${LF_THEME.navy}`,
+              borderRadius: "12px",
+              padding: "4px 12px",
+              fontSize: "12.5px",
               fontWeight: 700,
-              fontSize: "13px",
-              color: view === "after" ? "#15803D" : "#B91C1C",
+              color: LF_THEME.navy,
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
             }}
           >
-            {view === "after" ? "Clean Learning Surface" : "Distracting Clutter Identified"}
-          </span>
-          <span
-            style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontWeight: 700,
-              fontSize: "11px",
-              color: LF_THEME.mutedFg,
-            }}
-          >
-            Audit Scorecard
-          </span>
+            <span>🏠</span> Home
+          </div>
         </div>
 
-        {view === "after" ? (
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "13px",
-              color: "#166534",
-              fontWeight: 600,
-            }}
-          >
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>✅</span> <strong>High contrast letter:</strong> immediate recognition from 3+ feet away
-            </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>✅</span> <strong>Single 64px button:</strong> thumb-friendly touch target without false taps
-            </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>✅</span> <strong>Star counter:</strong> reinforces positive feedback loop without distraction
-            </li>
-          </ul>
-        ) : (
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "13px",
-              color: "#991B1B",
-              fontWeight: 600,
-            }}
-          >
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>❌</span> <strong>Decorative floating sparkles:</strong> toddlers kept tapping them expecting sound
-            </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>❌</span> <strong>Multi-colored frames:</strong> caused cognitive competition with the lesson letter
-            </li>
-            <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span>❌</span> <strong>Secondary toolbars:</strong> led to unintentional exits from the learning loop
-            </li>
-          </ul>
-        )}
+        <div
+          style={{
+            background: LF_THEME.orange,
+            border: `2px solid ${LF_THEME.navy}`,
+            boxShadow: `2px 2.5px 0 ${LF_THEME.navy}`,
+            borderRadius: "12px",
+            padding: "4px 12px",
+            fontSize: "13px",
+            fontWeight: 700,
+            color: "#FFFFFF",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+          }}
+        >
+          <span>⭐</span>
+          <span>24 Stars</span>
+        </div>
+      </div>
+
+      {/* ── Heading (exact text from live app `/phonics`) ── */}
+      <div style={{ textAlign: "center", marginBottom: "16px" }}>
+        <h3
+          style={{
+            fontFamily: "'Fredoka', sans-serif",
+            fontWeight: 700,
+            fontSize: "clamp(18px, 2.4vw, 24px)",
+            color: LF_THEME.navy,
+            margin: "0 0 2px 0",
+          }}
+        >
+          Let&apos;s Discover Sounds! 🗣️
+        </h3>
+        <p
+          style={{
+            fontFamily: "'Nunito', sans-serif",
+            fontWeight: 700,
+            fontSize: "13px",
+            color: LF_THEME.mutedFg,
+            margin: 0,
+          }}
+        >
+          Tap a letter and listen — every visual element has a functional sound job.
+        </p>
+      </div>
+
+      {/* ── Grid of 6 Interactive Sound Tiles (from live `eE`) ── */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+          gap: "14px",
+        }}
+      >
+        {soundTiles.map((tile) => {
+          const isActive = activePhoneme === tile.id;
+
+          return (
+            <button
+              key={tile.id}
+              type="button"
+              onClick={() => handleTileClick(tile)}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "14px 10px 10px 10px",
+                borderRadius: "22px",
+                background: "#FFFFFF",
+                border: `3px solid ${isActive ? tile.color : LF_THEME.navy}`,
+                boxShadow: isActive
+                  ? `0 0 0 2px ${tile.color}, 4px 6px 0 ${LF_THEME.navy}`
+                  : `4px 6px 0 ${LF_THEME.navy}`,
+                cursor: "pointer",
+                height: "155px",
+                position: "relative",
+                overflow: "hidden",
+                transform: isActive ? "scale(1.03)" : "scale(1)",
+                transition: "all 0.15s ease",
+              }}
+            >
+              {/* Top Header inside tile: sound wave emoji + phoneme */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  padding: "0 4px",
+                }}
+              >
+                <span style={{ fontSize: "14px" }}>🗣️</span>
+                <span
+                  style={{
+                    fontFamily: "'Fredoka', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "13px",
+                    color: tile.color,
+                  }}
+                >
+                  {tile.phoneme}
+                </span>
+              </div>
+
+              {/* Big Bold Letter */}
+              <span
+                style={{
+                  fontFamily: "'Fredoka', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "48px",
+                  lineHeight: 1,
+                  color: tile.color,
+                  display: "block",
+                  margin: "4px 0",
+                }}
+              >
+                {tile.letter}
+              </span>
+
+              {/* Word + Emoji Badge */}
+              <div
+                style={{
+                  width: "100%",
+                  background: LF_THEME.cream,
+                  border: "1.5px solid rgba(26, 0, 80, 0.12)",
+                  borderRadius: "10px",
+                  padding: "3px 6px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "5px",
+                }}
+              >
+                <span style={{ fontSize: "14px" }}>{tile.emoji}</span>
+                <span
+                  style={{
+                    fontFamily: "'Fredoka', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "12px",
+                    color: LF_THEME.navy,
+                  }}
+                >
+                  {tile.word}
+                </span>
+              </div>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -985,7 +1176,7 @@ export default function LearnFunPrinciplesMockup() {
       num: "03",
       title: "Every visual element needs a job",
       desc: "During testing, I discovered that some icons added decoration without improving understanding. If an element doesn't help a child understand, navigate, or learn, it doesn't belong on the screen. Removing decorative clutter proved far more impactful than adding decoration.",
-      component: <VisualElementJobMockup />,
+      component: <SoundDiscoveryBoardMockup />,
     },
   ];
 
