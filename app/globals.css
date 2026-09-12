@@ -1596,12 +1596,32 @@
     margin-bottom: 32px;
   }
 
-  .fig-chrome-wrap {
+  .cs-hero-block .fig-chrome-wrap {
     margin: 0 !important;
+  }
+
+  .cs-hero-block .fig-chrome-wrap .chrome-mockup-wrapper {
+    margin: 0;
+  }
+
+  .fig-chrome-wrap {
+    margin: 42px 0 36px 0 !important;
   }
 
   .fig-chrome-wrap .chrome-mockup-wrapper {
     margin: 0;
+  }
+
+  .fig-chrome-wrap figcaption {
+    margin-top: 18px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    text-align: center;
+    color: var(--muted, #64748b);
+  }
+
+  .fig-chrome-wrap figcaption b {
+    color: var(--ink, #0f172a);
   }
 
   .chrome-mockup-wrapper {
