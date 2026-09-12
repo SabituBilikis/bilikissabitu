@@ -19,7 +19,7 @@ export default function ChromeBrowserMockup({
   poster = "/images/learn-fun/video-frame.jpg",
   caption,
   className = "",
-  aspectRatio = "1914 / 922",
+  aspectRatio = "1912 / 920",
 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
