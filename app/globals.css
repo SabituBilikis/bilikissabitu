@@ -2435,6 +2435,14 @@
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
   }
 
+  .lf-principle-component-slot .f-side-by-side-comparison {
+    margin-top: 0;
+    background: transparent;
+    border: none;
+    padding: 6px 0 10px 0;
+    box-shadow: none;
+  }
+
   /* Mockup 1: Adventure Cards */
   .mockup-header-bar {
     display: flex;

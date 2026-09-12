@@ -599,82 +599,88 @@ export function FeedbackDecisionComparison({ feedback, decision, before, after }
           )}
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* 4. Side-by-Side Phone Mockups (UXBrainy Reference Style) */}
-      <div className="f-side-by-side-comparison">
-        {/* Header with Centered Context Tag, Before/After Targets & Arched Directional Arrow */}
-        <div className="f-comparison-header-wrap">
-          <span className="f-comparison-top-caption">Eliminating Visual Noise</span>
-          <div className="f-comparison-flow-row">
-            <div className="f-comparison-flow-col before">
-              <h4 className="f-comparison-heading">Before</h4>
-              <span className="f-comparison-pill before">Initial Prototype</span>
-            </div>
+/* ------------------------------------------------------------------------- */
+/* 5. BEFORE & AFTER PHONE MOCKUP COMPARISON (UXBrainy Reference Style)      */
+/* ------------------------------------------------------------------------- */
+export function BeforeAfterComparisonMockup() {
+  return (
+    <div className="f-side-by-side-comparison">
+      {/* Header with Centered Context Tag, Before/After Targets & Arched Directional Arrow */}
+      <div className="f-comparison-header-wrap">
+        <span className="f-comparison-top-caption">Eliminating Visual Noise</span>
+        <div className="f-comparison-flow-row">
+          <div className="f-comparison-flow-col before">
+            <h4 className="f-comparison-heading">Before</h4>
+            <span className="f-comparison-pill before">Initial Prototype</span>
+          </div>
 
-            <div className="f-comparison-arrow-bridge">
-              <svg
-                className="f-comparison-arc-svg"
-                viewBox="0 0 180 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                {/* Elegant cubic bezier curve arching from Before to After */}
-                <path
-                  d="M 14 42 C 50 6, 130 6, 166 36"
-                  stroke="#475569"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                />
-                {/* Arrowhead angled precisely along the arrival trajectory */}
-                <path
-                  d="M 151 26 L 167 37 L 163 20"
-                  stroke="#475569"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+          <div className="f-comparison-arrow-bridge">
+            <svg
+              className="f-comparison-arc-svg"
+              viewBox="0 0 180 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              {/* Elegant cubic bezier curve arching from Before to After */}
+              <path
+                d="M 14 42 C 50 6, 130 6, 166 36"
+                stroke="#475569"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              />
+              {/* Arrowhead angled precisely along the arrival trajectory */}
+              <path
+                d="M 151 26 L 167 37 L 163 20"
+                stroke="#475569"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
 
-            <div className="f-comparison-flow-col after">
-              <h4 className="f-comparison-heading">After</h4>
-              <span className="f-comparison-pill after">Refined &amp; Focused</span>
-            </div>
+          <div className="f-comparison-flow-col after">
+            <h4 className="f-comparison-heading">After</h4>
+            <span className="f-comparison-pill after">Refined &amp; Focused</span>
           </div>
         </div>
+      </div>
 
-        {/* Two Phone Mockups Side-by-Side */}
-        <div className="f-comparison-columns">
-          {/* Before Mockup */}
-          <div className="f-comparison-col">
-            <div className="f-comparison-frame">
-              <div className="f-comparison-screen">
-                <img
-                  src="/images/learn-fun/letters-learned-before.png"
-                  alt="Before testing: Extraneous decorative sparkles, border stars, and multiple non-functional buttons"
-                />
-              </div>
+      {/* Two Phone Mockups Side-by-Side */}
+      <div className="f-comparison-columns">
+        {/* Before Mockup */}
+        <div className="f-comparison-col">
+          <div className="f-comparison-frame">
+            <div className="f-comparison-screen">
+              <img
+                src="/images/learn-fun/letters-learned-before.png"
+                alt="Before testing: Extraneous decorative sparkles, border stars, and multiple non-functional buttons"
+              />
             </div>
-            <p className="f-comparison-notes">
-              <strong>Decorative Clutter:</strong> Extraneous stars and non-functional buttons created false affordances, distracting 3–5-year-olds from the primary learning task.
-            </p>
           </div>
+          <p className="f-comparison-notes">
+            <strong>Decorative Clutter:</strong> Extraneous stars and non-functional buttons created false affordances, distracting 3–5-year-olds from the primary learning task.
+          </p>
+        </div>
 
-          {/* After Mockup */}
-          <div className="f-comparison-col">
-            <div className="f-comparison-frame">
-              <div className="f-comparison-screen">
-                <img
-                  src="/images/learn-fun/letters-learned-after.png"
-                  alt="After simplification: Removed decorative stars, direct focus to letter and large sound button"
-                />
-              </div>
+        {/* After Mockup */}
+        <div className="f-comparison-col">
+          <div className="f-comparison-frame">
+            <div className="f-comparison-screen">
+              <img
+                src="/images/learn-fun/letters-learned-after.png"
+                alt="After simplification: Removed decorative stars, direct focus to letter and large sound button"
+              />
             </div>
-            <p className="f-comparison-notes">
-              <strong>Clean Focus:</strong> Stripped non-essential ornaments. Retained only the letter card and prominent audio button, increasing task completion and child focus.
-            </p>
           </div>
+          <p className="f-comparison-notes">
+            <strong>Clean Focus:</strong> Stripped non-essential ornaments. Retained only the letter card and prominent audio button, increasing task completion and child focus.
+          </p>
         </div>
       </div>
     </div>
