@@ -475,37 +475,6 @@ export const caseStudies: Record<string, CaseStudy> = {
             t: "p",
             html: "Testing with young children surfaced an important observation: extraneous decorative icons did not contribute meaningfully to navigation or learning. For early learners, visual elements aren't neutral—they actively compete for attention.",
           },
-          {
-            t: "feedback-chain",
-            feedback: {
-              kicker: "Testing Observation",
-              quote: "Children repeatedly tapped small decorative stars and border icons expecting an action, creating confusion.",
-            },
-            decision: {
-              kicker: "Design Decision",
-              action: "Remove all decorative icons. Every visual element on screen must be functional or educational.",
-            },
-            before: {
-              label: "Before Testing",
-              title: "Decorative Icons & Clutter",
-              desc: "Interface included decorative background shapes and small accessory icons that added visual noise.",
-              items: [
-                "Extraneous background stars & icons",
-                "Ambiguous clickable boundaries",
-                "Competing visual focal points",
-              ],
-            },
-            after: {
-              label: "After Simplification",
-              title: "Focused Learning Content",
-              desc: "Removed decorative chrome. Visual hierarchy directs 100% of the child's focus to the primary learning action.",
-              items: [
-                "Zero decorative distractions",
-                "Spacious 64px+ hit areas",
-                "Unambiguous visual intent",
-              ],
-            },
-          },
         ],
       },
       {
