@@ -455,7 +455,15 @@ export const caseStudies: Record<string, CaseStudy> = {
             t: "p",
             html: "During early testing, parent and caregiver feedback revealed a crucial insight: <em>Knowing what a letter looks like is fundamentally different from knowing what it sounds like.</em> This feedback directly evolved the product from visual recognition to full phonics, connecting <b>Letter → Sound → Word</b>.",
           },
-          { t: "phonics-interactive" },
+          {
+            t: "fig",
+            kind: "vid",
+            ratio: "r169",
+            device: "chrome",
+            video: "/images/learn-fun/learn-fun-phonics.mp4",
+            screen: { src: "/images/learn-fun/phonics-video-frame.jpg", alt: "Learn Fun Phonics sound discovery in desktop Chrome browser" },
+            captionHtml: "<b>Learn Fun Phonics</b> — Interactive sound discovery module connecting letter recognition with spoken phonemes.",
+          },
         ],
       },
       {
