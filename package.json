@@ -4,7 +4,7 @@
   "private": true,
   "description": "Bilikis Sabitu — Product Designer & AI-Native Builder portfolio",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
