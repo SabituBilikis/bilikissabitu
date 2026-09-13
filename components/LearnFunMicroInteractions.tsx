@@ -606,16 +606,46 @@ export function FeedbackDecisionComparison({ feedback, decision, before, after }
 /* ------------------------------------------------------------------------- */
 /* 5. BEFORE & AFTER PHONE MOCKUP COMPARISON (UXBrainy Reference Style)      */
 /* ------------------------------------------------------------------------- */
-export function BeforeAfterComparisonMockup() {
+interface BeforeAfterProps {
+  topCaption?: string;
+  beforePill?: string;
+  afterPill?: string;
+  beforeSrc?: string;
+  beforeAlt?: string;
+  beforeNoteTitle?: string;
+  beforeNoteDesc?: string;
+  afterSrc?: string;
+  afterAlt?: string;
+  afterNoteTitle?: string;
+  afterNoteDesc?: string;
+  frameBg?: string;
+}
+
+export function BeforeAfterComparisonMockup({
+  topCaption = "Eliminating Visual Noise",
+  beforePill = "Initial Prototype",
+  afterPill = "Refined & Focused",
+  beforeSrc = "/images/learn-fun/letters-learned-before.png",
+  beforeAlt = "Before testing: Extraneous decorative sparkles, border stars, and multiple non-functional buttons",
+  beforeNoteTitle = "Decorative Clutter",
+  beforeNoteDesc = "Extraneous stars and non-functional buttons created false affordances, distracting 3–5-year-olds from the primary learning task.",
+  afterSrc = "/images/learn-fun/letters-learned-after.png",
+  afterAlt = "After simplification: Removed decorative stars, direct focus to letter and large sound button",
+  afterNoteTitle = "Clean Focus",
+  afterNoteDesc = "Stripped non-essential ornaments. Retained only the letter card and prominent audio button, increasing task completion and child focus.",
+  frameBg,
+}: BeforeAfterProps = {}) {
+  const frameStyle = frameBg ? { background: frameBg } : undefined;
+
   return (
     <div className="f-side-by-side-comparison">
       {/* Header with Centered Context Tag, Before/After Targets & Arched Directional Arrow */}
       <div className="f-comparison-header-wrap">
-        <span className="f-comparison-top-caption">Eliminating Visual Noise</span>
+        <span className="f-comparison-top-caption">{topCaption}</span>
         <div className="f-comparison-flow-row">
           <div className="f-comparison-flow-col before">
             <h4 className="f-comparison-heading">Before</h4>
-            <span className="f-comparison-pill before">Initial Prototype</span>
+            <span className="f-comparison-pill before">{beforePill}</span>
           </div>
 
           <div className="f-comparison-arrow-bridge">
@@ -646,7 +676,7 @@ export function BeforeAfterComparisonMockup() {
 
           <div className="f-comparison-flow-col after">
             <h4 className="f-comparison-heading">After</h4>
-            <span className="f-comparison-pill after">Refined &amp; Focused</span>
+            <span className="f-comparison-pill after">{afterPill}</span>
           </div>
         </div>
       </div>
@@ -655,31 +685,31 @@ export function BeforeAfterComparisonMockup() {
       <div className="f-comparison-columns">
         {/* Before Mockup */}
         <div className="f-comparison-col">
-          <div className="f-comparison-frame">
+          <div className="f-comparison-frame" style={frameStyle}>
             <div className="f-comparison-screen">
               <img
-                src="/images/learn-fun/letters-learned-before.png"
-                alt="Before testing: Extraneous decorative sparkles, border stars, and multiple non-functional buttons"
+                src={beforeSrc}
+                alt={beforeAlt}
               />
             </div>
           </div>
           <p className="f-comparison-notes">
-            <strong>Decorative Clutter:</strong> Extraneous stars and non-functional buttons created false affordances, distracting 3–5-year-olds from the primary learning task.
+            <strong>{beforeNoteTitle}:</strong> {beforeNoteDesc}
           </p>
         </div>
 
         {/* After Mockup */}
         <div className="f-comparison-col">
-          <div className="f-comparison-frame">
+          <div className="f-comparison-frame" style={frameStyle}>
             <div className="f-comparison-screen">
               <img
-                src="/images/learn-fun/letters-learned-after.png"
-                alt="After simplification: Removed decorative stars, direct focus to letter and large sound button"
+                src={afterSrc}
+                alt={afterAlt}
               />
             </div>
           </div>
           <p className="f-comparison-notes">
-            <strong>Clean Focus:</strong> Stripped non-essential ornaments. Retained only the letter card and prominent audio button, increasing task completion and child focus.
+            <strong>{afterNoteTitle}:</strong> {afterNoteDesc}
           </p>
         </div>
       </div>

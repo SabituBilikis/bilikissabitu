@@ -39,7 +39,21 @@ export type CSBlock =
   | { t: "phonics-interactive" }
   | { t: "tablet-canvas" }
   | { t: "learn-fun-principles" }
-  | { t: "before-after-mockup" }
+  | {
+      t: "before-after-mockup";
+      topCaption?: string;
+      beforePill?: string;
+      afterPill?: string;
+      beforeSrc?: string;
+      beforeAlt?: string;
+      beforeNoteTitle?: string;
+      beforeNoteDesc?: string;
+      afterSrc?: string;
+      afterAlt?: string;
+      afterNoteTitle?: string;
+      afterNoteDesc?: string;
+      frameBg?: string;
+    }
   | {
       t: "feedback-chain";
       feedback: { kicker: string; quote: string };
@@ -478,6 +492,32 @@ export const caseStudies: Record<string, CaseStudy> = {
           },
           {
             t: "before-after-mockup",
+          },
+        ],
+      },
+      {
+        id: "reset-progress",
+        label: "Feedback Loop #3",
+        heading: "Starting afresh: adding a one-tap progress erase button.",
+        blocks: [
+          {
+            t: "p",
+            html: "User feedback highlighted a critical friction point: whenever parents or children wanted to replay learning modules or hand the device to a sibling, there was no way to restart cleanly without uninstalling the app. Adding an accessible <b>Erase button</b> at the top navigation lets users reset their progress instantly without technical hurdles.",
+          },
+          {
+            t: "before-after-mockup",
+            topCaption: "Progress Reset & Replay",
+            beforePill: "Initial Build",
+            afterPill: "Erase Action Added",
+            beforeSrc: "/images/learn-fun/reset-progress-before.png",
+            beforeAlt: "Before: Top header lacked a reset action, requiring app uninstallation to restart lessons",
+            beforeNoteTitle: "Uninstall Required to Reset",
+            beforeNoteDesc: "No native way to clear stars or start over. Families had to delete and reinstall the app to replay from scratch.",
+            afterSrc: "/images/learn-fun/reset-progress-after.png",
+            afterAlt: "After: Prominent Erase button added to the top header for instant progress reset",
+            afterNoteTitle: "One-Tap Erase Header",
+            afterNoteDesc: "Added an accessible, tactile Erase button in the top navigation bar, enabling seamless replays for siblings and repeat practice.",
+            frameBg: "linear-gradient(180deg, #FFFFFF 0%, #F5F3FF 100%)",
           },
         ],
       },

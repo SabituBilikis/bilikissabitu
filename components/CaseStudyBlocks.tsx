@@ -258,7 +258,22 @@ export default function Block({ block }: { block: CSBlock }) {
       return <LearnFunPrinciplesMockup />;
 
     case "before-after-mockup":
-      return <BeforeAfterComparisonMockup />;
+      return (
+        <BeforeAfterComparisonMockup
+          topCaption={block.topCaption}
+          beforePill={block.beforePill}
+          afterPill={block.afterPill}
+          beforeSrc={block.beforeSrc}
+          beforeAlt={block.beforeAlt}
+          beforeNoteTitle={block.beforeNoteTitle}
+          beforeNoteDesc={block.beforeNoteDesc}
+          afterSrc={block.afterSrc}
+          afterAlt={block.afterAlt}
+          afterNoteTitle={block.afterNoteTitle}
+          afterNoteDesc={block.afterNoteDesc}
+          frameBg={block.frameBg}
+        />
+      );
 
     case "feedback-chain":
       return (
