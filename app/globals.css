@@ -589,6 +589,13 @@
   footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-block:26px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--ink-faint)}
 
   /* ---------- CASE STUDY PAGE ---------- */
+  .cs-nav,
+  .cs-shell,
+  .cs-next {
+    --accent: #555558;
+    --accent-tint: rgba(85, 85, 88, 0.08);
+  }
+
   .cs-nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .cs-nav-in{max-width:1200px;margin:0 auto;padding-inline:var(--gutter);display:flex;align-items:center;justify-content:space-between;height:60px;gap:20px}
   .cs-nav-sep{color:var(--ink-faint);font-weight:400}
@@ -1572,8 +1579,8 @@
   }
 
   .f-feedback {
-    background: rgba(255, 94, 0, 0.04);
-    border-color: rgba(255, 94, 0, 0.22);
+    background: rgba(85, 85, 88, 0.05);
+    border-color: rgba(85, 85, 88, 0.22);
   }
 
   .f-kicker {
