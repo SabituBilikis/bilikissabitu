@@ -57,7 +57,15 @@ export default async function CaseStudyPage({
             ))}
             {cs.githubUrl && (
               <a href={cs.githubUrl} target="_blank" rel="noopener" className="cs-cta-tag">
-                {cs.githubUrl.includes("github.com") ? "View on GitHub" : "Visit Live App"} <span className="arw">→</span>
+                {cs.githubUrl.includes("github.com") ? "View on GitHub" : "Visit Web App"} <span className="arw">→</span>
+              </a>
+            )}
+            {cs.playStoreUrl && (
+              <a href={cs.playStoreUrl} target="_blank" rel="noopener" className="cs-cta-tag cs-cta-tag--playstore">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{ marginRight: 2 }}>
+                  <path d="M3.609 1.814L13.793 12 3.61 22.186A2.43 2.43 0 0 1 3 20.47V3.53c0-.66.23-1.26.609-1.716zm11.605 11.607l2.25 2.25-12.06 6.89 9.81-9.14zm0-2.842l-9.81-9.14 12.06 6.89-2.25 2.25zm1.42 1.421l3.66 2.09c1.07.61 1.07 1.61 0 2.22l-3.66 2.09-2.03-2.03 2.03-2.37z" />
+                </svg>
+                Google Play <span className="arw">→</span>
               </a>
             )}
           </div>

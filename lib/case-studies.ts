@@ -76,8 +76,10 @@ export interface CaseStudy {
   tags: [label: string, cls: string][];
   sub: string;
   meta: [label: string, value: string][];
-  /** Optional CTA link rendered at the end of the tags row (e.g. a public repo). */
+  /** Optional CTA link rendered at the end of the tags row (e.g. a public repo or web app). */
   githubUrl?: string;
+  /** Optional Google Play Store link rendered alongside githubUrl/cta */
+  playStoreUrl?: string;
   /** Optional hero block rendered immediately after cs-meta before sections */
   heroBlock?: CSBlock;
   sections: CaseStudySection[];
@@ -323,13 +325,14 @@ export const caseStudies: Record<string, CaseStudy> = {
     title: "Learn Fun",
     nav: "Learn Fun",
     tags: [
+      ["Google Play Live", "live"],
       ["Offline-First PWA", "shipped"],
       ["Ages 1–5 · Toddler UX", "live"],
-      ["Google Play Review", "concept"],
       ["Product Design & Build", "nda"],
     ],
     sub: "Play. Learn. Grow. — Designing an offline-first learning platform for toddlers & preschoolers (Ages 1–5).",
     githubUrl: "https://learnfunkids.vercel.app/",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.learnfunkids.app",
     meta: [
       ["My Role", "Product Designer & Builder: Strategy, UX Architecture, Design System, Prototyping, Web Speech & Audio"],
       ["Target Users", "Toddlers & Preschoolers (Ages 1–5) and Parents / Educators"],
@@ -591,15 +594,15 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         id: "googleplay",
         label: "Google Play",
-        heading: "From design prototype to Google Play production access.",
+        heading: "From design prototype to live on Google Play.",
         blocks: [
           {
             t: "p",
-            html: "Learn Fun moved beyond a design prototype into a distributable product. From concept through UX architecture, UI design system, user testing, phonics iteration, and offline web implementation, the app reached full release readiness.",
+            html: "Learn Fun moved beyond a design prototype into a distributable, production-tested product on Android. Built as an offline-first PWA packaged via Trusted Web Activity (TWA) architecture, it achieved full Google Play compliance for families with zero trackers, full COPPA compatibility, and instantaneous offline lesson loading.",
           },
           {
             t: "banner",
-            html: "<b>Production Status</b>: Learn Fun is live as an offline-first web experience at <a href='https://learnfunkids.vercel.app/' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700'>learnfunkids.vercel.app</a> and is currently in <b>Google Play production-access review</b>.",
+            html: "<b>Production Status</b>: Learn Fun is officially live on the <a href='https://play.google.com/store/apps/details?id=com.learnfunkids.app' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700'>Google Play Store</a> and available as an offline-first web app at <a href='https://learnfunkids.vercel.app/' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700'>learnfunkids.vercel.app</a>.",
           },
         ],
       },
