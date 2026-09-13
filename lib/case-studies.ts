@@ -329,7 +329,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ["Product Design & Build", "nda"],
     ],
     sub: "Play. Learn. Grow. — Designing an offline-first learning platform for toddlers & preschoolers (Ages 1–5).",
-    githubUrl: "https://learnfun-lwfso4eq7-sabitubilikis-projects.vercel.app/",
+    githubUrl: "https://learnfunkids.vercel.app/",
     meta: [
       ["My Role", "Product Designer & Builder: Strategy, UX Architecture, Design System, Prototyping, Web Speech & Audio"],
       ["Target Users", "Toddlers & Preschoolers (Ages 1–5) and Parents / Educators"],
@@ -599,7 +599,7 @@ export const caseStudies: Record<string, CaseStudy> = {
           },
           {
             t: "banner",
-            html: "<b>Production Status</b>: Learn Fun is live as an offline-first web experience at <a href='https://learnfun-lwfso4eq7-sabitubilikis-projects.vercel.app/' target='_blank' rel='noopener' style='color:#FF3B30;font-weight:700;text-decoration:underline'>learnfun-lwfso4eq7-sabitubilikis-projects.vercel.app</a> and is currently in <b>Google Play production-access review</b>.",
+            html: "<b>Production Status</b>: Learn Fun is live as an offline-first web experience at <a href='https://learnfunkids.vercel.app/' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700'>learnfunkids.vercel.app</a> and is currently in <b>Google Play production-access review</b>.",
           },
         ],
       },
