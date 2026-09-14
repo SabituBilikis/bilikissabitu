@@ -113,8 +113,9 @@ export default function Block({ block }: { block: CSBlock }) {
       return <Figure block={block} />;
 
     case "figrow":
+      const rowClass = block.cols === 4 ? "figrow-4" : block.cols === 3 ? "figrow-3" : "figrow";
       return (
-        <div className="figrow">
+        <div className={rowClass}>
           {block.items.map((item, i) => (
             <Figure key={i} block={item} />
           ))}

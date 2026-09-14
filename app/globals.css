@@ -680,7 +680,10 @@
   figcaption{margin-top:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--ink-faint)}
   figcaption b{color:var(--ink-soft);font-weight:700}
   .figrow{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  @media (max-width:640px){.figrow{grid-template-columns:1fr}}
+  .figrow-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .figrow-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:900px){.figrow-4{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.figrow,.figrow-4,.figrow-3{grid-template-columns:1fr}}
 
   /* constraint cards */
   .cards{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
