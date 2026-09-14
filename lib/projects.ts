@@ -14,6 +14,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "learn-fun",
+    title: "Learn Fun",
+    domain: "EdTech · Play. Learn. Grow. · Ages 1–5",
+    line: "An offline-first educational PWA and Android app for children aged 1–5, teaching letters, phonics, numbers, and shapes with touch-first interactions.",
+    thumb: {
+      device: "chrome",
+      screens: [
+        { src: "/images/learn-fun/video-frame.jpg", alt: "Learn Fun Chrome desktop browser app walkthrough" },
+      ],
+      video: "/images/learn-fun/learn-fun-case-study.mp4",
+    },
+  },
+  {
     id: "recall",
     title: "Recall",
     domain: "Consumer · Knowledge",
@@ -25,19 +38,6 @@ export const projects: Project[] = [
         { src: "/images/recall/collections.png", alt: "Recall collections — organise saved items into searchable groups, with bottom navigation" },
         { src: "/images/recall/home-empty.png", alt: "Recall first-run empty state — save your first item, with bottom navigation" },
       ],
-    },
-  },
-  {
-    id: "learn-fun",
-    title: "Learn Fun",
-    domain: "EdTech · Play. Learn. Grow. · Ages 1–5",
-    line: "An offline-first educational PWA and Android app for children aged 1–5, teaching letters, phonics, numbers, and shapes with touch-first interactions.",
-    thumb: {
-      device: "chrome",
-      screens: [
-        { src: "/images/learn-fun/video-frame.jpg", alt: "Learn Fun Chrome desktop browser app walkthrough" },
-      ],
-      video: "/images/learn-fun/learn-fun-case-study.mp4",
     },
   },
   {

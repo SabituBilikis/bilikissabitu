@@ -86,7 +86,7 @@ export interface CaseStudy {
   next: string;
 }
 
-export const caseStudyOrder = ["recall", "learn-fun", "telehealth", "climapt", "earthquake"];
+export const caseStudyOrder = ["learn-fun", "recall", "telehealth", "climapt", "earthquake"];
 
 const R = (name: string) => `/images/recall/${name}.png`;
 
@@ -108,7 +108,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ["Team", "Solo. Designed in Figma, built with Claude Code"],
       ["Timeline & Status", "7 weeks · 2026 · Production-ready, Play Store launch pending"],
     ],
-    next: "learn-fun",
+    next: "telehealth",
     sections: [
       {
         id: "overview",
@@ -347,7 +347,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       screen: { src: "/images/learn-fun/video-frame.jpg", alt: "Learn Fun app walkthrough inside desktop Chrome browser mockup" },
       captionHtml: "<b>Learn Fun</b> — Desktop Chrome browser experience showing interactive lesson modules, phonics, and touch-first interactions.",
     },
-    next: "telehealth",
+    next: "recall",
     sections: [
       {
         id: "challenge",
@@ -975,7 +975,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ["Team", "Medixbot"],
       ["Timeline & Status", "Designed and shipped in one week, while the crisis was still unfolding. $20,000 raised"],
     ],
-    next: "recall",
+    next: "learn-fun",
     sections: [
       {
         id: "overview",
