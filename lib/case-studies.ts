@@ -563,25 +563,25 @@ export const caseStudies: Record<string, CaseStudy> = {
             html: "One of the product's most important constraints was complete offline accessibility. Young children often use apps during car rides, flights, and low-connectivity environments where spotty network connections disrupt traditional web experiences.",
           },
           {
-            t: "states",
+            t: "cards",
             items: [
               [
-                "ok",
+                "01",
                 "Offline PWA Launch",
                 "App assets, sounds, and graphics are fully cached locally, launching instantly with zero network wait.",
               ],
               [
-                "load",
+                "02",
                 "Zero Buffering",
                 "Preloaded audio phonemes ensure instantaneous voice feedback upon tapping, avoiding toddler frustration.",
               ],
               [
-                "empty",
+                "03",
                 "No Sign-In Walls",
                 "Zero onboarding friction, zero tracking, and zero account requirements before a child can play.",
               ],
               [
-                "ai",
+                "04",
                 "Google Play Packaged",
                 "Wrapped as an Android bundle ready for offline device storage without recurring server dependencies.",
               ],
