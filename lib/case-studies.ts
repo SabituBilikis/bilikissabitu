@@ -598,10 +598,6 @@ export const caseStudies: Record<string, CaseStudy> = {
             t: "p",
             html: "Learn Fun moved beyond a design prototype into a distributable, production-tested product on Android. Built as an offline-first PWA packaged via Trusted Web Activity (TWA) architecture, it achieved full Google Play compliance for families with zero trackers, full COPPA compatibility, and instantaneous offline lesson loading.",
           },
-          {
-            t: "banner",
-            html: "<b>Production Status</b>: Learn Fun is officially live on the <a href='https://play.google.com/store/apps/details?id=com.learnfunkids.app' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700'>Google Play Store</a> and available as an offline-first web app at <a href='https://learnfunkids.vercel.app/' target='_blank' rel='noopener' style='color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700'>learnfunkids.vercel.app</a>.",
-          },
         ],
       },
       {
