@@ -622,9 +622,9 @@ interface BeforeAfterProps {
 }
 
 export function BeforeAfterComparisonMockup({
-  topCaption = "Eliminating Visual Noise",
-  beforePill = "Initial Prototype",
-  afterPill = "Refined & Focused",
+  topCaption,
+  beforePill,
+  afterPill,
   beforeSrc = "/images/learn-fun/letters-learned-before.png",
   beforeAlt = "Before testing: Extraneous decorative sparkles, border stars, and multiple non-functional buttons",
   beforeNoteTitle = "Decorative Clutter",
@@ -641,11 +641,11 @@ export function BeforeAfterComparisonMockup({
     <div className="f-side-by-side-comparison">
       {/* Header with Centered Context Tag, Before/After Targets & Arched Directional Arrow */}
       <div className="f-comparison-header-wrap">
-        <span className="f-comparison-top-caption">{topCaption}</span>
+        {topCaption && <span className="f-comparison-top-caption">{topCaption}</span>}
         <div className="f-comparison-flow-row">
           <div className="f-comparison-flow-col before">
             <h4 className="f-comparison-heading">Before</h4>
-            <span className="f-comparison-pill before">{beforePill}</span>
+            {beforePill && <span className="f-comparison-pill before">{beforePill}</span>}
           </div>
 
           <div className="f-comparison-arrow-bridge">
@@ -676,7 +676,7 @@ export function BeforeAfterComparisonMockup({
 
           <div className="f-comparison-flow-col after">
             <h4 className="f-comparison-heading">After</h4>
-            <span className="f-comparison-pill after">{afterPill}</span>
+            {afterPill && <span className="f-comparison-pill after">{afterPill}</span>}
           </div>
         </div>
       </div>

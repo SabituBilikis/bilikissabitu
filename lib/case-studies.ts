@@ -510,8 +510,6 @@ export const caseStudies: Record<string, CaseStudy> = {
           {
             t: "before-after-mockup",
             topCaption: "Progress Reset & Replay",
-            beforePill: "Initial Build",
-            afterPill: "Erase Action Added",
             beforeSrc: "/images/learn-fun/reset-progress-before.png",
             beforeAlt: "Before: Top header lacked a reset action, requiring app uninstallation to restart lessons",
             beforeNoteTitle: "Uninstall Required to Reset",
