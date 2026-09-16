@@ -6,7 +6,6 @@ import ChromeBrowserMockup from "@/components/ChromeBrowserMockup";
 import TabletVideoMockup from "@/components/TabletVideoMockup";
 import LearnFunPrinciplesMockup from "@/components/LearnFunPrinciplesMockup";
 import { PhonicsDemo, FeedbackDecisionComparison, TabletInteractiveCanvas, BeforeAfterComparisonMockup } from "@/components/LearnFunMicroInteractions";
-import { ScatteredWorkflowMockup } from "@/components/RecallScatteredMockup";
 import type { CSBlock, FigBlock } from "@/lib/case-studies";
 import type { StateKey } from "@/lib/projects";
 
@@ -93,7 +92,7 @@ function Figure({ block }: { block: FigBlock }) {
           <PhoneFrame src={block.screen.src} alt={block.screen.alt} sizes="(max-width:700px) 90vw, 420px" />
         </div>
       ) : block.illustration === "scattered" ? (
-        <ScatteredWorkflowMockup ratio={block.ratio} />
+        <ScatteredIllustration ratio={block.ratio} />
       ) : (
         <div className={`fig-ph fig-${block.ratio}${block.kind === "vid" ? " vid" : ""}`}>
           <span className="fig-ph-icon">{block.kind === "vid" ? "▶" : "▧"}</span>
