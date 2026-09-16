@@ -668,98 +668,84 @@
   .scatter-card.shot{top:48%;right:16%;transform:rotate(-4deg);color:var(--ink-soft)}
   @media (max-width:640px){.scatter-card{width:clamp(78px,30vw,110px)}.scatter-card.chat{left:4%}.scatter-card.link{right:4%}.scatter-card.shot{right:8%}}
 
-  /* Authentic Studio Mockup for Fig 1.0 (Real OS & App Surfaces) */
-  .fig-scatter-studio{position:relative;background:linear-gradient(180deg,#16161A 0%,#0C0C0E 100%);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r-md);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.5);display:flex;flex-direction:column;padding:clamp(16px,2.5vw,28px);gap:20px}
-  .studio-top-bar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;flex-wrap:wrap;gap:10px}
-  .studio-top-left{display:flex;align-items:center;gap:8px}
-  .studio-tag-dot{width:7px;height:7px;border-radius:50%;background:#EF4444;box-shadow:0 0 10px #EF4444}
-  .studio-tag-text{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#F1F5F9}
-  .studio-top-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .studio-meta-pill{font-family:var(--font-mono);font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.06);color:#94A3B8;border:1px solid rgba(255,255,255,0.08)}
-  .studio-meta-pill.highlight{background:rgba(239,68,68,0.15);color:#FCA5A5;border-color:rgba(239,68,68,0.3)}
+  /* High-fidelity realistic Option 1 multi-channel scattered workflow mockup */
+  .fig-scatter-realistic{position:relative;background:radial-gradient(ellipse at 50% 50%, #FAFBFD 0%, #EEF1F6 100%);border:1px solid #D8E0EC;border-radius:var(--r-md);overflow:hidden;box-shadow:0 20px 45px rgba(15,23,42,0.06);min-height:480px;display:flex;align-items:center;justify-content:center}
+  .scatter-canvas-bg{position:absolute;inset:0;pointer-events:none}
+  .scatter-grid-lines{position:absolute;inset:0;background-image:linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px),linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);background-size:28px 28px}
+  .scatter-central-beacon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center}
+  .beacon-ring{position:absolute;border-radius:50%;border:1px dashed rgba(100,116,139,0.22);pointer-events:none}
+  .beacon-r1{width:160px;height:160px;animation:beaconPulse 6s ease-in-out infinite}
+  .beacon-r2{width:260px;height:260px;animation:beaconPulse 6s ease-in-out infinite reverse}
+  @keyframes beaconPulse{0%,100%{transform:scale(0.96);opacity:0.4}50%{transform:scale(1.04);opacity:0.8}}
+  .beacon-core{position:relative;z-index:2;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border:1px solid rgba(148,163,184,0.35);padding:7px 14px;border-radius:100px;box-shadow:0 6px 20px rgba(15,23,42,0.08);color:#0F172A}
+  .beacon-core svg{color:#EF4444}
+  .beacon-tag{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#334155}
 
-  .studio-devices-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);width:100%}
-  @media (max-width:960px){.studio-devices-grid{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:580px){.studio-devices-grid{grid-template-columns:1fr}}
+  .scatter-connector-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .flow-dash{stroke-dashoffset:0;animation:dashFlow 20s linear infinite}
+  @keyframes dashFlow{to{stroke-dashoffset:-100}}
 
-  .studio-device-col{display:flex;flex-direction:column;gap:10px}
-  .device-header-strip{display:flex;align-items:center;justify-content:space-between;padding:0 2px}
-  .app-meta-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px;font-weight:700;color:#F8FAFC}
-  .badge-status.error{font-family:var(--font-mono);font-size:9px;color:#F87171;background:rgba(239,68,68,0.12);padding:2px 6px;border-radius:4px;border:1px solid rgba(239,68,68,0.25)}
+  .scatter-item{position:absolute;z-index:3;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease;filter:drop-shadow(0 12px 28px rgba(15,23,42,0.09))}
+  .scatter-item:hover{transform:translateY(-4px) scale(1.02);z-index:10}
 
-  .studio-phone-wrapper{position:relative;aspect-ratio:9/18.5;border-radius:28px;background:#000;border:3px solid #27272A;box-shadow:0 14px 30px rgba(0,0,0,0.6),inset 0 0 0 1px rgba(255,255,255,0.15);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
-  .studio-phone-wrapper:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,0.8),inset 0 0 0 1px rgba(255,255,255,0.25)}
-  .studio-frame-overlay{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:16px;background:#000;border-bottom-left-radius:10px;border-bottom-right-radius:10px;z-index:10;pointer-events:none}
+  .card-glass-shell{position:relative;background:#FFFFFF;border:1px solid rgba(203,213,225,0.85);border-radius:14px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,0.02)}
+  .app-card-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 8px;border-bottom:1px solid #F1F5F9;background:#F8FAFC}
+  .app-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase}
+  .app-dot{width:6px;height:6px;border-radius:50%}
+  .whatsapp-badge{color:#15803D}.whatsapp-badge .app-dot{background:#22C55E}
+  .safari-badge{color:#1D4ED8}.safari-badge .app-dot{background:#3B82F6}
+  .notes-badge{color:#B45309}.notes-badge .app-dot{background:#F59E0B}
+  .photos-badge{color:#7C3AED}.photos-badge .app-dot{background:#A855F7}
+  .app-timestamp{font-family:var(--font-mono);font-size:9.5px;color:#94A3B8}
 
-  .realistic-screen-surface{position:absolute;inset:0;overflow:hidden;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+  .fragment-warning{display:flex;align-items:center;gap:5px;padding:7px 12px;background:#FEF2F2;border-top:1px solid #FEE2E2;color:#B91C1C;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:0.01em}
+  .fragment-warning svg{flex-shrink:0}
 
-  /* 1. WhatsApp Screen */
-  .whatsapp-surface{background:#0B141A;color:#E9EDEF}
-  .wa-nav-bar{background:#202C33;padding:22px 10px 8px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06)}
-  .wa-nav-back{font-size:10px;color:#53BDEB;font-weight:600}
-  .wa-nav-profile{display:flex;align-items:center;gap:6px}
-  .wa-avatar{width:22px;height:22px;border-radius:50%;background:#00A884;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center}
-  .wa-name{font-size:10px;font-weight:700;display:block;line-height:1}
-  .wa-sub{font-size:8px;color:#8696A0;display:block}
-  .wa-chat-body{padding:10px 8px;display:flex;flex-direction:column;gap:8px;flex:1;background:radial-gradient(#182229 15%, transparent 16%) 0 0/16px 16px,#0B141A}
-  .wa-date-chip{align-self:center;font-size:8px;background:#182229;color:#8696A0;padding:2px 8px;border-radius:6px}
-  .wa-bubble{max-width:88%;padding:7px 9px;border-radius:8px;font-size:9.5px;line-height:1.35;position:relative}
-  .wa-bubble.incoming{align-self:flex-start;background:#202C33;color:#E9EDEF}
-  .wa-bubble.outgoing{align-self:flex-end;background:#005C4B;color:#E9EDEF}
-  .wa-bubble.highlighted{border:1px solid #25D366;box-shadow:0 0 12px rgba(37,211,102,0.25)}
-  .wa-bubble.faded{opacity:0.6}
-  .wa-meta-row{display:flex;align-items:center;justify-content:flex-end;gap:3px;margin-top:4px}
-  .wa-time{font-size:7.5px;color:#8696A0}
-  .wa-ticks{font-size:8px;color:#53BDEB}
+  /* Specific Card Layouts & Absolute Positions */
+  .item-chat{top:6%;left:4%;width:clamp(230px,28vw,290px);transform:rotate(-3deg)}
+  .chat-bubble-content{padding:12px 14px;background:#E7FCE8;margin:10px 12px;border-radius:12px;border-top-left-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+  .chat-text{font-size:12px;line-height:1.45;color:#14532D;margin:0}
+  .chat-meta{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-top:5px}
+  .chat-time{font-family:var(--font-mono);font-size:9px;color:#16A34A}
 
-  /* 2. Apple Notes Screen */
-  .notes-surface{background:#1C1C1E;color:#F2F2F7}
-  .notes-nav-bar{padding:22px 12px 6px;display:flex;align-items:center;justify-content:space-between;color:#E5A93C;font-size:10px;font-weight:600}
-  .notes-content-body{padding:10px 12px;flex:1;display:flex;flex-direction:column;gap:6px}
-  .notes-timestamp{font-size:8px;color:#8E8E93;text-align:center;display:block;margin-bottom:2px}
-  .notes-h1{font-size:12px;font-weight:700;color:#FFF;margin:0}
-  .notes-separator{height:1px;background:rgba(255,255,255,0.08);margin:4px 0}
-  .notes-text{font-size:9.5px;line-height:1.4;color:#D1D1D6;margin:0}
-  .notes-checklist-box{margin-top:6px;display:flex;flex-direction:column;gap:5px}
-  .notes-check-row{display:flex;align-items:center;gap:6px;font-size:9px;color:#AEAEB2}
-  .notes-box-dot{width:10px;height:10px;border-radius:50%;border:1.2px solid #636366}
-  .notes-box-dot.checked{background:#E5A93C;border-color:#E5A93C}
+  .item-link{top:6%;right:4%;width:clamp(230px,28vw,290px);transform:rotate(2.5deg)}
+  .bookmark-icon{color:#3B82F6}
+  .link-preview-box{padding:10px 12px}
+  .link-og-image{height:54px;border-radius:8px;background:linear-gradient(135deg,#1E293B 0%,#0F172A 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px}
+  .og-pattern{position:absolute;inset:0;opacity:0.15;background-image:radial-gradient(#fff 1px, transparent 1px);background-size:8px 8px}
+  .og-pill{position:relative;font-family:var(--font-mono);font-size:9px;letter-spacing:0.08em;background:rgba(255,255,255,0.15);color:#fff;padding:2px 8px;border-radius:100px;font-weight:700}
+  .link-domain{font-family:var(--font-mono);font-size:9.5px;color:#64748B;display:block;margin-bottom:2px}
+  .link-headline{font-size:12px;font-weight:600;line-height:1.35;color:#0F172A;margin:0}
 
-  /* 3. Safari Browser Screen */
-  .safari-surface{background:#000;color:#FFF}
-  .safari-url-bar{margin:22px 8px 6px;background:#1C1C1E;padding:6px 10px;border-radius:8px;display:flex;align-items:center;gap:6px;font-size:9px;color:#98989D;border:1px solid rgba(255,255,255,0.08)}
-  .safari-url-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#E5E5EA;font-family:var(--font-mono);font-size:8px}
-  .safari-page-body{padding:10px;display:flex;flex-direction:column;gap:8px;flex:1;background:#090A0F}
-  .safari-hero-banner{background:linear-gradient(135deg,#1E293B 0%,#0F172A 100%);padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1)}
-  .safari-kicker{font-family:var(--font-mono);font-size:7px;letter-spacing:0.08em;color:#60A5FA;font-weight:700;display:block;margin-bottom:2px}
-  .safari-title{font-size:11px;font-weight:700;color:#FFF;margin:0;line-height:1.25}
-  .safari-article-snippet{font-size:8.5px;line-height:1.4;color:#94A3B8}
-  .safari-bookmark-toast{margin-top:auto;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);color:#93C5FD;padding:5px 8px;border-radius:6px;font-size:8px;text-align:center;font-weight:600}
+  .item-note{bottom:6%;left:4%;width:clamp(220px,27vw,280px);transform:rotate(2deg)}
+  .notes-yellow-header{height:4px;background:#FBBF24}
+  .note-body{padding:12px 14px}
+  .note-title{font-size:12.5px;font-weight:700;color:#1E293B;margin-bottom:8px}
+  .note-checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+  .note-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#475569}
+  .note-item .chk{width:11px;height:11px;border-radius:3px;border:1.4px solid #CBD5E1;flex-shrink:0}
+  .note-item.done{color:#94A3B8;text-decoration:line-through}
+  .note-item.done .chk{background:#10B981;border-color:#10B981}
 
-  /* 4. Camera Roll Screen */
-  .photos-surface{background:#000;color:#FFF}
-  .photos-top-bar{padding:22px 10px 8px;display:flex;align-items:center;justify-content:space-between;font-size:9.5px;color:#0A84FF;border-bottom:1px solid rgba(255,255,255,0.08)}
-  .photos-counter{color:#FFF;font-weight:600;font-size:9px}
-  .photos-grid{padding:4px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;flex:1}
-  .photo-cell{border-radius:3px;background:#1C1C1E;aspect-ratio:1/1}
-  .photo-cell.primary-shot{grid-column:span 3;aspect-ratio:16/10;background:linear-gradient(140deg,#1E1B4B 0%,#0F172A 100%);padding:8px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(139,92,246,0.4)}
-  .shot-header-pill{font-size:8px;font-weight:700;color:#C4B5FD;font-family:var(--font-mono)}
-  .shot-sk-line{height:4px;border-radius:2px;background:rgba(255,255,255,0.15);margin-top:3px}
-  .shot-sk-line.l1{width:80%}.shot-sk-line.l2{width:50%}
-  .ocr-fail-tag{align-self:flex-end;font-size:7.5px;background:rgba(239,68,68,0.2);color:#FCA5A5;padding:2px 6px;border-radius:4px;border:1px solid rgba(239,68,68,0.4);font-family:var(--font-mono)}
-  .photo-cell.c1{background:#312E81}.photo-cell.c2{background:#1E293B}.photo-cell.c3{background:#064E3B}.photo-cell.c4{background:#701A75}.photo-cell.c5{background:#3F3F46}
+  .item-shot{bottom:6%;right:4%;width:clamp(220px,27vw,280px);transform:rotate(-2deg)}
+  .screenshot-crop{padding:10px 12px;background:#F8FAFC}
+  .mock-screen-inner{background:#0F172A;border-radius:8px;padding:8px;box-shadow:inset 0 1px 3px rgba(0,0,0,0.4)}
+  .mock-ui-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .bar-title{font-size:9.5px;color:#E2E8F0;font-weight:600}
+  .bar-tag{font-family:var(--font-mono);font-size:8px;background:rgba(255,255,255,0.15);color:#94A3B8;padding:1px 5px;border-radius:4px}
+  .mock-ui-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+  .mock-ui-cell{height:28px;border-radius:4px}
+  .mock-ui-cell.c1{background:#3B82F6}
+  .mock-ui-cell.c2{background:#8B5CF6}
+  .mock-ui-cell.c3{background:#EC4899}
+  .screenshot-ocr-badge{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:9.5px;color:#64748B;margin-top:6px;background:#FFFFFF;padding:4px 8px;border-radius:6px;border:1px solid #E2E8F0}
 
-  .device-caption-strip{display:flex;flex-direction:column;gap:2px;padding:0 2px}
-  .caption-bold{font-family:var(--font-mono);font-size:10px;font-weight:700;color:#F8FAFC}
-  .caption-detail{font-size:11px;color:#94A3B8;line-height:1.35}
-
-  .studio-bottom-banner{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 16px;flex-wrap:wrap;gap:12px}
-  .banner-left{display:flex;align-items:center;gap:10px}
-  .banner-icon{font-size:16px}
-  .banner-text{font-size:12.5px;color:#CBD5E1;line-height:1.4}
-  .banner-text strong{color:#FFF}
-  .banner-text em{color:#F87171;font-style:normal;font-weight:600}
-  .banner-pill{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#FCA5A5;background:rgba(239,68,68,0.15);padding:4px 10px;border-radius:100px;border:1px solid rgba(239,68,68,0.3)}
+  @media (max-width:768px){
+    .fig-scatter-realistic{min-height:auto;padding:24px 14px;display:grid;grid-template-columns:1fr;gap:16px}
+    .scatter-connector-svg,.scatter-central-beacon{display:none}
+    .scatter-item{position:static;width:100%;transform:none !important}
+    .scatter-item:hover{transform:none}
+  }
   .fig-shot{position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a1a1a 0%,#0c0c0c 65%,#000 100%);border-radius:var(--r-md);padding:clamp(18px,3vw,32px)}
   .fig-shot .iphone{width:auto;height:100%;max-height:420px}
   .fig-video{width:100%;display:block;border-radius:var(--r-md);background:#000;object-fit:cover}
