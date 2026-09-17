@@ -143,13 +143,6 @@ export const caseStudies: Record<string, CaseStudy> = {
             t: "p",
             html: "Traditional organization assumes people will remember: what something is called, where it belongs, which folder they put it in, and when they saved it. But memory doesn't work like that. You remember: <em>\"That article about how Linear handles onboarding.\"</em> Not: <em>\"I saved it in Product Research → Onboarding → References.\"</em> That observation became the foundation for Recall.",
           },
-          {
-            t: "fig",
-            kind: "img",
-            ratio: "r169",
-            captionHtml: "Fig 1.0 · The scattered workflow: information lost across self-chats, bookmarks, notes, and screenshot galleries.",
-            illustration: "scattered",
-          },
         ],
       },
       {
