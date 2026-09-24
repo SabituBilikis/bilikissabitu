@@ -87,6 +87,14 @@ function Figure({ block }: { block: FigBlock }) {
         <div className={`fig-shot fig-${block.ratio}`}>
           <BrowserFrame src={block.screen.src} alt={block.screen.alt} sizes="(max-width:700px) 90vw, 780px" />
         </div>
+      ) : block.screens && block.screens.length > 0 ? (
+        <div className={`fig-shot fig-${block.ratio}`}>
+          <div className="device-row" data-count={block.screens.length}>
+            {block.screens.map((s, i) => (
+              <PhoneFrame key={i} src={s.src} alt={s.alt} sizes="(max-width:700px) 30vw, 240px" />
+            ))}
+          </div>
+        </div>
       ) : block.screen ? (
         <div className={`fig-shot fig-${block.ratio}`}>
           <PhoneFrame src={block.screen.src} alt={block.screen.alt} sizes="(max-width:700px) 90vw, 420px" />

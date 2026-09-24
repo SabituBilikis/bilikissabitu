@@ -6,6 +6,8 @@ export type FigBlock = {
   captionHtml: string;
   /** Real exported screen — when present, renders as a device-framed image instead of a placeholder. */
   screen?: Screen;
+  /** Multiple real exported screens — when present, renders all devices inside a single shared frame container */
+  screens?: Screen[];
   /** When true with `screen` set, renders the image plain (no phone bezel) — for UI crops that aren't full screens. */
   raw?: boolean;
   /** When "web" or "tablet" or "chrome" with `screen` set, renders inside a matching device frame instead of a phone bezel. */
@@ -99,14 +101,14 @@ export const caseStudies: Record<string, CaseStudy> = {
     tags: [
       ["Product Design · 0→1", "shipped"],
       ["Mobile · 7 weeks", "nda"],
-      ["Play Store Launch Pending", "live"],
+      ["Google Play Ready", "live"],
     ],
-    sub: "A personal memory system for everything you don't want to lose.",
+    sub: "Save Everything Important. Find It Instantly.",
     githubUrl: "https://github.com/SabituBilikis/Recall",
     meta: [
-      ["My Role", "Product Designer & Builder: Product Strategy, UX Architecture, Figma, Prototyping & React Native Implementation"],
+      ["Role", "Product Designer: Strategy, UX Architecture, Figma, Prototyping & Build"],
       ["Workflow", "AI-assisted workflow moving rapidly between product decisions, Figma, prototyping, and production build"],
-      ["Status", "Production-ready · Google Play launch pending · 7 weeks (2026)"],
+      ["Status", "Production-ready · 7 weeks · 2026"],
     ],
     heroBlock: {
       t: "fig",
@@ -114,389 +116,309 @@ export const caseStudies: Record<string, CaseStudy> = {
       ratio: "r169",
       captionHtml: "<b>Recall</b> — Full product walkthrough demonstrating instant one-tap capture, search, and retrieval without manual filing.",
       video: "/images/recall/demo-landscape.mp4",
-      screen: { src: R("home"), alt: "Recall personal memory app preview" },
+      screen: { src: R("home"), alt: "Recall personal knowledge app preview" },
     },
     next: "telehealth",
     sections: [
       {
         id: "problem",
-        label: "The Problem",
-        heading: "Saving is easy. Finding is the problem.",
+        label: "01 · Problem",
+        heading: "We save everything. Then struggle to find anything.",
         blocks: [
           {
             t: "p",
-            html: "We save things constantly. A screenshot. A WhatsApp message. A useful link. A note we meant to come back to. <b>The problem isn't saving. It's remembering where we saved it when we need it again.</b>",
+            html: "Recall is a personal knowledge app designed to help people save and retrieve the information they want to keep. Capture <b>screenshots, links, notes, files, and ideas</b> without scattering them across different apps. Then organize saved items into personalized collections and find them later through search.",
           },
           {
             t: "p",
-            html: "<b>Recall</b> explores a simpler approach: capture anything quickly, then find it later without having to organize your life first. I designed the product from strategy through production, using an AI-assisted workflow to move quickly between product decisions, Figma, prototyping, and implementation.",
+            html: "Useful information gets saved everywhere. A screenshot might live in the camera roll. A useful link might be buried in a WhatsApp chat. A note might be sitting in another app. A file might be somewhere in a downloads folder. Each app solves one part of the problem. <b>But together, they create a fragmented personal library.</b>",
           },
           {
             t: "p",
-            html: "My useful information was scattered across: <b>WhatsApp · Notes · Browser bookmarks · Camera Roll</b>. Each app solved one part of the problem, but together they created another:",
+            html: "The challenge for Recall wasn't simply: <em>“How do we help people save things?”</em> Saving is already easy. The harder problem was:",
           },
           {
             t: "thesis",
-            html: "I could remember that I had saved something without remembering where.",
-          },
-          {
-            t: "p",
-            html: "Traditional organization assumes people will remember: what something is called, where it belongs, which folder they put it in, and when they saved it. But memory doesn't work like that. You remember: <em>\"That article about how Linear handles onboarding.\"</em> Not: <em>\"I saved it in Product Research → Onboarding → References.\"</em> That observation became the foundation for Recall.",
+            html: "How do we turn scattered saved information into something people can actually find and use later?",
           },
         ],
       },
       {
-        id: "question",
-        label: "The Product Question",
-        heading: "What if saving required no organization at all?",
+        id: "product-idea",
+        label: "02 · The Idea",
+        heading: "One place for the things you don't want to lose.",
         blocks: [
           {
             t: "p",
-            html: "Instead of asking people to build another filing system, I explored a different model:",
-          },
-          {
-            t: "thesis",
-            html: "Capture first. Let retrieval do the organizing.",
-          },
-          {
-            t: "p",
-            html: "That insight led directly to three core product principles:",
-          },
-          {
-            t: "principles",
-            items: [
-              ["01", "Capture should disappear", "Saving something should take almost no thought, zero mental overhead, and zero configuration."],
-              ["02", "Retrieval should match memory", "People should be able to search using the way they remember something, rather than needing perfect metadata."],
-              ["03", "A saved item should never silently disappear", "If Recall promises to remember something, failure becomes a product problem—not just a technical error."],
-            ],
-          },
-        ],
-      },
-      {
-        id: "constraints",
-        label: "The Constraints",
-        heading: "Designing under competing product priorities.",
-        blocks: [
-          {
-            t: "p",
-            html: "Designing the product meant balancing several competing priorities:",
+            html: "Recall brings different types of saved information into one space. Instead of remembering which app something was saved in, users can return to Recall:",
           },
           {
             t: "cards",
             items: [
               [
                 "01",
-                "Four types of content",
-                "Screenshots, links, notes, and files behave differently, but needed to feel like one coherent, effortless system.",
+                "Screenshots",
+                "Visual references, receipts, conversations, inspiration.",
               ],
               [
                 "02",
-                "Zero organization burden",
-                "Folders, tags, and metadata could make retrieval more powerful—but they would also add friction at the moment of capture.",
+                "Links",
+                "Articles, websites, resources, and things to revisit.",
               ],
               [
                 "03",
-                "Capture happens mid-task",
-                "People don't usually save something when they are calmly organizing their information. They save it while reading, scrolling, messaging, or working.",
+                "Notes",
+                "Thoughts, reminders, ideas, and information worth keeping.",
               ],
               [
                 "04",
-                "A seven-week product window",
-                "The product needed to become a real, usable experience—not an endless collection of future features or conceptual prototypes.",
+                "Files",
+                "Documents and other useful files.",
               ],
             ],
-          },
-        ],
-      },
-      {
-        id: "decision",
-        label: "Critical Decision #1",
-        heading: "Should Recall organize for you—or ask you to organize yourself?",
-        blocks: [
-          {
-            t: "p",
-            html: "I explored two different retrieval models to resolve how information should be surfaced:",
-          },
-          {
-            t: "alt",
-            a: {
-              heading: "Option A — Folder-based organization (The familiar approach)",
-              items: [
-                ["pro", "Familiar mental model with visible structure"],
-                ["pro", "Easy to browse categories manually"],
-                ["con", "Moves organizational work to the moment of capture"],
-                ["con", "Directly conflicts with the one-tap capture principle; users abandon filing within weeks"],
-              ],
-            },
-            b: {
-              heading: "Option B — Search-first retrieval (The lighter approach)",
-              items: [
-                ["pro", "Zero filing burden; capture remains instantaneous"],
-                ["pro", "Works reliably even when the library grows large and messy"],
-                ["pro", "Matches associative human memory instead of rigid hierarchies"],
-                ["con", "The product becomes much more dependent on retrieval quality"],
-              ],
-            },
-            verdictHtml:
-              "<b>The Decision: Search first.</b> The folder model solved organization, but organization wasn't the problem I was trying to solve. It would have recreated the same filing burden inside the product I was designing to remove it. Recall's structure became: <b>Capture → Store → Search → Find</b> rather than: <em>Capture → Name → Tag → File → Remember where you filed it</em>.",
-          },
-          {
-            t: "before-after-mockup",
-            topCaption: "System Model Comparison",
-            beforeSrc: R("collections"),
-            beforeAlt: "Option A: Folder-based collection taxonomy requiring filing and manual grouping",
-            beforeNoteTitle: "Option A · Folder Taxonomy",
-            beforeNoteDesc: "Forces users to categorize, name, and file before finishing capture. Fails when users are mid-task.",
-            afterSrc: R("search"),
-            afterAlt: "Option B: Search-first associative retrieval matching human memory",
-            afterNoteTitle: "Option B · Search-First Model",
-            afterNoteDesc: "Zero upfront filing. One-tap capture with flexible, query-based search matching how you remember.",
-            frameBg: "linear-gradient(180deg, #1E293B 0%, #0F172A 100%)",
-          },
-        ],
-      },
-      {
-        id: "capture-design",
-        label: "Designing Capture",
-        heading: "The rule: saving shouldn't ask for anything back.",
-        blocks: [
-          {
-            t: "p",
-            html: "I deliberately removed the usual capture friction steps: <b>No title. No tags. No folder picker.</b> The user taps save; Recall takes over. The deeper interaction happens later, when the user has actually come back looking for something.",
-          },
-          {
-            t: "p",
-            html: "<b>The capture flow:</b> <em>Choose content → Save → Confirmation → Continue what you were doing.</em> The goal was not to make saving feel sophisticated—it was to make saving feel <b>invisible</b>.",
-          },
-          {
-            t: "figrow",
-            items: [
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "Fig 2.1 · <b>Universal capture sheet</b>: one tap for screenshots, links, notes, or files.",
-                screen: { src: R("capture"), alt: "Recall capture sheet for saving screenshots, links, notes, or files" },
-              },
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "Fig 2.2 · <b>Quick link capture</b>: pasting a URL with zero tagging or manual category prompts.",
-                screen: { src: R("add-link"), alt: "Recall link capture interface without forced tag fields" },
-              },
-            ],
-          },
-          {
-            t: "decision",
-            key: true,
-            kicker: "Interaction Decision",
-            title: "Optimistic capture",
-            bodyHtml:
-              "The moment someone saves an item, the interface confirms it immediately while the underlying work continues in the background. This makes capture feel instant. But it creates an important product responsibility: <em>What happens if the save fails after we've already told the user it worked?</em> That question led directly to designing for failure.",
-          },
-        ],
-      },
-      {
-        id: "failure-design",
-        label: "Designing for Failure",
-        heading: "If Recall is a memory system, losing something is unacceptable.",
-        blocks: [
-          {
-            t: "p",
-            html: "I treated system states as part of the core experience rather than edge-case screens. A product that promises to remember cannot treat failed saves or background syncs as an implementation detail.",
-          },
-          {
-            t: "states",
-            items: [
-              [
-                "empty",
-                "Empty State",
-                "The user hasn't saved anything yet. Instead of presenting a dead end, the empty state gives the user one obvious next action with a prominent, welcoming capture button.",
-              ],
-              [
-                "load",
-                "Loading State",
-                "The item is being processed in flight. The user gets immediate optimistic confirmation without being blocked or forced to wait.",
-              ],
-              [
-                "error",
-                "Error State",
-                "The save failed. Instead of silently disappearing, the item remains visible and the user gets a clear recovery path and retry button. <b>Design principle:</b> Never make the user wonder whether something they trusted the product to remember is gone.",
-              ],
-              [
-                "ok",
-                "Success State",
-                "The item is saved and ready to retrieve. The success state is intentionally quiet. The goal is not celebration—it's confidence.",
-              ],
-            ],
-          },
-          {
-            t: "figrow",
-            cols: 3,
-            items: [
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "Fig 3.1 · <b>Empty State</b>: First-run invitation with direct capture action.",
-                screen: { src: R("home-empty"), alt: "Recall first-run empty state inviting the user to save their first item" },
-              },
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "Fig 3.2 · <b>Loading State</b>: Optimistic capture in flight with progress feedback.",
-                screen: { src: R("uploading"), alt: "Recall file uploading progress state" },
-              },
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "Fig 3.3 · <b>Success State</b>: Saved confirmation, ready for search.",
-                screen: { src: R("saved"), alt: "Recall item saved confirmation state" },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: "hardest-decision",
-        label: "The Hardest Decision",
-        heading: "I wanted AI retrieval. I removed it.",
-        blocks: [
-          {
-            t: "p",
-            html: "AI-powered retrieval was part of the original vision. The idea was compelling: <em>What if Recall could understand what you meant instead of relying on exact search terms?</em> But building that into v1 introduced a difficult trade-off.",
-          },
-          {
-            t: "p",
-            html: "More intelligence meant: <b>more engineering complexity · more uncertainty · more edge cases · more time before launch</b>. And most importantly: <b>it wasn't necessary to prove the core product.</b> So I cut it.",
-          },
-          {
-            t: "decision",
-            key: true,
-            kicker: "Why I cut AI",
-            title: "The first version needed to prove one thing",
-            bodyHtml:
-              "<em>Can Recall make saving and finding personal information meaningfully easier?</em> It didn't need to pretend it could understand everything. So v1 focused on: <b>Fast capture + reliable storage + simple retrieval</b>. AI retrieval became a future direction rather than a marketing claim.",
-          },
-          {
-            t: "thesis",
-            html: "AI should solve a product problem—not become the product's identity.",
-          },
-          {
-            t: "p",
-            html: "For me, that was an important distinction. The AI-assisted workflow helped accelerate the design and implementation process. But I deliberately chose <b>not to put AI inside the product until it could meaningfully improve the user experience.</b>",
-          },
-        ],
-      },
-      {
-        id: "production",
-        label: "Concept to Production",
-        heading: "The design had to survive contact with implementation.",
-        blocks: [
-          {
-            t: "p",
-            html: "Recall wasn't designed as a static prototype. I worked through the product in Figma, then used an AI-assisted workflow to move into implementation and iterate against the actual product. This changed some design decisions. A design that looked elegant in isolation wasn't automatically the right decision once I considered: <b>implementation complexity, product scope, state management, responsiveness, reliability, and release requirements</b>. The final product reflects those trade-offs.",
           },
           {
             t: "fig",
-            kind: "vid",
-            ratio: "r169",
-            captionHtml: "Fig 4.0 · <b>Complete Product Showcase</b>: Live capture, instant save, fast query search, and full item retrieval in React Native.",
-            video: "/images/recall/demo-landscape.mp4",
-          },
-          {
-            t: "figrow",
-            cols: 4,
-            items: [
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "<b>Home</b> · Instant feed & capture",
-                screen: { src: R("home"), alt: "Recall home screen" },
-              },
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "<b>Capture</b> · Universal sheet",
-                screen: { src: R("capture"), alt: "Recall universal capture sheet" },
-              },
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "<b>Search</b> · Associative query",
-                screen: { src: R("search"), alt: "Recall instant search results" },
-              },
-              {
-                kind: "img",
-                ratio: "r43",
-                captionHtml: "<b>Saved Item</b> · View & detail",
-                screen: { src: R("collection-detail"), alt: "Recall saved item detail screen" },
-              },
-            ],
+            kind: "img",
+            ratio: "r43",
+            captionHtml: "Fig 1.1 · <b>Recall home and capture feed</b> — Uncluttered central space for all your saved knowledge.",
+            screen: { src: R("home"), alt: "Recall home and capture feed" },
           },
         ],
       },
       {
-        id: "details",
-        label: "Product Details & Outcome",
-        heading: "A production-ready product shipped in seven weeks.",
+        id: "core-experience",
+        label: "03 · Core Experience",
+        heading: "Designing the core experience: Save → Organize → Find.",
         blocks: [
+          {
+            t: "p",
+            html: "I structured the experience around three connected behaviors:",
+          },
           {
             t: "cards",
             items: [
               [
                 "01",
-                "Multiple content types",
-                "Recall supports Screenshots, Links, Notes, and Files without forcing each type into a separate, fractured workflow.",
+                "Capture",
+                "Save information without unnecessary friction.",
               ],
               [
                 "02",
-                "Lightweight retrieval",
-                "Instant, query-based search serves as the primary organizational mechanism, eliminating manual filing chores.",
+                "Organize",
+                "Group saved items into collections that make sense to you.",
               ],
               [
                 "03",
-                "Designed system states",
-                "Empty, loading, success, and error states were engineered as first-class citizens of the user experience, not bolted on after.",
+                "Find",
+                "Search across your saved information using details you remember.",
+              ],
+            ],
+          },
+          {
+            t: "decision",
+            key: true,
+            kicker: "The Mental Model",
+            title: "Save → Organize → Find",
+            bodyHtml:
+              "The product doesn't require users to perfectly organize everything upfront. They can save first and structure their library as it grows.",
+          },
+          {
+            t: "fig",
+            kind: "img",
+            ratio: "r169",
+            captionHtml: "Fig 2.0 · <b>The Core Experience</b> — 01 Capture (intake selection), 02 Organize (searchable collections), and 03 Find (multi-attribute search).",
+            screens: [
+              { src: R("core-capture"), alt: "01 Capture — Choose what you want to save" },
+              { src: R("core-organize"), alt: "02 Organize — Calm, searchable collections" },
+              { src: R("core-find"), alt: "03 Find — Multi-attribute search" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "collections",
+        label: "04 · Collections",
+        heading: "Give saved information a place to belong.",
+        blocks: [
+          {
+            t: "p",
+            html: "As the library grows, users need more than a long list of saved items. Recall introduces customizable collections that let users create their own structure. When creating a collection, users can define four visual attributes:",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "01",
+                "Name",
+                "Give the collection a recognizable identity.",
+              ],
+              [
+                "02",
+                "Description",
+                "Explain what the collection is for.",
+              ],
+              [
+                "03",
+                "Icon",
+                "Choose a visual identifier.",
               ],
               [
                 "04",
-                "Production-ready experience",
-                "Includes supporting architecture: privacy considerations, data safety compliance, and Play Store release assets.",
+                "Colour",
+                "Give the collection a distinct visual appearance.",
               ],
             ],
           },
           {
             t: "p",
-            html: "Recall became a production-ready mobile product within <b>seven weeks</b>. The biggest outcome wasn't the number of screens. It was proving that the core idea could survive the journey from: <b>Product problem → UX model → interface → prototype → implementation → release preparation</b> without expanding into an unnecessarily complex v1. <b>Google Play launch is currently pending.</b>",
+            html: "This allows users to create spaces that reflect their own mental models rather than forcing everyone into the same predefined structure. Examples include: <b>Design Inspiration</b> <em>(UI references and product ideas)</em>, <b>Work Resources</b> <em>(Documents and links I use regularly)</em>, and <b>Travel</b> <em>(Places, plans, and information for future trips)</em>. The collection becomes a visual anchor for everything related to that topic.",
+          },
+          {
+            t: "fig",
+            kind: "img",
+            ratio: "r169",
+            captionHtml: "Fig 3.1 · <b>Personalized Collections & Detail</b> — 01 Custom collections with visual identifiers and 02 Saved references organized within a dedicated space.",
+            screens: [
+              { src: R("collections"), alt: "Recall personalized collections screen" },
+              { src: R("collection-detail"), alt: "Recall collection detail view" },
+            ],
           },
         ],
       },
       {
-        id: "retro",
-        label: "Retrospective",
-        heading: "What seven weeks taught me about building products.",
+        id: "finding-information",
+        label: "05 · Search",
+        heading: "Search should work with what people remember.",
         blocks: [
+          {
+            t: "p",
+            html: "People don't always remember the exact title of something they saved. They might remember what it was called, which collection it belongs to, the file name, or what type of content it was. So Recall's search experience is designed around multiple ways of identifying saved information:",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "01",
+                "Title",
+                "Instant search query matching item headers and notes.",
+              ],
+              [
+                "02",
+                "Collection",
+                "Filter by personal folder or category space.",
+              ],
+              [
+                "03",
+                "File name",
+                "Locate documents, images, and attachments directly.",
+              ],
+              [
+                "04",
+                "Saved type",
+                "Filter across screenshots, links, notes, or uploaded files.",
+              ],
+            ],
+          },
+          {
+            t: "p",
+            html: "This means users don't have to remember exactly where something lives before they can retrieve it.",
+          },
+          {
+            t: "fig",
+            kind: "img",
+            ratio: "r43",
+            captionHtml: "Fig 4.1 · <b>Multi-attribute search</b>: Instant query results across titles, collections, file names, and content types.",
+            screen: { src: R("search"), alt: "Recall search screen" },
+          },
+        ],
+      },
+      {
+        id: "information-architecture",
+        label: "06 · Architecture",
+        heading: "The information architecture: keeping saved knowledge close to the surface.",
+        blocks: [
+          {
+            t: "p",
+            html: "The challenge was balancing a growing library with a simple interface. I focused the information architecture around the things users actually need to do, avoiding deep hierarchies:",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "01",
+                "Home",
+                "See and access saved information immediately upon opening the app.",
+              ],
+              [
+                "02",
+                "Collections",
+                "Browse information based on how it has been structured.",
+              ],
+              [
+                "03",
+                "Search",
+                "Find information based on what the user remembers.",
+              ],
+              [
+                "04",
+                "Saved items",
+                "View and interact with individual pieces of content in full detail.",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        id: "scope-cut",
+        label: "07 · Scope Cut",
+        heading: "What I chose not to build: AI retrieval didn't make the first version.",
+        blocks: [
+          {
+            t: "p",
+            html: "AI-powered retrieval was an early direction for Recall. It could have made the product more intelligent. But adding AI would also introduce another layer of complexity before the fundamentals were proven.",
+          },
+          {
+            t: "decision",
+            key: true,
+            kicker: "The Scope Decision",
+            title: "The fundamentals must be proven first",
+            bodyHtml:
+              "The core experience already had a clear value proposition: <b>Capture different types of information · Organize it into collections · Search and retrieve it later</b>. So I chose to keep AI retrieval out of the first version. The decision wasn't about whether AI was interesting. It was about whether AI was necessary for the product to solve its core problem. For v1, it wasn't.",
+          },
+        ],
+      },
+      {
+        id: "outcome",
+        label: "08 · Outcome",
+        heading: "Built in seven weeks: save everything important, find it instantly.",
+        blocks: [
+          {
+            t: "banner",
+            html: "Recall went from concept to a working mobile product in <b>seven weeks</b>. The final product is centered around one straightforward promise: <b>Save everything important. Find it instantly.</b> Instead of asking users to remember which app they used to save something, Recall gives them one place to return to.",
+          },
           {
             t: "takes",
             items: [
               [
                 "01",
-                "Friction compounds",
-                "Every additional field at the moment of capture gives the user another reason not to save something. Removing friction wasn't a visual decision—it was a product strategy decision.",
+                "Capture and organization don't need to happen together",
+                "Separating the two lets saving remain fast while giving users control over their library.",
               ],
               [
                 "02",
-                "The best feature can still be the wrong feature",
-                "AI retrieval was the most exciting feature on the roadmap. It was also the feature I didn't need yet. Cutting it gave the core experience room to become reliable.",
+                "Organization should adapt to the user",
+                "Custom collection names, descriptions, icons, and colours allow people to create a structure that makes sense to them.",
               ],
               [
                 "03",
-                "Failure states define trust",
-                "A product that promises to remember something cannot treat failed saves as an implementation detail. The error experience is part of the product promise.",
+                "Search should account for imperfect memory",
+                "People don't always remember titles. Designing around multiple searchable attributes gives them more ways to recover what they saved.",
               ],
               [
                 "04",
-                "Shipping changes design decisions",
-                "Moving from Figma into a real product exposed constraints that weren't obvious in the prototype. Good product design isn't just about what should exist—it's about making the right thing possible within real constraints.",
+                "The best feature isn't always the next feature",
+                "Cutting AI retrieval kept the first version focused on the fundamental experience instead of adding complexity before it was needed.",
               ],
             ],
           },
