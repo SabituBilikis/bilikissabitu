@@ -6,13 +6,13 @@ type Tile = { g: string; label: string; img: { src: string; alt: string } };
 const columns: Tile[][] = [
   [
     { g: "g-onb", label: "Recall", img: { src: "/images/recall/collections.png", alt: "Recall collections screen with saved item folders" } },
-    { g: "g-app", label: "Telehealth", img: { src: "/images/telehealth/home.png", alt: "Telehealth patient home screen" } },
+    { g: "g-app", label: "Climapt", img: { src: "/images/climapt/home.png", alt: "Climapt home screen" } },
     { g: "g-sys", label: "Climapt", img: { src: "/images/climapt/risk-map.png", alt: "Climapt climate risk map screen" } },
     { g: "g-cri", label: "Recall", img: { src: "/images/recall/collection-detail.png", alt: "Recall collection detail with saved items" } },
   ],
   [
     { g: "g-pay", label: "Recall", img: { src: "/images/recall/home-empty.png", alt: "Recall first-run empty state" } },
-    { g: "g-dash", label: "Telehealth", img: { src: "/images/telehealth/insurance.png", alt: "Telehealth insurance verification screen" } },
+    { g: "g-dash", label: "Recall", img: { src: "/images/recall/search.png", alt: "Recall search screen" } },
     { g: "g-onb", label: "Recall", img: { src: "/images/recall/home.png", alt: "Recall home screen" } },
     { g: "g-app", label: "Climapt", img: { src: "/images/climapt/ai-chat.png", alt: "Climapt AI assistant chat screen" } },
   ],

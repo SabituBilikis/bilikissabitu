@@ -27,17 +27,6 @@ export default function Contact() {
               LinkedIn
             </a>
           </div>
-          <div className="contact-meta">
-            <span>sabitubilikis96@gmail.com</span>
-            <a
-              href="https://www.linkedin.com/in/bilikis-sabitu"
-              target="_blank"
-              rel="noopener"
-            >
-              linkedin.com/in/bilikis-sabitu
-            </a>
-            <span></span>
-          </div>
         </div>
       </div>
     </section>

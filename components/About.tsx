@@ -1,12 +1,12 @@
 const tools = [
   "Figma",
-  "Next.js",
-  "React Native / Expo",
-  "Claude Code",
+  "Claude / Codex",
+  "Antigravity",
   "Design Systems",
-  "WCAG Accessibility",
+  "Next.js",
+  "React Native",
   "Prototyping",
-  "AI-Native Workflow",
+  "AI-Assisted Workflow",
 ];
 
 const experience = [
@@ -29,20 +29,26 @@ export default function About() {
         <div className="about-grid">
           <div>
             <p className="about-lede">
-              Across healthcare, education, and AI-driven experiences, I focus on turning complex problems into simple, accessible products that people can confidently use.
+              I’m a Product Designer who turns complex ideas into simple, intuitive products, helping take them from early concept to something people can actually use.
             </p>
             <div className="about-body">
               <p>
-                Over the past 3+ years, I have designed patient-facing healthtech platforms, educational products, and 0→1 digital experiences — working across product strategy, UX architecture, interaction design, UI systems, prototyping, and developer collaboration.
+                Over the past 3+ years, I’ve worked across healthcare, education, and digital products, designing experiences from 0→1 and improving existing ones. My work spans product thinking, user flows, UX architecture, interaction design, UI systems, prototyping, and close collaboration with developers.
               </p>
               <p>
-                My AI-assisted workflow helps me move from idea to validated product faster while maintaining strong design decisions. I recently designed and shipped <b>Learn Fun</b>, an offline-first educational app for children ages 1–5, from concept through production release preparation on Google Play. I am also designing <b>Recall</b>, a personal knowledge app built around helping people capture and retrieve information more effectively.
+                I also use AI as an active part of my design workflow. Tools like Claude, Codex, and Antigravity help me explore product ideas, accelerate research and synthesis, test interactions, refine code, and turn designs into functional prototypes. This allows me to move quickly from an idea to something tangible that can be tested, improved, and taken closer to implementation without replacing the thinking and judgment behind good design.
               </p>
               <p>
-                I work best on complex products where design has real impact — improving trust, reducing friction, increasing adoption, and helping users complete meaningful tasks with confidence.
+                One example is <b>Learn Fun</b>, an offline-first educational app for children ages 1–5 that I designed from the ground up, taking it from an initial idea through product thinking, UX, interface design, prototyping, and preparation for release on Google Play.
               </p>
               <p>
-                I believe great product design is not about creating more screens. It is about understanding people, making thoughtful decisions, and building experiences that solve real problems.
+                I also designed <b>Recall</b>, a personal knowledge product that helps people capture information and find it again when they need it, taking the product from concept through a functional experience.
+              </p>
+              <p>
+                I enjoy working on products where there’s more to solve than how a screen should look, where I can think through the problem, simplify complex flows, reduce friction, prototype ideas, and help turn an early concept into a product that’s ready to move forward.
+              </p>
+              <p>
+                For me, great product design isn’t about creating more screens. It’s about making the right decisions, solving the right problems, and building products people can confidently use.
               </p>
             </div>
             <div className="toolbar">

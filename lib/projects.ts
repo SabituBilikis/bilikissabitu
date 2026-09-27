@@ -8,6 +8,7 @@ export interface Project {
   title: string;
   domain: string;
   line: string;
+  externalUrl?: string;
   /** Real screens for the work-card thumbnail, framed in a matching device. */
   thumb?: { device: Device; screens: Screen[]; video?: string };
 }
@@ -41,24 +42,11 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "telehealth",
-    title: "AI Telehealth Platform",
-    domain: "Healthtech · 0→1 · Confidential",
-    line: "A 0→1 AI-native telehealth platform serving four user roles across web and mobile.",
-    thumb: {
-      device: "mobile",
-      screens: [
-        { src: "/images/telehealth/home.png", alt: "Telehealth patient home screen" },
-        { src: "/images/telehealth/symptom-check.png", alt: "Telehealth AI symptom-check chat" },
-        { src: "/images/telehealth/appointment.png", alt: "Telehealth appointment booking screen" },
-      ],
-    },
-  },
-  {
     id: "climapt",
     title: "Climapt",
     domain: "Climate · Agritech",
     line: "An AI climate-resilience platform that helps farmers see climate risk before it happens.",
+    externalUrl: "https://www.behance.net/gallery/244361623/AI-Climate-Resilience-App-Mobile-App-UIUX-Design",
     thumb: {
       device: "mobile",
       screens: [

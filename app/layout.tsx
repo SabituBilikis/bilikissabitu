@@ -32,7 +32,7 @@ const fragmentMono = Fragment_Mono({
 export const metadata: Metadata = {
   title: "Bilikis Sabitu — Product Designer & AI-Native Builder",
   description:
-    "Bilikis Sabitu — product designer and AI-native builder in Lagos. I design and ship production apps end-to-end, from Figma to React Native to live. Selected work: Recall, a knowledge app built solo and heading to the Play Store; a 0→1 AI telehealth platform; and more.",
+    "Bilikis Sabitu — product designer and AI-native builder in Lagos. I design and ship production apps end-to-end, from Figma to React Native to live. Selected work: Learn Fun, an offline-first educational app; Recall, a personal knowledge app heading to the Play Store; and more.",
   openGraph: {
     title: "Bilikis Sabitu — Product Designer & AI-Native Builder",
     description:
