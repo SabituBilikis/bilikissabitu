@@ -58,12 +58,12 @@ export const projects: Project[] = [
   },
   {
     id: "earthquake",
-    title: "Earthquake Crisis Response",
-    domain: "Crisis · Fundraising · Real client",
-    line: "A crisis-response fundraising site built during the Turkish–Syrian earthquake.",
+    title: "Human Republic",
+    domain: "Crisis · Humanitarian · Real client",
+    line: "A humanitarian donation experience designed during the Turkey–Syria earthquake response, turning trust into $20K raised.",
     thumb: {
       device: "web",
-      screens: [{ src: "/images/earthquake/home.png", alt: "Earthquake fundraising site homepage" }],
+      screens: [{ src: "/images/earthquake/home.png", alt: "Human Republic fundraising site homepage" }],
     },
   },
 ];

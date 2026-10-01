@@ -740,142 +740,309 @@ export const caseStudies: Record<string, CaseStudy> = {
 
 
 
-  /* ---------------- EARTHQUAKE ---------------- */
+  /* ---------------- HUMAN REPUBLIC (EARTHQUAKE) ---------------- */
   earthquake: {
     slug: "earthquake",
-    title: "Earthquake Crisis Response",
-    nav: "Earthquake",
+    title: "Human Republic",
+    nav: "Human Republic",
     tags: [
       ["Shipped · $20K raised", "shipped"],
-      ["Medixbot", "nda"],
+      ["Turkey–Syria Earthquake Response", "nda"],
+      ["Medixbot", "live"],
     ],
-    sub: "In a crisis, every second of friction is money that never arrives. Trust is what gets someone to click donate.",
+    sub: "When a crisis moves fast, trust can't move slowly.",
     meta: [
-      ["My Role", "Designer, donor experience end to end, with the team at Medixbot"],
+      ["My Role", "Product Designer — donor experience, UX architecture, interaction design, UI, prototyping"],
       ["Team", "Medixbot"],
-      ["Timeline & Status", "Designed and shipped in one week, while the crisis was still unfolding. $20,000 raised"],
+      ["Timeline", "1 week"],
+      ["Outcome", "$20,000 raised"],
     ],
     next: "learn-fun",
     sections: [
       {
-        id: "overview",
-        label: "Overview",
-        heading: "What do you design when the deadline is the news cycle?",
+        id: "situation",
+        label: "01 · Situation",
+        heading: "When a crisis moves fast, trust can't move slowly.",
         blocks: [
           {
             t: "p",
-            html: "When the Turkey and Syria earthquake hit, the team at Medixbot needed a fundraising site that could turn donor intent into a completed donation, fast. I designed the donor experience end to end: the trust architecture, the donation flow, and the responsive build. <b>We designed and shipped it in one week</b>, while the crisis was still unfolding.",
+            html: "The Turkey–Syria earthquake created an immediate need for humanitarian support. People wanted to help. But wanting to donate and feeling confident enough to donate are two different things.",
           },
           {
             t: "p",
-            html: "There's one number in my portfolio I never have to dress up: <b>the site helped raise $20,000 in humanitarian funding.</b>",
-          },
-          { t: "fig", kind: "img", ratio: "r169", captionHtml: "Fig 0.1 · Site hero — trust signals above the ask.", screen: { src: "/images/earthquake/home.png", alt: "Earthquake fundraising site homepage with hero, trust badges, and live donation stats" }, device: "web" },
-        ],
-      },
-      {
-        id: "problem",
-        label: "The Problem",
-        heading: "Why do two small problems add up to zero donations?",
-        blocks: [
-          {
-            t: "p",
-            html: "People don't give to a site that looks unverified. And in a crisis, every extra field or extra tap is money that never lands. Neither problem is solvable on its own. The design had to earn trust and get out of the donor's way, at the same time, with almost no time to do it in.",
+            html: "In a crisis, donors need to answer simple questions quickly:",
           },
           {
             t: "cards",
             items: [
-              ["01", "Trust starts at zero", "An unfamiliar fundraising site has no built in credibility. Legitimacy is what actually converts."],
-              ["02", "Friction has a price tag", "Every extra step on the donor path costs real donations, not just seconds."],
-              ["03", "The scariest moment is payment", "Handing over card details is the highest anxiety point in the whole flow."],
-              ["04", "Built during, not after", "This launched while the crisis was still active. The news cycle was the deadline."],
+              [
+                "01",
+                "Who am I giving to?",
+                "Clear organisation identity and official credentials.",
+              ],
+              [
+                "02",
+                "Where is the money going?",
+                "Transparent fund allocation and direct impact delivery.",
+              ],
+              [
+                "03",
+                "Can I trust this campaign?",
+                "Visible proof that the platform is legitimate and active.",
+              ],
+              [
+                "04",
+                "How quickly can I contribute?",
+                "A friction-free donation path without unnecessary steps.",
+              ],
             ],
           },
           {
             t: "thesis",
-            html: "Earn a donor's trust in seconds, then get out of the way of the payment.",
+            html: "Human Republic was designed as a clearer path from <b>concern → trust → action</b>.",
           },
           {
-            t: "principles",
-            items: [
-              ["01", "Trust comes before the ask", "Credibility signals sit up front, before any donation prompt shows up."],
-              ["02", "Friction is lost money", "The donor path is stripped down to land, donate, confirm. Nothing else."],
-              ["03", "Cut on purpose", "Protect the trust and the money path above everything cosmetic."],
-            ],
+            t: "fig",
+            kind: "img",
+            ratio: "r169",
+            captionHtml: "Fig 0.1 · <b>Human Republic Homepage</b> — establishing trust up front before asking for contributions.",
+            screen: {
+              src: "/images/earthquake/home.png",
+              alt: "Human Republic fundraising homepage hero with trust badges and live stats",
+            },
+            device: "web",
           },
         ],
       },
       {
-        id: "trust",
-        label: "Trust & Flow",
-        heading: "What has to happen before someone will actually hand over their card?",
+        id: "product-idea",
+        label: "02 · Product Idea",
+        heading: "Trust before the ask.",
         blocks: [
           {
             t: "p",
-            html: 'The page puts <b>three trust signals</b> in front of the ask: <b>fund transparency</b> (where every donation goes), a <b>donor leaderboard</b>, and <b>contribution badges</b>. Transparency answers "can I trust this?" The leaderboard and badges answer "are other people actually giving?" That\'s social proof doing work that copy alone can\'t do. Only after that does the flow narrow down to the payment path, stripped to the minimum, because when speed matters this much, <b>completion rate wins over collecting extra donor data.</b>',
-          },
-          {
-            t: "figrow",
-            items: [
-              { kind: "img", ratio: "r169", captionHtml: "Fig 2.0 · Trust stack — transparency, leaderboard, badges.", screen: { src: "/images/earthquake/trust.png", alt: "Earthquake fundraising site donor leaderboard with rank, amount, and region" }, device: "web" },
-              { kind: "img", ratio: "r43", captionHtml: "Fig 2.1 · Donation flow — land → donate → confirm.", screen: { src: "/images/earthquake/donate.png", alt: "Earthquake fundraising site donation form with amount picker and payment method" }, device: "web" },
-            ],
-          },
-          {
-            t: "decision",
-            kicker: "Key decision",
-            badges: ["01"],
-            title: "Turning recognition into a conversion tool",
-            bodyHtml:
-              "The leaderboard and badges gamify generosity, which is a call I made carefully, because it sits on a thin ethical line. In crisis fundraising, social proof should pull people in, never pressure them. So recognition stays <em>celebratory</em> (visible momentum, what others gave) instead of coercive. Every completed gift quietly recruits the next one.",
+            html: "The experience was built around a simple principle:",
           },
           {
             t: "decision",
             key: true,
-            kicker: "Key decision",
-            badges: ["03"],
-            title: "Choosing what not to build",
+            kicker: "The Core Principle",
+            title: "Give donors a reason to trust before asking for money",
             bodyHtml:
-              "Shipping during an active crisis meant deciding, out loud, what we wouldn't build. We protected the trust signals and the payment path, and let everything cosmetic wait. Owning that trade off openly is what separates shipping fast from shipping carelessly.",
+              "Before asking someone for money, give them enough reason to trust where it is going. That shaped both the information architecture and the donation flow. Instead of pushing the donation CTA immediately, the experience gave donors useful signals first: <b>Understand the cause → build confidence → contribute</b>.",
+          },
+        ],
+      },
+      {
+        id: "making-trust-visible",
+        label: "03 · Trust UX",
+        heading: "Trust cannot live only in copy. It needs to appear in the interface.",
+        blocks: [
+          {
+            t: "p",
+            html: "I explored several signals that could help donors understand the campaign before contributing:",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "01",
+                "Funding transparency",
+                "Make the campaign's financial progress visible rather than making donors guess where the campaign stands.",
+              ],
+              [
+                "02",
+                "Donor activity",
+                "Show that other people are participating, creating a sense of visible momentum without hiding campaign information.",
+              ],
+              [
+                "03",
+                "Contribution recognition",
+                "Badges and contribution milestones gave donors a lightweight way to see their participation as part of a larger collective effort.",
+              ],
+            ],
+          },
+          {
+            t: "p",
+            html: "The goal wasn't to pressure people into donating. It was to make the campaign feel <b>legible, transparent, and active.</b>",
+          },
+          {
+            t: "fig",
+            kind: "img",
+            ratio: "r169",
+            captionHtml: "Fig 2.0 · <b>Trust Stack</b> — live donor leaderboard, transparency breakdown, and active badges.",
+            screen: {
+              src: "/images/earthquake/trust.png",
+              alt: "Human Republic donor leaderboard with transparent fund breakdown",
+            },
+            device: "web",
+          },
+        ],
+      },
+      {
+        id: "reducing-path",
+        label: "04 · Journey",
+        heading: "Reducing the path to donation.",
+        blocks: [
+          {
+            t: "p",
+            html: "Once a donor decided to contribute, the interface needed to get out of the way. I reduced the core journey to: <b>Land → Understand → Donate → Confirm</b>.",
+          },
+          {
+            t: "p",
+            html: "Every additional decision was questioned: <em>Do donors need this information now? Does this step increase confidence? Does it help them complete the donation?</em> If not, it didn't belong in the critical path.",
+          },
+          {
+            t: "fig",
+            kind: "img",
+            ratio: "r43",
+            captionHtml: "Fig 2.1 · <b>Streamlined Donation Flow</b> — clean amount picker and payment execution.",
+            screen: {
+              src: "/images/earthquake/donate.png",
+              alt: "Human Republic streamlined donation form with amount selection",
+            },
+            device: "web",
+          },
+        ],
+      },
+      {
+        id: "urgency",
+        label: "05 · Balance",
+        heading: "Designing for urgency without creating panic.",
+        blocks: [
+          {
+            t: "p",
+            html: "A humanitarian product has a difficult balance to maintain. The situation is urgent, but the interface shouldn't feel chaotic. I used the product hierarchy to separate <b>urgency from friction</b>.",
+          },
+          {
+            t: "decision",
+            key: true,
+            kicker: "Hierarchy Strategy",
+            title: "Urgency should encourage action, not create friction",
+            bodyHtml:
+              "Important information needed to be immediately visible and the donation action obvious. But the interface still needed to feel calm enough for someone to make a financial decision. <b>Urgency should encourage action. It shouldn't make the experience harder to understand.</b>",
           },
         ],
       },
       {
         id: "states",
-        label: "States",
-        heading: "What happens the moment a donation fails?",
+        label: "06 · System States",
+        heading: "The states mattered too.",
         blocks: [
           {
             t: "p",
-            html: "A dropped donation during a crisis isn't a bug report. It's money that never arrives. So none of these states were allowed to be a dead end.",
+            html: "A donation experience isn't complete when someone presses <b>Donate</b>. Something can go wrong. So I designed around the moments after the decision:",
           },
           {
             t: "states",
             items: [
-              ["load", "Payment processing", "The most anxious moment in the whole flow, designed to reassure, because any ambiguity here kills the donation."],
-              ["error", "Failed or declined donation", "A clear way to recover, never a dead end. The gift is one retry away, not gone."],
-              ["ok", "Confirmation", "A receipt, a sense of impact, and a share loop. Each completed gift quietly recruits the next."],
-              ["empty", "Goal at zero", "The early state was designed to build momentum instead of looking abandoned."],
+              [
+                "ok",
+                "Ready",
+                "The donor can confidently begin.",
+              ],
+              [
+                "load",
+                "Processing",
+                "The payment is being handled without leaving the donor wondering what happened.",
+              ],
+              [
+                "error",
+                "Failed",
+                "The problem is explained clearly, with a path forward.",
+              ],
+              [
+                "ai",
+                "Confirmed",
+                "The donor receives clear confirmation that the contribution was completed.",
+              ],
+              [
+                "empty",
+                "Goal reached",
+                "The campaign communicates what happens when its target is achieved.",
+              ],
             ],
           },
-          { t: "fig", kind: "img", ratio: "r43", captionHtml: "Fig 3.0 · Donation states, annotated.", screen: { src: "/images/earthquake/donate-confirm.png", alt: "Earthquake fundraising site donation confirmation state, thank-you message over the payment form" }, device: "web" },
+          {
+            t: "fig",
+            kind: "img",
+            ratio: "r43",
+            captionHtml: "Fig 3.0 · <b>Confirmation & Post-Donation State</b> — reassurance and share loop upon completion.",
+            screen: {
+              src: "/images/earthquake/donate-confirm.png",
+              alt: "Human Republic donation confirmation screen with receipt",
+            },
+            device: "web",
+          },
         ],
       },
       {
-        id: "retro",
-        label: "Retrospective",
-        heading: "Why is this the one number I don't try to dress up?",
+        id: "one-week",
+        label: "07 · Execution",
+        heading: "One week changed the way I prioritised.",
+        blocks: [
+          {
+            t: "p",
+            html: "Human Republic was designed within a <b>one-week constraint</b>. That meant there wasn't time to design everything — only what mattered most:",
+          },
+          {
+            t: "cards",
+            items: [
+              [
+                "01",
+                "Can people understand the cause?",
+                "The experience needed enough context to establish confidence quickly.",
+              ],
+              [
+                "02",
+                "Can people trust the campaign?",
+                "Transparency and visible activity had to support the decision.",
+              ],
+              [
+                "03",
+                "Can people complete the donation easily?",
+                "The actual contribution flow needed to remain simple.",
+              ],
+            ],
+          },
+          {
+            t: "p",
+            html: "This kept the project focused on the donor's decision rather than the number of screens we could produce.",
+          },
+        ],
+      },
+      {
+        id: "outcome",
+        label: "08 · Outcome",
+        heading: "Human Republic was designed and delivered in one week.",
         blocks: [
           {
             t: "banner",
-            html: "The site helped raise $20,000 in humanitarian funding, a real outcome from outside the design files that backs up the trust and friction decisions. I say it once, plainly, because restraint is what makes it believable.",
+            html: "The campaign went on to raise <b>$20,000</b>. The number mattered, but the key product lesson was: <b>Trust is part of conversion.</b> People don't simply need a button that says <em>Donate</em>; they need enough clarity to feel comfortable pressing it.",
           },
           {
             t: "takes",
             items: [
-              ["01", "Trust is the real funnel", "Almost every conversion problem upstream of payment turned out to be a credibility problem in disguise."],
-              ["02", "Constraints force clarity", "The crisis deadline made us prioritize in a way calm projects usually avoid."],
-              ["03", "One real number beats five decorated ones", "That's true on this project, and it's true everywhere else I've worked since."],
+              [
+                "01",
+                "Trust is an interface problem",
+                "Transparency, hierarchy, social proof, and feedback all influence whether someone feels confident enough to act.",
+              ],
+              [
+                "02",
+                "Friction matters more when stakes are high",
+                "A small unnecessary step can become a meaningful barrier when someone is already uncertain.",
+              ],
+              [
+                "03",
+                "States are part of the experience",
+                "The success state gets attention, but failure, processing, and confirmation are equally important when money is involved.",
+              ],
+              [
+                "04",
+                "Constraints sharpen product decisions",
+                "One week forced me to focus on the moments that mattered most instead of designing around everything the product could eventually become.",
+              ],
             ],
           },
         ],
